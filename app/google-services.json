@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "386674615954",
+    "firebase_url": "https://fleetmanagment-ccac5.firebaseio.com",
+    "project_id": "fleetmanagment-ccac5",
+    "storage_bucket": "fleetmanagment-ccac5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:386674615954:android:0af8f8738c34f24acd684b",
+        "android_client_info": {
+          "package_name": "com.example.fleetmanagementsystem"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "386674615954-miu98qced61fah9ojj5qs3jcmuvrpvh9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABWrM7UG-YYyKebh1eIqsmHQ-cSb9sKLU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "386674615954-miu98qced61fah9ojj5qs3jcmuvrpvh9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
