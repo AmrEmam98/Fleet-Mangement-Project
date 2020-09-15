@@ -8,7 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.pojo.carModel;
+import com.example.fleetmanagementsystem.carsFunctionality.pojo.CarModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,7 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.PostViewHolder> {
 
-    private List<carModel> carsList = new ArrayList<>();
+    private List<CarModel> carsList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -39,7 +39,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.PostViewHolder
         return carsList.size();
     }
 
-    public void setList(List<carModel> carsList) {
+    public void setList(List<CarModel> carsList) {
         this.carsList = carsList;
         notifyDataSetChanged();
     }

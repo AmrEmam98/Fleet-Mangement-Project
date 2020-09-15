@@ -6,20 +6,27 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import io.reactivex.subjects.BehaviorSubject;
 
-import static com.example.fleetmanagementsystem.loginFunctionality.ResponseConstants.LoginObserverResponse.*;
-import static com.example.fleetmanagementsystem.loginFunctionality.ResponseConstants.LoginObserverResponse.SUCCESS_RESPONSE;
+import static com.example.fleetmanagementsystem.Constants.ObserverStringResponse.*;
+import static com.example.fleetmanagementsystem.Constants.ObserverStringResponse.SUCCESS_RESPONSE;
 
 
 public class LoginViewModel extends ViewModel {
     public BehaviorSubject<String>loginSubject=BehaviorSubject.create();
     public void doLogin(String email,String password){
-        FirebaseAuth firebaseAuth=FirebaseAuth.getInstance();
-        firebaseAuth.signInWithEmailAndPassword(email,password)
-                .addOnSuccessListener(authResult->{
-                    loginSubject.onNext(SUCCESS_RESPONSE);
-                })
-                .addOnFailureListener(e->{
-                    loginSubject.onNext(e.getMessage());
-                });
+
+        //TODO validate
+        try {
+            FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+            firebaseAuth.signInWithEmailAndPassword(email, password)
+                    .addOnSuccessListener(authResult -> {
+                        loginSubject.onNext(SUCCESS_RESPONSE);
+                    })
+                    .addOnFailureListener(e -> {
+                        loginSubject.onNext(e.getMessage());
+                    });
+        }
+        catch(Exception e) {
+            loginSubject.onNext(FAIL_RESPONSE);
+        }
     }
 }

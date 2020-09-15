@@ -12,9 +12,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.SplashActivity;
 import com.example.fleetmanagementsystem.homeFunctionality.activities.HomeActivity;
-import com.example.fleetmanagementsystem.loginFunctionality.ResponseConstants.LoginObserverResponse;
+import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.loginFunctionality.viewModels.LoginViewModel;
 
 public class LoginActivity extends AppCompatActivity {
@@ -33,8 +32,12 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel.loginSubject
                 .subscribe(
                         result -> {
-                            if (result.equals(LoginObserverResponse.SUCCESS_RESPONSE)) {
+                            if (result.equals(ObserverStringResponse.SUCCESS_RESPONSE)) {
+                                //TODO progress bar visibilty gone
                                 Toast.makeText(this, "User signed in ", Toast.LENGTH_LONG).show();
+                                Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
+                                startActivity(intent);
+                                finish();
                             } else {
                                 Toast.makeText(this, result, Toast.LENGTH_LONG).show();
                             }
@@ -43,24 +46,9 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void loginBtnClicked(View view) {
-        if (isEmpty(emailEditText, passwordEditText)) {
-            Toast.makeText(this, "Please Fill All Fields ", Toast.LENGTH_LONG).show();
-        } else {
-
-            loginViewModel.doLogin(emailEditText.getText().toString(), passwordEditText.getText().toString());
-
-            Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }
-
+        //TODO progress bar visibilty shpw
+        loginViewModel.doLogin(emailEditText.getText().toString(), passwordEditText.getText().toString());
     }
 
-    private boolean isEmpty(EditText emailEt, EditText passEt) {
-        boolean empty = false;
-        if (emailEt.getText().toString().trim().length() == 0 || passEt.getText().toString().trim().length() == 0) {
-            empty = true;
-        }
-        return empty;
-    }
+
 }

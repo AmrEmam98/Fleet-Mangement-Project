@@ -1,11 +1,21 @@
 package com.example.fleetmanagementsystem.carsFunctionality.pojo;
+import com.google.firebase.firestore.DocumentSnapshot;
+public class CarModel {
 
- public class carModel {
-
-    String name;
+    public String name,imageUrl,model2;
     int model , image;
 
-     public carModel(String name, int model, int image) {
+    public CarModel() {
+    }
+
+    public  CarModel(DocumentSnapshot documentSnapshot)
+    {
+        this.name=documentSnapshot.get("name").toString();
+        this.model2=documentSnapshot.get("model").toString();
+        this.imageUrl=documentSnapshot.get("image").toString();
+
+    }
+     public CarModel(String name, int model, int image) {
          this.name = name;
          this.model = model;
          this.image = image;
