@@ -1,27 +1,25 @@
 package com.example.fleetmanagementsystem.carsFunctionality.activities;
 
+import android.os.Bundle;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Bundle;
-
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.pojo.CarModel;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class CarActivity extends AppCompatActivity {
 
     private List<CarModel> mCarModel;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_car);
 
-        exampleListCreation();
+        //exampleListCreation();
 
         RecyclerView recyclerView = findViewById(R.id.recycler_car);
         CarsAdapter adapter = new CarsAdapter();
@@ -31,7 +29,7 @@ public class CarActivity extends AppCompatActivity {
 
     }
 
-    public void exampleListCreation() {
+  /*  public void exampleListCreation() {
 
         mCarModel = new ArrayList<>();
 
@@ -73,6 +71,6 @@ public class CarActivity extends AppCompatActivity {
         mCarModel.add(new CarModel("Verna", 2020, R.drawable.car_image4));
 
 
-    }
+    }*/
 
 }

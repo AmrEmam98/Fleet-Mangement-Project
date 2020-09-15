@@ -26,8 +26,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
       //  addCarExample();
-//        getCars();
-//        new RetrieveDataFromFireStore().retrieveAllDrivers();
+        getCars();
+        new RetrieveDataFromFireStore().retrieveAllCars();
 //        getDrivers();
      //   addDriverExample();
     }
@@ -40,6 +40,7 @@ public class HomeActivity extends AppCompatActivity {
             if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE))
             {
                 Toast.makeText(this,"Driver Added",Toast.LENGTH_LONG).show();
+
             }else {
                 Toast.makeText(this,"Error Happend",Toast.LENGTH_LONG).show();
             }
@@ -58,8 +59,8 @@ public class HomeActivity extends AppCompatActivity {
         });
         CarModel car=new CarModel();
         car.name="Kia";
-        car.model2="2020";
-        car.imageUrl="kia.com/us/content/dam/kia/us/en/home/vehicle-carousel/forte_2020/kia_forte_2020_home_mobile_vehicle_carousel.png";
+        car.model="2020";
+        car.image ="kia.com/us/content/dam/kia/us/en/home/vehicle-carousel/forte_2020/kia_forte_2020_home_mobile_vehicle_carousel.png";
         new  AddDataToFireStore().addCar(car);
 //        new RetrieveDataFromFireStore().retrieveAllCars();
     }

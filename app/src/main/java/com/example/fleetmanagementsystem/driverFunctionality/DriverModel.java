@@ -1,23 +1,34 @@
 package com.example.fleetmanagementsystem.driverFunctionality;
 
-import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.DocumentId;
 
 public class DriverModel {
+    @DocumentId
+    String driverId;
+    String assignedCarId="";
     String name;
-    String id;
     String phone;
-    public  DriverModel(DocumentSnapshot documentSnapshot)
-    {
-        this.name=documentSnapshot.get("name").toString();
-        this.id=documentSnapshot.get("id").toString();
-        this.phone=documentSnapshot.get("phone").toString();
+
+    public DriverModel() {
 
     }
-    public DriverModel( String id,String name, String phone) {
-        this.id = id;
+
+    public DriverModel(String driverId, String assignedCarId, String name, String phone) {
+        this.driverId = driverId;
+        this.assignedCarId = assignedCarId;
         this.name = name;
         this.phone = phone;
     }
+
+
+    public String getAssignedCarId() {
+        return assignedCarId;
+    }
+
+    public void setAssignedCarId(String assignedCarId) {
+        this.assignedCarId = assignedCarId;
+    }
+
     public String getName() {
         return name;
     }
@@ -26,12 +37,12 @@ public class DriverModel {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
+    public String getDriverId() {
+        return driverId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDriverId(String driverId) {
+        this.driverId = driverId;
     }
 
     public String getPhone() {

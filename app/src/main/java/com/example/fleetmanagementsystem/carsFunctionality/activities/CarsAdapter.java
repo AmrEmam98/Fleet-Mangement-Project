@@ -7,14 +7,14 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.pojo.CarModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.PostViewHolder> {
 
@@ -30,7 +30,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.PostViewHolder
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         holder.carName.setText(carsList.get(position).getName());
         holder.carModel.setText(carsList.get(position).getModel() + "");
-        holder.carImage.setImageResource(carsList.get(position).getImage());
+        //holder.carImage.setImageResource(carsList.get(position).getImage());
 
     }
 

@@ -1,48 +1,62 @@
 package com.example.fleetmanagementsystem.carsFunctionality.pojo;
-import com.google.firebase.firestore.DocumentSnapshot;
+
+import com.google.firebase.firestore.DocumentId;
+
 public class CarModel {
 
-    public String name,imageUrl,model2;
-    int model , image;
+
+    @DocumentId
+    public String carID;
+    public String name, image,model,assignedDriverId;
 
     public CarModel() {
     }
 
-    public  CarModel(DocumentSnapshot documentSnapshot)
-    {
-        this.name=documentSnapshot.get("name").toString();
-        this.model2=documentSnapshot.get("model").toString();
-        this.imageUrl=documentSnapshot.get("image").toString();
-
+    public CarModel(String carID, String name, String image, String model, String driverId) {
+        this.carID = carID;
+        this.name = name;
+        this.image = image;
+        this.model = model;
+        this.assignedDriverId = driverId;
     }
-     public CarModel(String name, int model, int image) {
-         this.name = name;
-         this.model = model;
-         this.image = image;
-     }
 
+    public String getDriverId() {
+        return assignedDriverId;
+    }
 
-     public String getName() {
-         return name;
-     }
+    public void setDriverId(String driverId) {
+        this.assignedDriverId = driverId;
+    }
 
-     public void setName(String name) {
-         this.name = name;
-     }
+    public String getCarID() {
+        return carID;
+    }
 
-     public int getModel() {
-         return model;
-     }
+    public void setCarID(String carID) {
+        this.carID = carID;
+    }
+    public String getName() {
+        return name;
+    }
 
-     public void setModel(int model) {
-         this.model = model;
-     }
+    public void setName(String name) {
+        this.name = name;
+    }
 
-     public int getImage() {
-         return image;
-     }
+    public String getImage() {
+        return image;
+    }
 
-     public void setImage(int image) {
-         this.image = image;
-     }
- }
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+}
