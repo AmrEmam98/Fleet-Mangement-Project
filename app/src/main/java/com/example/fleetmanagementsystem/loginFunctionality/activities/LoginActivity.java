@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.homeFunctionality.activities.HomeActivity;
+import com.example.fleetmanagementsystem.homeFunctionality.HomeActivity;
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.loginFunctionality.viewModels.LoginViewModel;
 

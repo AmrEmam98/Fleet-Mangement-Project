@@ -9,12 +9,12 @@
     app:cardCornerRadius="5dp"
     app:cardElevation="2dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/colorPrimary"
+    android:background="@color/gray"
     >
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorPrimary"
+        android:background="@color/gray"
         >
 
     <LinearLayout

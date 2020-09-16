@@ -1,4 +1,4 @@
-package com.example.fleetmanagementsystem.homeFunctionality.activities;
+package com.example.fleetmanagementsystem.homeFunctionality;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -6,14 +6,14 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.pojo.CarModel;
+import com.example.fleetmanagementsystem.carsFunctionality.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.DriverModel;
 
 import java.util.List;
 
 
 public class HomeActivity extends AppCompatActivity {
-    List<CarModel>carModels;
+    List<FleetModel> fleetModels;
     private List<DriverModel> driverModels;
 
     @SuppressLint("CheckResult")

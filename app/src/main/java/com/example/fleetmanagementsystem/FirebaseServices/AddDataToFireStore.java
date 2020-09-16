@@ -1,7 +1,7 @@
 package com.example.fleetmanagementsystem.FirebaseServices;
 
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
-import com.example.fleetmanagementsystem.carsFunctionality.pojo.CarModel;
+import com.example.fleetmanagementsystem.carsFunctionality.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.DriverModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -11,10 +11,10 @@ public class AddDataToFireStore {
     public static BehaviorSubject<String> addCarSubject = BehaviorSubject.create();
     public static BehaviorSubject<String> addDriverSubject = BehaviorSubject.create();
 
-    public void addCar(CarModel carModel) {
+    public void addCar(FleetModel fleetModel) {
         FirebaseFirestore.getInstance()
                 .collection("Cars")
-                .add(carModel).
+                .add(fleetModel).
                 addOnSuccessListener(aVoid -> {
                     addCarSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
                 }).addOnFailureListener(e -> {

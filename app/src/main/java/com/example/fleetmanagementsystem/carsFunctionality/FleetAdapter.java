@@ -1,4 +1,4 @@
-package com.example.fleetmanagementsystem.carsFunctionality.activities;
+package com.example.fleetmanagementsystem.carsFunctionality;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,15 +10,15 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.pojo.CarModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.PostViewHolder> {
+public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHolder> {
 
-    private List<CarModel> carsList = new ArrayList<>();
+    private List<FleetModel> carsList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -29,8 +29,14 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.PostViewHolder
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         holder.carName.setText(carsList.get(position).getName());
-        holder.carModel.setText(carsList.get(position).getModel() + "");
-        //holder.carImage.setImageResource(carsList.get(position).getImage());
+        holder.carModel.setText(carsList.get(position).getModel());
+
+        String imageUrl = carsList.get(position).getImage();
+        Glide.with(holder.itemView.getContext())
+                .load(imageUrl)
+                .centerCrop()
+                .placeholder(R.drawable.car_icon)
+                .into(holder.carImage);
 
     }
 
@@ -39,7 +45,7 @@ public class CarsAdapter extends RecyclerView.Adapter<CarsAdapter.PostViewHolder
         return carsList.size();
     }
 
-    public void setList(List<CarModel> carsList) {
+    public void setList(List<FleetModel> carsList) {
         this.carsList = carsList;
         notifyDataSetChanged();
     }

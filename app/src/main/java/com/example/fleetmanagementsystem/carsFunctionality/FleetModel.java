@@ -1,18 +1,18 @@
-package com.example.fleetmanagementsystem.carsFunctionality.pojo;
+package com.example.fleetmanagementsystem.carsFunctionality;
 
 import com.google.firebase.firestore.DocumentId;
 
-public class CarModel {
+public class FleetModel {
 
 
     @DocumentId
     public String carID;
     public String name, image,model,assignedDriverId;
 
-    public CarModel() {
+    public FleetModel() {
     }
 
-    public CarModel(String carID, String name, String image, String model, String driverId) {
+    public FleetModel(String carID, String name, String image, String model, String driverId) {
         this.carID = carID;
         this.name = name;
         this.image = image;
