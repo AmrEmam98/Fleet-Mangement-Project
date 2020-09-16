@@ -15,6 +15,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.fleetmanagementsystem.R;
@@ -35,8 +36,7 @@ public class FleetActivity extends AppCompatActivity {
     private VehicleFragment vehicleFragment;
 
     private FloatingActionButton mainFab , addFab , deleteFab , editFab;
-    private ConstraintLayout optionLayout;
-
+    private RelativeLayout relativeLayout;
 
     private Animation fabOpenAnim , fabCloseAnim;
 
@@ -48,7 +48,7 @@ public class FleetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fleet);
 
         mainFab = findViewById(R.id.mainFloatingActionBtn);
-        optionLayout = findViewById(R.id.options_layout);
+        relativeLayout = findViewById(R.id.relative_layout_car);
 
         addFab = findViewById(R.id.addFloatingActionBtn);
         deleteFab = findViewById(R.id.deleteFloatingActionBtn);
@@ -91,16 +91,18 @@ public class FleetActivity extends AppCompatActivity {
             addFab.startAnimation(fabCloseAnim);
             deleteFab.startAnimation(fabCloseAnim);
             editFab.startAnimation(fabCloseAnim);
-            optionLayout.setVisibility(View.GONE);
+
+            relativeLayout.setVisibility(View.GONE);
 
             isOpen = false;
 
         }else {
-            optionLayout.setVisibility(View.VISIBLE);
 
             addFab.startAnimation(fabOpenAnim);
             deleteFab.startAnimation(fabOpenAnim);
             editFab.startAnimation(fabOpenAnim);
+
+            relativeLayout.setVisibility(View.VISIBLE);
 
             isOpen = true;
         }
