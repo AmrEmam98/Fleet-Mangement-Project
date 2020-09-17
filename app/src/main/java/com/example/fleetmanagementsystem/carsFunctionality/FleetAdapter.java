@@ -29,7 +29,6 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
         holder.carName.setText(carsList.get(position).getName());
-        holder.carModel.setText(carsList.get(position).getModel());
         holder.driverName.setText(carsList.get(position).getDriverId());
 
         String imageUrl = carsList.get(position).getImage();
@@ -59,7 +58,6 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
             carName = itemView.findViewById(R.id.car_name);
-            carModel = itemView.findViewById(R.id.car_model);
             carImage = itemView.findViewById(R.id.car_image);
             driverName = itemView.findViewById(R.id.driver_model);
 

@@ -10,6 +10,8 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -74,8 +76,11 @@ public class FleetActivity extends AppCompatActivity {
         viewPager.setAdapter(viewPagerAdapter);
 
         tabLayout.getTabAt(0).setIcon(R.drawable.car);
+        tabLayout.getTabAt(0).getIcon().setTint(Color.parseColor("#f39b6a"));
         tabLayout.getTabAt(1).setIcon(R.drawable.vehicle);
+        tabLayout.getTabAt(1).getIcon().setTint(Color.parseColor("#72d2c4"));
         tabLayout.getTabAt(2).setIcon(R.drawable.spare);
+        tabLayout.getTabAt(2).getIcon().setTint(Color.parseColor("#e9666a"));
 
         isOpen = false;
 
