@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".carsFunctionality.FleetActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/view_pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@id/app_bar_layout"
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/app_bar_layout"
+            android:layout_width="match_parent"
+
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:textAlignment="center"
+                app:titleTextColor="#FFFFFF"
+                app:titleTextAppearance="@font/francois_one"
+                app:subtitleTextColor="#FFFFFF"
+                android:layout_height="?attr/actionBarSize"
+                android:background="#7a5ddb"
+                android:backgroundTint="#7a5ddb"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout"
+                android:layout_width="match_parent"
+                app:tabIndicatorColor="#fb6905"
+                app:tabSelectedTextColor="#fb6905"
+                android:elevation="5dp"
+                app:tabTextColor="@color/cardview_shadow_start_color"
+                android:layout_height="wrap_content"
+                android:background="#FFFFFF">
+
+            </com.google.android.material.tabs.TabLayout>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/mainFloatingActionBtn"
+            android:layout_width="wrap_content"
+            app:backgroundTint="#b8f7ee"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/view_pager"
+            android:layout_alignEnd="@id/view_pager"
+            android:layout_margin="32dp"
+            android:onClick="onFabClicked"
+            android:src="@drawable/add_icon" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/deleteFloatingActionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/mainFloatingActionBtn"
+            android:layout_alignEnd="@id/view_pager"
+            app:backgroundTint="@android:color/white"
+            android:layout_marginBottom="18dp"
+            android:layout_marginRight="32dp"
+            android:src="@drawable/delete_icon" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/editFloatingActionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:backgroundTint="@android:color/white"
+            android:layout_above="@+id/deleteFloatingActionBtn"
+            android:layout_alignEnd="@id/view_pager"
+            android:layout_marginBottom="28dp"
+            android:layout_marginRight="32dp"
+            android:src="@drawable/edit_icon" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/addFloatingActionBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/editFloatingActionBtn"
+            android:layout_alignEnd="@id/view_pager"
+            android:layout_marginBottom="28dp"
+            app:backgroundTint="@android:color/white"
+            android:layout_marginRight="32dp"
+            android:src="@drawable/add_user" />
+
+        <RelativeLayout
+            android:id="@+id/relative_layout_car"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginRight="20dp"
+            android:layout_above="@+id/mainFloatingActionBtn"
+            android:layout_alignTop="@+id/addFloatingActionBtn"
+            android:layout_toLeftOf="@+id/deleteFloatingActionBtn"
+            >
+
+            <TextView
+                android:id="@+id/add_car_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fab_text_bg"
+                android:fontFamily="@font/raleway_semibold"
+                android:paddingBottom="8dp"
+                android:paddingEnd="16dp"
+                android:backgroundTint="#b8f7ee"
+                android:textColor="#67beae"
+                android:layout_marginTop="10dp"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:text="Add Car"
+                />
+        <TextView
+            android:id="@+id/edit_car_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/fab_text_bg"
+            android:fontFamily="@font/raleway_semibold"
+            android:paddingBottom="8dp"
+            android:paddingEnd="16dp"
+            android:backgroundTint="#e7e6ff"
+            android:textColor="#7e7aac"
+            android:layout_marginTop="54dp"
+            android:paddingStart="16dp"
+            android:layout_below="@id/add_car_txt"
+            android:paddingTop="8dp"
+            android:text="Edit Car"
+           />
+
+            <TextView
+                android:id="@+id/delete_car_txt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/fab_text_bg"
+                android:fontFamily="@font/raleway_semibold"
+                android:paddingBottom="8dp"
+                android:paddingEnd="16dp"
+                android:textColor="#e1a0a6"
+                android:backgroundTint="#fdcfd2"
+                android:layout_marginTop="48dp"
+                android:layout_below="@+id/edit_car_txt"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:text="Delete Car"
+            />
+
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
