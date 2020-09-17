@@ -5,4 +5,8 @@
     <string name="email">E-mail</string>
     <string name="password">Password</string>
     <string name="login">Login</string>
+    <string name="drivers">Drivers</string>
+    <string name="vehicles">Vehicles</string>
+    <string name="welcome">Welcome</string>
+    <string name="admin">Admin</string>
 </resources>
