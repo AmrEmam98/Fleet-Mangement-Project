@@ -27,13 +27,8 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:textAlignment="center"
-                app:titleTextColor="#FFFFFF"
-                app:titleTextAppearance="@font/francois_one"
-                app:subtitleTextColor="#FFFFFF"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#7a5ddb"
-                android:backgroundTint="#7a5ddb"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark" />
+                android:theme="@style/ThemeOverlay.AppCompat.Light" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"

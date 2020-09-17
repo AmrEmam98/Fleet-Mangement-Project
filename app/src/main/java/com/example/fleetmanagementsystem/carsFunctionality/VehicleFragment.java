@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
@@ -17,7 +18,7 @@ import com.example.fleetmanagementsystem.R;
 
 import java.util.List;
 
-public class VehicleFragment extends Fragment {
+public class VehicleFragment extends Fragment implements FleetAdapter.onItemClicked{
 
     private List<FleetModel> vehicleModel;
     private FleetAdapter fleetAdapter;
@@ -40,9 +41,9 @@ public class VehicleFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         vehicleRecyclerView = view.findViewById(R.id.vehicle_recycler_view);
-        fleetAdapter = new FleetAdapter();
+        fleetAdapter = new FleetAdapter(this);
 
-        vehicleRecyclerView.setLayoutManager(new GridLayoutManager(getContext() , 2));
+        vehicleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         vehicleRecyclerView.setAdapter(fleetAdapter);
 
         new RetrieveDataFromFireStore().retrieveTrucks();
@@ -63,4 +64,8 @@ public class VehicleFragment extends Fragment {
         });
     }
 
+    @Override
+    public void onItemClicked(int position) {
+
+    }
 }

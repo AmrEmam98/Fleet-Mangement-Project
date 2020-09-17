@@ -1,16 +1,24 @@
 package com.example.fleetmanagementsystem.carsFunctionality;
 
+import android.app.Activity;
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Parcel;
+import android.util.Pair;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
@@ -18,11 +26,14 @@ import com.example.fleetmanagementsystem.R;
 import java.util.List;
 
 
-public class CarsFragment extends Fragment {
+public class CarsFragment extends Fragment implements FleetAdapter.onItemClicked {
 
     private List<FleetModel> carModel;
     private FleetAdapter fleetAdapter;
     private RecyclerView carRecyclerView;
+
+    ImageView imageView;
+    TextView carName , carDriver , carLiences;
 
     public CarsFragment() {
         // Required empty public constructor
@@ -40,9 +51,14 @@ public class CarsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         carRecyclerView = view.findViewById(R.id.car_recycler_view);
-        fleetAdapter = new FleetAdapter();
+        fleetAdapter = new FleetAdapter(this);
 
-        carRecyclerView.setLayoutManager(new GridLayoutManager(getContext() , 2));
+        imageView = view.findViewById(R.id.car_image);
+        carName = view.findViewById(R.id.car_name);
+        carLiences = view.findViewById(R.id.car_license);
+        carDriver = view.findViewById(R.id.driver_name);
+
+        carRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         carRecyclerView.setAdapter(fleetAdapter);
 
         new RetrieveDataFromFireStore().retrieveAllCars();
@@ -60,5 +76,23 @@ public class CarsFragment extends Fragment {
             this.carModel = carModels;
             fleetAdapter.setList(carModel);
         });
+    }
+
+    @Override
+    public void onItemClicked(int position) {
+        Intent intent = new Intent(getContext() , CarDetailsActivity.class);
+        startActivity(intent);
+
+       /* Pair[] pairs =  new Pair[4];
+        pairs[0] = new Pair<View , String>(imageView , "carImageTransition");
+        pairs[1] = new Pair<View , String>(carName , "carModelTransition");
+        pairs[2] = new Pair<View , String>(carLiences , "carLiesnceTransition");
+        pairs[2] = new Pair<View , String>(carDriver , "carDriverTransition");
+
+        ActivityOptions options = ActivityOptions.makeSceneTransitionAnimation((Activity) getContext(), pairs);
+
+        startActivity(intent , options.toBundle());
+
+        */
     }
 }
