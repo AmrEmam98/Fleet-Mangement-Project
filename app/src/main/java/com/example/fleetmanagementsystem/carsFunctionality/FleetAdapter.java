@@ -3,21 +3,18 @@ package com.example.fleetmanagementsystem.carsFunctionality;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.bumptech.glide.Glide;
 import com.example.fleetmanagementsystem.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHolder> {
+public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHolder> {
 
     private List<FleetModel> carsList = new ArrayList<>();
     private onItemClicked onItemClicked;
@@ -28,12 +25,12 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
 
     @NonNull
     @Override
-    public PostViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return new PostViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.rec_item, parent, false));
+    public FleetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        return new FleetViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.rec_item, parent, false));
     }
 
     @Override
-    public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull FleetViewHolder holder, int position) {
         // holder.carName.setText(carsList.get(position).getName());
         // holder.driverName.setText(carsList.get(position).getDriverId());
 
@@ -56,11 +53,11 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
         notifyDataSetChanged();
     }
 
-    public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class FleetViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView carName, carLicense, driverName;
         ImageView carImage;
 
-        public PostViewHolder(@NonNull View itemView) {
+        public FleetViewHolder(@NonNull View itemView) {
             super(itemView);
             carName = itemView.findViewById(R.id.car_name);
             carImage = itemView.findViewById(R.id.car_image);

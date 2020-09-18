@@ -4,21 +4,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.graphics.Color;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
 import com.example.fleetmanagementsystem.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -37,10 +33,7 @@ public class FleetActivity extends AppCompatActivity {
     private SpareFragment spareFragment;
     private VehicleFragment vehicleFragment;
 
-    private FloatingActionButton mainFab , addFab , deleteFab , editFab;
-    private RelativeLayout relativeLayout;
-
-    private Animation fabOpenAnim , fabCloseAnim;
+    private FloatingActionButton addFab;
 
     boolean isOpen;
 
@@ -49,12 +42,8 @@ public class FleetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fleet);
 
-        mainFab = findViewById(R.id.mainFloatingActionBtn);
-        relativeLayout = findViewById(R.id.relative_layout_car);
 
         addFab = findViewById(R.id.addFloatingActionBtn);
-        deleteFab = findViewById(R.id.deleteFloatingActionBtn);
-        editFab = findViewById(R.id.editFloatingActionBtn);
 
 
         toolbar = findViewById(R.id.toolbar);
@@ -83,42 +72,17 @@ public class FleetActivity extends AppCompatActivity {
         tabLayout.getTabAt(2).getIcon().setTint(Color.parseColor("#e9666a"));
          */
 
-        isOpen = false;
-
-        fabOpenAnim = AnimationUtils.loadAnimation(FleetActivity.this , R.anim.fab_open);
-        fabCloseAnim = AnimationUtils.loadAnimation(FleetActivity.this , R.anim.fab_close);
 
     }
 
-    public void onFabClicked(View view) {
+    public void onAddFabClicked(View view) {
 
-        if (isOpen){
+        // TODO Start Add Vichle Page
 
-            addFab.startAnimation(fabCloseAnim);
-            deleteFab.startAnimation(fabCloseAnim);
-            editFab.startAnimation(fabCloseAnim);
-
-            relativeLayout.setVisibility(View.GONE);
-
-            isOpen = false;
-
-        }else {
-
-            addFab.setVisibility(View.VISIBLE);
-            deleteFab.setVisibility(View.VISIBLE);
-            editFab.setVisibility(View.VISIBLE);
-
-            addFab.startAnimation(fabOpenAnim);
-            deleteFab.startAnimation(fabOpenAnim);
-            editFab.startAnimation(fabOpenAnim);
-
-            relativeLayout.setVisibility(View.VISIBLE);
-
-            isOpen = true;
-        }
     }
 
-    public static class ViewPagerAdapter extends FragmentPagerAdapter {
+
+    private class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> fragments = new ArrayList<>();
         private List<String> fragmentTitle = new ArrayList<>();
