@@ -5,7 +5,7 @@ import com.google.firebase.firestore.DocumentId;
 public class DriverModel {
     @DocumentId
     String driverId;
-    String assignedCarId="";
+    String assignedCarId;
     String name;
     String phone;
     String type;
