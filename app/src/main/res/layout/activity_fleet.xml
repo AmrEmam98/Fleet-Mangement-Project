@@ -27,8 +27,9 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:textAlignment="center"
+                android:background="#fb6905"
                 android:layout_height="?attr/actionBarSize"
-                android:theme="@style/ThemeOverlay.AppCompat.Light" />
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
@@ -47,13 +48,14 @@
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/mainFloatingActionBtn"
             android:layout_width="wrap_content"
-            app:backgroundTint="#b8f7ee"
+            app:backgroundTint="#2AC1AB"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@+id/view_pager"
             android:layout_alignEnd="@id/view_pager"
             android:layout_margin="32dp"
+            app:tint="@null"
             android:onClick="onFabClicked"
-            android:src="@drawable/add_icon" />
+            android:src="@drawable/ic_baseline_add_24" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
             android:id="@+id/deleteFloatingActionBtn"
