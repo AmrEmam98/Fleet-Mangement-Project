@@ -118,7 +118,7 @@ public class FleetActivity extends AppCompatActivity {
         }
     }
 
-    private class ViewPagerAdapter extends FragmentPagerAdapter {
+    public static class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> fragments = new ArrayList<>();
         private List<String> fragmentTitle = new ArrayList<>();
