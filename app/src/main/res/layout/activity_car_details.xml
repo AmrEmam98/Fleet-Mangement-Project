@@ -8,6 +8,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/delete_Fab"
+        android:onClick="openDeleteDialog"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@drawable/delete_icon1"
@@ -118,7 +119,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:onClick="editCar"
+                android:onClick="openEditDialog"
                 android:src="@drawable/edit_icon_dtls"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -171,7 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:onClick="editCar"
+                android:onClick="openEditDialog"
                 android:src="@drawable/edit_icon_dtls"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -225,7 +226,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
                 android:src="@drawable/edit_icon_dtls"
-                android:onClick="editCar"
+                android:onClick="openEditDialog"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -277,7 +278,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:onClick="editCar"
+                android:onClick="openEditDialog"
                 android:src="@drawable/edit_icon_dtls"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -330,7 +331,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:onClick="editCar"
+                android:onClick="openEditDialog"
                 android:src="@drawable/edit_icon_dtls"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -383,7 +384,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp"
-                android:onClick="editCar"
+                android:onClick="openEditDialog"
                 android:src="@drawable/edit_icon_dtls"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
