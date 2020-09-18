@@ -53,10 +53,8 @@ public class DriversTruckFragment extends Fragment implements DriversAdapter.onI
         recyclerView = view.findViewById(R.id.drivers_truck_recyclerView);
         driverAdapter = new DriversAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         recyclerView.setAdapter(driverAdapter);
-
-        new RetrieveDataFromFireStore().retrieveAllDrivers();
+         RetrieveDataFromFireStore.retrieveAllDrivers();
     }
 
     @Override

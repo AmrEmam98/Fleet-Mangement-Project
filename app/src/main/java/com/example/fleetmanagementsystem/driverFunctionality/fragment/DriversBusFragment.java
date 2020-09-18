@@ -1,5 +1,6 @@
 package com.example.fleetmanagementsystem.driverFunctionality.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -54,7 +55,7 @@ public class DriversBusFragment extends Fragment implements DriversAdapter.onIte
 
         recyclerView.setAdapter(driverAdapter);
 
-        new RetrieveDataFromFireStore().retrieveAllDrivers();
+         RetrieveDataFromFireStore.retrieveAllDrivers();
     }
 
     @Override
@@ -63,6 +64,7 @@ public class DriversBusFragment extends Fragment implements DriversAdapter.onIte
         getDrivers();
     }
 
+            @SuppressLint("CheckResult")
     public void getDrivers() {
         RetrieveDataFromFireStore.driverSubject.subscribe(new Consumer<List<DriverModel>>() {
             @Override

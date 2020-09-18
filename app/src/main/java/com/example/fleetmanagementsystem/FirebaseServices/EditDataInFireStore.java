@@ -6,17 +6,17 @@ import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 public class EditDataInFireStore {
-    public void deleteFleet(FleetModel fleetModel)
+    public static void editFleet(FleetModel fleetModel)
     {
         FirebaseFirestore.getInstance()
-                .collection(FireStoreCollectionsConstants.getFleetCollectionType(fleetModel))
+                .collection(FireStoreCollectionsConstants.FLEET_PATH)
                 .document(fleetModel.getCarID())
                 .set(fleetModel);
     }
-    public void deleteDriver(DriverModel driverModel)
+    public static void editeDriver(DriverModel driverModel)
     {
         FirebaseFirestore.getInstance()
-                .collection(FireStoreCollectionsConstants.getDriverCollectionType(driverModel))
+                .collection(FireStoreCollectionsConstants.DRIVER_PATH)
                 .document(driverModel.getDriverId())
                 .set(driverModel);
     }

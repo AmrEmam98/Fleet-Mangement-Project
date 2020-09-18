@@ -57,7 +57,7 @@ public class DriversFragment extends Fragment implements DriversAdapter.onItemCl
 
         recyclerView.setAdapter(driverAdapter);
 
-        new RetrieveDataFromFireStore().retrieveAllDrivers();
+         RetrieveDataFromFireStore.retrieveAllDrivers();
     }
 
     @Override

@@ -56,7 +56,7 @@ public class DriversSpareFragment extends Fragment implements DriversAdapter.onI
 
         recyclerView.setAdapter(driverAdapter);
 
-        new RetrieveDataFromFireStore().retrieveAllDrivers();
+         RetrieveDataFromFireStore.retrieveAllDrivers();
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.example.fleetmanagementsystem.carsFunctionality.viewModels;
 
 import androidx.lifecycle.ViewModel;
 
-import com.example.fleetmanagementsystem.Constants.FireStoreCollectionsConstants;
 import com.example.fleetmanagementsystem.FirebaseServices.AddDataToFireStore;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
@@ -16,7 +15,7 @@ public class AddCarViewModel extends ViewModel {
                color,
                vehicleType
        );
-     new AddDataToFireStore().addCar(car, FireStoreCollectionsConstants.FLEET_SPARE);
+      AddDataToFireStore.addCar(car);
     }
 
 }

@@ -1,5 +1,6 @@
 package com.example.fleetmanagementsystem.FirebaseServices;
 
+import com.example.fleetmanagementsystem.Constants.FireStoreCollectionsConstants;
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
@@ -11,9 +12,9 @@ public class AddDataToFireStore {
     public static BehaviorSubject<String> addCarSubject = BehaviorSubject.create();
     public static BehaviorSubject<String> addDriverSubject = BehaviorSubject.create();
 
-    public void addCar(FleetModel fleetModel,String collectionPath) {
+    public static void addCar(FleetModel fleetModel) {
         FirebaseFirestore.getInstance()
-                .collection(collectionPath)
+                .collection(FireStoreCollectionsConstants.FLEET_PATH)
                 .add(fleetModel).
                 addOnSuccessListener(aVoid -> {
                     addCarSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
@@ -23,9 +24,9 @@ public class AddDataToFireStore {
         );
     }
 
-    public void addDriver(DriverModel driverModel,String collectionPath) {
+    public static void addDriver(DriverModel driverModel) {
         FirebaseFirestore.getInstance()
-                .collection(collectionPath)
+                .collection(FireStoreCollectionsConstants.DRIVER_PATH)
                 .add(driverModel)
                .addOnSuccessListener(aVoid -> {
                     addDriverSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);

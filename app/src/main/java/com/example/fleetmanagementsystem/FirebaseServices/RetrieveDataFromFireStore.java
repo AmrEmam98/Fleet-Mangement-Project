@@ -2,6 +2,7 @@ package com.example.fleetmanagementsystem.FirebaseServices;
 
 import android.util.Log;
 
+import com.example.fleetmanagementsystem.Constants.FireStoreCollectionsConstants;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -13,10 +14,9 @@ import io.reactivex.subjects.BehaviorSubject;
 public class RetrieveDataFromFireStore {
 
     public static BehaviorSubject<List<FleetModel>> carsSubject = BehaviorSubject.create();
-    public static BehaviorSubject<List<FleetModel>> trucksSubject = BehaviorSubject.create();
     public static BehaviorSubject<List<DriverModel>> driverSubject = BehaviorSubject.create();
 
-    public void retrieveAllCars() {
+    public static void retrieveAllCars() {
         FirebaseFirestore.getInstance().collection("Cars")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -27,19 +27,9 @@ public class RetrieveDataFromFireStore {
                 }
         );
     }
-    public void retrieveTrucks() {
-        FirebaseFirestore.getInstance().collection("Cars").whereEqualTo("type" , "bus")
-                .get()
-                .addOnCompleteListener(task -> {
-                    List<FleetModel> fleetModels = task.getResult().toObjects(FleetModel.class);
-                    trucksSubject.onNext(fleetModels);
-                }).addOnFailureListener(e -> {
-                    Log.e("FIRE_STORE_ERROR", "ERROR HAPPENED");
-                }
-        );
-    }
 
-    public void retrieveAllDrivers() {
+
+    public static void retrieveAllDrivers() {
         FirebaseFirestore.getInstance().collection("Drivers")
                 .get()
                 .addOnCompleteListener(task -> {
@@ -50,6 +40,19 @@ public class RetrieveDataFromFireStore {
                 }
         );
 
+    }
+    public static void retrieveDriverCar(DriverModel driverModel){
+        FirebaseFirestore.getInstance()
+                .collection(FireStoreCollectionsConstants.FLEET_PATH)
+                .document(driverModel.getAssignedCarId())
+                .get()
+                .addOnCompleteListener(task->{
+                  List<FleetModel> car= (List<FleetModel>) task.getResult().toObject(FleetModel.class);
+                        }
+                ).addOnFailureListener(e->{
+            Log.e("FIRE_STORE_ERROR", "ERROR HAPPENED");
+
+        });
     }
 
 }

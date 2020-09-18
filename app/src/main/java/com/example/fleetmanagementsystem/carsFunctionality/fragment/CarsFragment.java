@@ -58,7 +58,7 @@ public class CarsFragment extends Fragment implements FleetAdapter.onItemClicked
         carRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         carRecyclerView.setAdapter(fleetAdapter);
 
-        new RetrieveDataFromFireStore().retrieveAllCars();
+         RetrieveDataFromFireStore.retrieveAllCars();
     }
 
     @Override

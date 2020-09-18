@@ -47,7 +47,7 @@ public class VehicleFragment extends Fragment implements FleetAdapter.onItemClic
         vehicleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         vehicleRecyclerView.setAdapter(fleetAdapter);
 
-        new RetrieveDataFromFireStore().retrieveTrucks();
+         RetrieveDataFromFireStore.retrieveAllCars();
     }
 
     @Override
@@ -59,7 +59,7 @@ public class VehicleFragment extends Fragment implements FleetAdapter.onItemClic
 
     @SuppressLint("CheckResult")
     public void getVehicles() {
-        RetrieveDataFromFireStore.trucksSubject.subscribe(carModels -> {
+        RetrieveDataFromFireStore.carsSubject.subscribe(carModels -> {
             this.vehicleModel = carModels;
             fleetAdapter.setList(vehicleModel);
         });

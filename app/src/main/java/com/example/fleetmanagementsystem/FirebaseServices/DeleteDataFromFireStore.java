@@ -9,14 +9,14 @@ public class DeleteDataFromFireStore {
     public void deleteFleet(FleetModel fleetModel)
     {
         FirebaseFirestore.getInstance()
-                .collection(FireStoreCollectionsConstants.getFleetCollectionType(fleetModel))
+                .collection(FireStoreCollectionsConstants.FLEET_PATH)
                 .document(fleetModel.getCarID())
                 .delete();
     }
     public void deleteDriver(DriverModel driverModel)
     {
         FirebaseFirestore.getInstance()
-                .collection(FireStoreCollectionsConstants.getDriverCollectionType(driverModel))
+                .collection(FireStoreCollectionsConstants.DRIVER_PATH)
                 .document(driverModel.getDriverId())
                 .delete();
     }
