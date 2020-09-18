@@ -73,7 +73,6 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
         @Override
         public void onClick(View view) {
             onItemClicked.onItemClicked(getAdapterPosition());
-
         }
     }
 

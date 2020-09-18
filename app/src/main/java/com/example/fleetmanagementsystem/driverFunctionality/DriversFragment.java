@@ -1,6 +1,7 @@
 package com.example.fleetmanagementsystem.driverFunctionality;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -22,7 +23,7 @@ import java.util.List;
 
 import io.reactivex.functions.Consumer;
 
-public class DriversFragment extends Fragment {
+public class DriversFragment extends Fragment implements DriversAdapter.onItemClicked{
 
     private List<DriverModel> driverModels;
     private DriversAdapter driverAdapter;
@@ -50,7 +51,7 @@ public class DriversFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.drivers_recyclerView);
-        driverAdapter = new DriversAdapter();
+        driverAdapter = new DriversAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         recyclerView.setAdapter(driverAdapter);
@@ -72,5 +73,11 @@ public class DriversFragment extends Fragment {
                 driverAdapter.setList(driverModels);
             }
         });
+    }
+
+    @Override
+    public void onItemClicked(int postion) {
+        Intent intent = new Intent(getContext(),DriversDetailsActivity.class);
+        startActivity(intent);
     }
 }

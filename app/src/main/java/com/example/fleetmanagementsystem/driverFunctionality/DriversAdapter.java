@@ -15,7 +15,11 @@ import java.util.List;
 
 public class DriversAdapter extends RecyclerView.Adapter<DriversAdapter.DriverViewHolder> {
 
-    List<DriverModel> driverModels  = new ArrayList<>();
+    private List<DriverModel> driverModels  = new ArrayList<>();
+    private onItemClicked onItemClicked;
+    public DriversAdapter(DriversAdapter.onItemClicked onItemClicked){
+        this.onItemClicked = onItemClicked;
+    }
 
     @NonNull
     @Override
@@ -37,7 +41,7 @@ public class DriversAdapter extends RecyclerView.Adapter<DriversAdapter.DriverVi
         return driverModels.size();
     }
 
-    public class DriverViewHolder extends RecyclerView.ViewHolder {
+    public class DriverViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         ImageView driverImage;
         TextView driverName, driverLicense, carName;
@@ -50,6 +54,16 @@ public class DriversAdapter extends RecyclerView.Adapter<DriversAdapter.DriverVi
             driverLicense = itemView.findViewById(R.id.driver_license);
             carName = itemView.findViewById(R.id.car_name);
 
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            onItemClicked.onItemClicked(getAdapterPosition());
+        }
+
+    }
+    public interface onItemClicked{
+        void onItemClicked(int postion);
     }
 }
