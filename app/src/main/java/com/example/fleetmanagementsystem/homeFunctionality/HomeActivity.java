@@ -1,5 +1,6 @@
 package com.example.fleetmanagementsystem.homeFunctionality;
 import  com.example.fleetmanagementsystem.carsFunctionality.FleetActivity;
+import  com.example.fleetmanagementsystem.driverFunctionality.DriversActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +32,8 @@ public class HomeActivity extends AppCompatActivity {
 }
 
     public void doInLoginDrivers(View view) {
-
+        Intent intent = new Intent(this,DriversActivity.class);
+        startActivity(intent);
     }
 
     public void doInLoginVehicles(View view) {

@@ -56,7 +56,6 @@ public class VehicleFragment extends Fragment implements FleetAdapter.onItemClic
         getVehicles();
     }
 
-
     public void getVehicles() {
         RetrieveDataFromFireStore.trucksSubject.subscribe(carModels -> {
             this.vehicleModel = carModels;

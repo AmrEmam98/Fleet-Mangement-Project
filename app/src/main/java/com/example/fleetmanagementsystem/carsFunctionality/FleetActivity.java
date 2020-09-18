@@ -104,6 +104,10 @@ public class FleetActivity extends AppCompatActivity {
 
         }else {
 
+            addFab.setVisibility(View.VISIBLE);
+            deleteFab.setVisibility(View.VISIBLE);
+            editFab.setVisibility(View.VISIBLE);
+
             addFab.startAnimation(fabOpenAnim);
             deleteFab.startAnimation(fabOpenAnim);
             editFab.startAnimation(fabOpenAnim);

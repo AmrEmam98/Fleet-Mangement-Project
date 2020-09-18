@@ -22,7 +22,7 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
     private List<FleetModel> carsList = new ArrayList<>();
     private onItemClicked onItemClicked;
 
-    public FleetAdapter(FleetAdapter.onItemClicked onItemClicked){
+    public FleetAdapter(FleetAdapter.onItemClicked onItemClicked) {
         this.onItemClicked = onItemClicked;
     }
 
@@ -34,7 +34,7 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
 
     @Override
     public void onBindViewHolder(@NonNull PostViewHolder holder, int position) {
-       // holder.carName.setText(carsList.get(position).getName());
+        // holder.carName.setText(carsList.get(position).getName());
         // holder.driverName.setText(carsList.get(position).getDriverId());
 
         /*String imageUrl = carsList.get(position).getImage();
@@ -57,9 +57,8 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
     }
 
     public class PostViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        TextView carName, carLicense , driverName;
+        TextView carName, carLicense, driverName;
         ImageView carImage;
-
 
         public PostViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -73,10 +72,11 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.PostViewHold
 
         @Override
         public void onClick(View view) {
-        onItemClicked.onItemClicked(getAdapterPosition());
+            onItemClicked.onItemClicked(getAdapterPosition());
 
         }
     }
+
     public interface onItemClicked {
         void onItemClicked(int position);
     }

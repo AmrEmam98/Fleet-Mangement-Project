@@ -33,7 +33,7 @@ public class CarsFragment extends Fragment implements FleetAdapter.onItemClicked
     private RecyclerView carRecyclerView;
 
     ImageView imageView;
-    TextView carName , carDriver , carLiences;
+    TextView carName, carDriver, carLiences;
 
     public CarsFragment() {
         // Required empty public constructor
@@ -67,7 +67,6 @@ public class CarsFragment extends Fragment implements FleetAdapter.onItemClicked
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-
         getCars();
     }
 
@@ -80,7 +79,7 @@ public class CarsFragment extends Fragment implements FleetAdapter.onItemClicked
 
     @Override
     public void onItemClicked(int position) {
-        Intent intent = new Intent(getContext() , CarDetailsActivity.class);
+        Intent intent = new Intent(getContext(), CarDetailsActivity.class);
         startActivity(intent);
 
        /* Pair[] pairs =  new Pair[4];
