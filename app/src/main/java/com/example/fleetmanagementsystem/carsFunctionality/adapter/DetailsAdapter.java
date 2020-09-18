@@ -1,4 +1,4 @@
-package com.example.fleetmanagementsystem.carsFunctionality;
+package com.example.fleetmanagementsystem.carsFunctionality.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -6,13 +6,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
 
 public class DetailsAdapter  extends RecyclerView.Adapter<DetailsAdapter.DetailsViewHolder> {
 

@@ -2,6 +2,9 @@ package com.example.fleetmanagementsystem.driverFunctionality;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,12 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversDetailsActivity;
+import com.example.fleetmanagementsystem.driverFunctionality.adapter.DriversAdapter;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 import java.util.List;
 
@@ -74,7 +76,7 @@ public class DriversSpareFragment extends Fragment implements DriversAdapter.onI
 
     @Override
     public void onItemClicked(int postion) {
-        Intent intent = new Intent(getContext(),DriversDetailsActivity.class);
+        Intent intent = new Intent(getContext(), DriversDetailsActivity.class);
         startActivity(intent);
     }
 }

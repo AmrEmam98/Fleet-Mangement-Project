@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+     android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Vehicle"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_blue_dark" />
+<TableLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".carsFunctionality.activites.AddCarActivity">
+
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Car Name :"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+        <EditText
+            android:id="@+id/et_addCarName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="Verna"
+
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Car Model :"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+        <EditText
+            android:id="@+id/et_addCarModel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="2020"
+
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plate Number :"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+        <EditText
+            android:id="@+id/et_addCarPlateNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="abc 123"
+
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Chasis No. :"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+        <EditText
+            android:id="@+id/et_chassisNum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="abc 123"
+
+            />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Color :"
+            android:textSize="20sp"
+            android:textColor="@android:color/black"
+            />
+        <EditText
+            android:id="@+id/et_addCarColor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="8"
+            android:hint="Black"
+
+            />
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Vehicle Type:"
+            android:textColor="@android:color/black"
+            android:textSize="20sp" />
+
+       <Spinner
+           android:id="@+id/vehicleType_spinner"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:entries="@array/carTypeList"
+           style="@style/Widget.AppCompat.DropDownItem.Spinner"/>
+
+    </TableRow>
+</TableLayout>
+    <Button
+        android:layout_margin="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:text="Add"
+        android:onClick="addCarClick"/>
+</LinearLayout>

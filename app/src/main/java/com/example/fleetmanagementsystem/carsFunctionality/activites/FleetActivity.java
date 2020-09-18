@@ -1,4 +1,8 @@
-package com.example.fleetmanagementsystem.carsFunctionality;
+package com.example.fleetmanagementsystem.carsFunctionality.activites;
+
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,14 +13,10 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.RelativeLayout;
-
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.fragment.VehicleFragment;
+import com.example.fleetmanagementsystem.carsFunctionality.fragment.CarsFragment;
+import com.example.fleetmanagementsystem.carsFunctionality.fragment.SpareFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 

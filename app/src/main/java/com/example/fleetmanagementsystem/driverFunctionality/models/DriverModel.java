@@ -1,4 +1,4 @@
-package com.example.fleetmanagementsystem.driverFunctionality;
+package com.example.fleetmanagementsystem.driverFunctionality.models;
 
 import com.google.firebase.firestore.DocumentId;
 
@@ -13,9 +13,7 @@ public class DriverModel {
 
     }
 
-    public DriverModel(String driverId, String assignedCarId, String name, String phone) {
-        this.driverId = driverId;
-        this.assignedCarId = assignedCarId;
+    public DriverModel(String name, String phone) {
         this.name = name;
         this.phone = phone;
     }

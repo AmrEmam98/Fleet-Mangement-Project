@@ -1,7 +1,12 @@
-package com.example.fleetmanagementsystem.carsFunctionality;
+package com.example.fleetmanagementsystem.carsFunctionality.fragment;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,14 +14,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
-
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.CarDetailsActivity;
+import com.example.fleetmanagementsystem.carsFunctionality.adapter.FleetAdapter;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
 import java.util.List;
 

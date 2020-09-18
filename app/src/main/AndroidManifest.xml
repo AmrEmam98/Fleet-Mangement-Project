@@ -9,10 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".driverFunctionality.DriversDetailsActivity"></activity>
+        <activity android:name=".driverFunctionality.activities.DriversDetailsActivity"></activity>
         <activity android:name=".driverFunctionality.DriversActivity" />
-        <activity android:name=".carsFunctionality.CarDetailsActivity" />
-        <activity android:name=".carsFunctionality.FleetActivity"></activity>
+        <activity android:name=".carsFunctionality.activites.CarDetailsActivity" />
+        <activity android:name=".carsFunctionality.activites.FleetActivity"></activity>
         <activity android:name=".homeFunctionality.HomeActivity">
 
         </activity>

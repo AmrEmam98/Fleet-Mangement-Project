@@ -1,4 +1,4 @@
-package com.example.fleetmanagementsystem.carsFunctionality;
+package com.example.fleetmanagementsystem.carsFunctionality.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+    <TextView
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Driver"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="@android:color/holo_blue_dark" />
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:context=".carsFunctionality.activites.AddCarActivity">
+
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver Name :"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                />
+            <EditText
+                android:id="@+id/et_addDriverName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="8"
+                android:hint="Verna"
+
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Phone Number:"
+                android:textSize="20sp"
+                android:textColor="@android:color/black"
+                />
+            <EditText
+                android:id="@+id/et_addDriverPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="8"
+                android:hint="2020"
+
+                />
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="40dp"
+        android:text="Add Driver"
+        android:textAllCaps="false"
+        android:layout_gravity="center"
+        android:textSize="20sp"
+        android:textColor="@android:color/black"
+        android:onClick="addDriverClicked"
+        />
+
+</LinearLayout>

@@ -2,8 +2,8 @@ package com.example.fleetmanagementsystem.FirebaseServices;
 
 import android.util.Log;
 
-import com.example.fleetmanagementsystem.carsFunctionality.FleetModel;
-import com.example.fleetmanagementsystem.driverFunctionality.DriverModel;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;

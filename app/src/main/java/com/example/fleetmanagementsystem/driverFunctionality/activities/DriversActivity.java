@@ -1,5 +1,11 @@
 package com.example.fleetmanagementsystem.driverFunctionality;
 
+import android.os.Bundle;
+import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.widget.RelativeLayout;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,17 +16,9 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.FleetActivity;
+import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
-
-import android.media.Image;
-import android.os.Bundle;
-import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;

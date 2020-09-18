@@ -1,6 +1,10 @@
-package com.example.fleetmanagementsystem.carsFunctionality;
+package com.example.fleetmanagementsystem.carsFunctionality.fragment;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -8,12 +12,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.adapter.FleetAdapter;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
 import java.util.List;
 
@@ -55,6 +57,7 @@ public class VehicleFragment extends Fragment implements FleetAdapter.onItemClic
         getVehicles();
     }
 
+    @SuppressLint("CheckResult")
     public void getVehicles() {
         RetrieveDataFromFireStore.trucksSubject.subscribe(carModels -> {
             this.vehicleModel = carModels;

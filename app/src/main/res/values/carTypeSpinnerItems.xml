@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="carTypeList">
+        <item>Car</item>
+        <item>Bus</item>
+        <item>Truck</item>
+    </string-array>
+</resources>

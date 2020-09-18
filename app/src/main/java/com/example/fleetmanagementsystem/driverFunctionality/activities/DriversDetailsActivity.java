@@ -1,8 +1,9 @@
-package com.example.fleetmanagementsystem.driverFunctionality;
+package com.example.fleetmanagementsystem.driverFunctionality.activities;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Bundle;
 import com.example.fleetmanagementsystem.R;
 
 public class DriversDetailsActivity extends AppCompatActivity {

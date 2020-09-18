@@ -1,6 +1,5 @@
 package com.example.fleetmanagementsystem.homeFunctionality;
-import  com.example.fleetmanagementsystem.carsFunctionality.FleetActivity;
-import  com.example.fleetmanagementsystem.driverFunctionality.DriversActivity;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +8,10 @@ import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.FleetModel;
-import com.example.fleetmanagementsystem.driverFunctionality.DriverModel;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
+import com.example.fleetmanagementsystem.driverFunctionality.DriversActivity;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 import java.util.List;
 
@@ -32,7 +33,7 @@ public class HomeActivity extends AppCompatActivity {
 }
 
     public void doInLoginDrivers(View view) {
-        Intent intent = new Intent(this,DriversActivity.class);
+        Intent intent = new Intent(this, DriversActivity.class);
         startActivity(intent);
     }
 
