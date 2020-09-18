@@ -1,5 +1,6 @@
-package com.example.fleetmanagementsystem.driverFunctionality;
+package com.example.fleetmanagementsystem.driverFunctionality.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,15 +23,17 @@ import java.util.List;
 
 import io.reactivex.functions.Consumer;
 
-public class DriversBusFragment extends Fragment implements DriversAdapter.onItemClicked {
+
+public class DriversSpareFragment extends Fragment implements DriversAdapter.onItemClicked{
 
     private List<DriverModel> driverModels;
     private DriversAdapter driverAdapter;
     private RecyclerView recyclerView;
 
-    public DriversBusFragment() {
+    public DriversSpareFragment() {
         // Required empty public constructor
     }
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,14 +44,13 @@ public class DriversBusFragment extends Fragment implements DriversAdapter.onIte
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_drivers_bus, container, false);
+        return inflater.inflate(R.layout.fragment_drivers_spare, container, false);
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        recyclerView = view.findViewById(R.id.drivers_bus_recyclerView);
+        recyclerView = view.findViewById(R.id.drivers_spare_recyclerView);
         driverAdapter = new DriversAdapter(this);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -63,11 +65,12 @@ public class DriversBusFragment extends Fragment implements DriversAdapter.onIte
         getDrivers();
     }
 
+    @SuppressLint("CheckResult")
     public void getDrivers() {
         RetrieveDataFromFireStore.driverSubject.subscribe(new Consumer<List<DriverModel>>() {
             @Override
             public void accept(List<DriverModel> driverModels) throws Exception {
-                DriversBusFragment.this.driverModels = driverModels;
+                DriversSpareFragment.this.driverModels = driverModels;
                 driverAdapter.setList(driverModels);
             }
         });

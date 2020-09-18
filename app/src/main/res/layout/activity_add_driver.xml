@@ -55,6 +55,23 @@
 
                 />
         </TableRow>
+        <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Driver Type:"
+                android:textColor="@android:color/black"
+                android:textSize="20sp" />
+
+            <Spinner
+                android:id="@+id/driverType_spinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/carTypeList"
+                style="@style/Widget.AppCompat.DropDownItem.Spinner"/>
+
+        </TableRow>
     </TableLayout>
     <Button
         android:layout_width="wrap_content"

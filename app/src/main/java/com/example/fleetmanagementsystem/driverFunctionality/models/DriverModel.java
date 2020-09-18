@@ -8,14 +8,24 @@ public class DriverModel {
     String assignedCarId="";
     String name;
     String phone;
+    String type;
 
     public DriverModel() {
 
     }
 
-    public DriverModel(String name, String phone) {
+
+    public DriverModel(String name, String phone, String type) {
         this.name = name;
         this.phone = phone;
+        this.type=type;
+    }
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
 

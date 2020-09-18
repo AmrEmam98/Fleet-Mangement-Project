@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".driverFunctionality.DriversBusFragment">
+    tools:context=".driverFunctionality.fragment.DriversBusFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/drivers_bus_recyclerView"

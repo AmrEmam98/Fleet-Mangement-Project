@@ -1,5 +1,6 @@
-package com.example.fleetmanagementsystem.driverFunctionality;
+package com.example.fleetmanagementsystem.driverFunctionality.fragment;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -64,6 +65,7 @@ public class DriversTruckFragment extends Fragment implements DriversAdapter.onI
         getDrivers();
     }
 
+            @SuppressLint("CheckResult")
     public void getDrivers() {
         RetrieveDataFromFireStore.driverSubject.subscribe(new Consumer<List<DriverModel>>() {
             @Override

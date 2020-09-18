@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +19,7 @@ public class AddDriverActivity extends AppCompatActivity {
     EditText driverNameEt;
     EditText driverPhoneEt;
     AddDriverViewModel driverViewModel;
+    Spinner driverTypeSpinner;
     @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +28,8 @@ public class AddDriverActivity extends AppCompatActivity {
         driverNameEt=findViewById(R.id.et_addDriverName);
         driverPhoneEt=findViewById(R.id.et_addDriverPhoneNumber);
         driverViewModel= new ViewModelProvider(this).get(AddDriverViewModel.class);
+        driverTypeSpinner = findViewById(R.id.driverType_spinner);
+
         AddDataToFireStore.addDriverSubject.subscribe(
                 result->{
                     if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)){
@@ -41,7 +45,8 @@ public class AddDriverActivity extends AppCompatActivity {
     public void addDriverClicked(View view) {
         String name=driverNameEt.getText().toString();
         String phone=driverPhoneEt.getText().toString();
-        driverViewModel.doAddDriver(name,phone);
+        String type=driverTypeSpinner.getSelectedItem().toString();
+        driverViewModel.doAddDriver(name,phone,type);
 
     }
 }

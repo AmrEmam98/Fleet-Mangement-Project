@@ -16,7 +16,10 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversBusFragment;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversFragment;
+import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversSpareFragment;
+import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversTruckFragment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.tabs.TabLayout;
 
