@@ -12,17 +12,19 @@
         <activity android:name=".driverFunctionality.activities.DriversDetailsActivity"></activity>
         <activity android:name=".driverFunctionality.DriversActivity" />
         <activity android:name=".carsFunctionality.activites.CarDetailsActivity" />
-        <activity android:name=".carsFunctionality.activites.FleetActivity"></activity>
-        <activity android:name=".homeFunctionality.HomeActivity">
+        <activity android:name=".carsFunctionality.activites.FleetActivity">
 
-        </activity>
-        <activity android:name=".loginFunctionality.activities.LoginActivity" />
-        <activity android:name=".SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".homeFunctionality.HomeActivity">
+
+        </activity>
+        <activity android:name=".loginFunctionality.activities.LoginActivity" />
+        <activity android:name=".SplashActivity" >
         </activity>
 
         <meta-data
