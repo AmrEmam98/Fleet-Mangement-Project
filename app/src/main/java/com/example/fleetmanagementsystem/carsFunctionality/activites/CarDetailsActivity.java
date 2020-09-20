@@ -1,11 +1,17 @@
 package com.example.fleetmanagementsystem.carsFunctionality.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fleetmanagementsystem.R;
@@ -18,6 +24,7 @@ import java.util.List;
 public class CarDetailsActivity extends AppCompatActivity implements EditDialog.EditeDialogListner {
 
     TextView textView;
+    View currentView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,23 +34,35 @@ public class CarDetailsActivity extends AppCompatActivity implements EditDialog.
         textView = findViewById(R.id.maker_subTitle);
     }
 
-    public void openDeleteDialog(View view) {
+    public void openDeleteDialog() {
         DeleteDialog deleteDialog = new DeleteDialog();
-        deleteDialog.show(getSupportFragmentManager() , "Edit Dialog");
+        deleteDialog.show(getSupportFragmentManager() , "Delete Dialog");
 
     }
 
     public void openEditDialog(View view) {
         EditDialog editDialog = new EditDialog();
+        currentView=view;
         editDialog.show(getSupportFragmentManager() , "Edit Dialog");
 
     }
 
 
-
     @Override
     public void applyText(String subTitle){
-        textView.setText(subTitle);
+        //TODO Swith case
+        switch (currentView.getId())
+        {
+            case R.id.maker_Edit:
+                //set data in pojo
+                textView.setText(subTitle);
+        }
+
+        //Edit.editFleet(fleetmodle)
     }
 
+    public void showHistory(View view) {
+        Intent historyIntent = new Intent(this , CarHistoryActivity.class);
+        startActivity(historyIntent);
+    }
 }

@@ -8,6 +8,11 @@
         
         <item name="android:windowActivityTransitions">true</item>
 
+        <item name="android:itemBackground">@android:color/white</item>
+
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:statusBarColor">#EC6205</item>
+
 
     </style>
 

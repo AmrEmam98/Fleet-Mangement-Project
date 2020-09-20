@@ -6,29 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".carsFunctionality.activites.CarDetailsActivity">
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/delete_Fab"
-        android:onClick="openDeleteDialog"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/delete_icon1"
-        app:backgroundTint="@android:color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar_detalis"
+        android:layout_width="match_parent"
+        android:gravity="right"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginBottom="20dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:tint="@null" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="#fb6905"
+        app:subtitleTextColor="@android:color/white"
+        app:titleTextColor="@android:color/white">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginLeft="10dp"
+            android:src="@drawable/arrow_back"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textStyle="bold"
+            android:text="Details"
+            android:textColor="@android:color/white"
+            android:layout_gravity="center"
+            android:id="@+id/toolbar_title" />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/history_icon"
+            android:layout_gravity="end"
+            android:layout_marginRight="10dp"
+            android:onClick="showHistory"
+            />
+
+    </androidx.appcompat.widget.Toolbar>
+
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:padding="5dp"
+        android:padding="10dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/rectanglebg2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/toolbar_detalis">
 
         <ImageView
             android:id="@+id/imageView2"
@@ -86,11 +116,13 @@
             app:layout_constraintTop_toBottomOf="@+id/textview3" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    
+    
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/delete_Fab"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="20dp"
         android:layout_marginLeft="20dp"

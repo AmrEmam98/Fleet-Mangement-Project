@@ -9,23 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".driverFunctionality.activities.DriversDetailsActivity"></activity>
-        <activity android:name=".driverFunctionality.DriversActivity" />
-        <activity android:name=".carsFunctionality.activites.CarDetailsActivity" />
-        <activity android:name=".carsFunctionality.activites.FleetActivity">
+        <activity android:name=".carsFunctionality.activites.CarHistoryActivity">
 
+
+        </activity>
+        <activity android:name=".driverFunctionality.activities.DriversDetailsActivity" />
+        <activity android:name=".driverFunctionality.DriversActivity" />
+        <activity
+            android:name=".carsFunctionality.activites.CarDetailsActivity"
+            android:label="Car Details" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".carsFunctionality.activites.FleetActivity"></activity>
         <activity android:name=".homeFunctionality.HomeActivity">
 
         </activity>
         <activity android:name=".loginFunctionality.activities.LoginActivity" />
-        <activity android:name=".SplashActivity" >
-        </activity>
+        <activity android:name=".SplashActivity"></activity>
 
         <meta-data
             android:name="preloaded_fonts"
