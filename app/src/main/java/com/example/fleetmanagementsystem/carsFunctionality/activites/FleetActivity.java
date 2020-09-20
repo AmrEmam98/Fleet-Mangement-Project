@@ -1,5 +1,6 @@
 package com.example.fleetmanagementsystem.carsFunctionality.activites;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -72,7 +73,8 @@ public class FleetActivity extends AppCompatActivity {
 
     public void onAddFabClicked(View view) {
 
-        // TODO Start Add Vichle Page
+        Intent addIntent = new Intent(this , AddCarActivity.class);
+        startActivity(addIntent);
 
     }
 

@@ -19,6 +19,9 @@
 <TableLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_margin="20dp"
+    android:padding="30dp"
+    android:background="@drawable/rectanglebg2"
     tools:context=".carsFunctionality.activites.AddCarActivity">
 
     <TableRow>
@@ -130,6 +133,7 @@
         android:layout_height="wrap_content"
         android:textAllCaps="false"
         android:layout_gravity="center"
-        android:text="Add"
+        android:text="Add Vehicle"
+        android:backgroundTint="#4CAF50"
         android:onClick="addCarClick"/>
 </LinearLayout>
