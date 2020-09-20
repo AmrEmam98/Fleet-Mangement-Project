@@ -27,9 +27,40 @@
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#fb6905"
+                android:background="#f4f4f4"
                 android:textAlignment="center"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/arrow_back" />
+
+                <TextView
+                    android:id="@+id/toolbar_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Cars Category"
+                    android:textColor="#0f6ffe"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SearchView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:tooltipText="Search"
+                    app:searchIcon="@drawable/search_icon"
+                    android:theme="@style/ThemeOverlay.SearchView"
+                    app:closeIcon="@drawable/close_icon"
+                    />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <com.google.android.material.tabs.TabLayout
                 android:id="@+id/tab_layout"
@@ -37,8 +68,8 @@
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:elevation="5dp"
-                app:tabIndicatorColor="#fb6905"
-                app:tabSelectedTextColor="#fb6905"
+                app:tabIndicatorColor="#0f6ffe"
+                app:tabSelectedTextColor="#0f6ffe"
                 app:tabTextColor="@color/cardview_shadow_start_color">
 
             </com.google.android.material.tabs.TabLayout>
@@ -54,7 +85,7 @@
             android:layout_margin="32dp"
             android:onClick="onAddFabClicked"
             android:src="@drawable/ic_baseline_add_24"
-            app:backgroundTint="#2AC1AB"
+            app:backgroundTint="@android:color/white"
             app:tint="@null" />
 
 

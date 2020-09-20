@@ -25,7 +25,6 @@ import java.util.List;
 
 public class FleetActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private ViewPager viewPager;
     private TabLayout tabLayout;
 
@@ -44,10 +43,6 @@ public class FleetActivity extends AppCompatActivity {
 
 
         addFab = findViewById(R.id.addFloatingActionBtn);
-
-
-        toolbar = findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
 
         viewPager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tab_layout);
@@ -115,13 +110,6 @@ public class FleetActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-
-        getMenuInflater().inflate(R.menu.main_menu , menu);
-        return true;
-    }
 
 
 }

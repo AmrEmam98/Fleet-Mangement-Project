@@ -3,15 +3,15 @@
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@android:color/white</item>
-        <item name="colorPrimaryDark">#fb6905</item>
+        <item name="colorPrimaryDark">#0f6ffe</item>
         <item name="colorAccent">@color/colorAccent</item>
         
         <item name="android:windowActivityTransitions">true</item>
 
-        <item name="android:itemBackground">@android:color/white</item>
+        <item name="android:itemBackground">#0f6ffe</item>
 
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
-        <item name="android:statusBarColor">#EC6205</item>
+        <item name="android:statusBarColor">#023E97</item>
 
 
     </style>
@@ -23,6 +23,13 @@
         <item name="hintTextColor">@android:color/white</item>
         <item name="android:textColorHint">@android:color/white</item>
         <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="ThemeOverlay.SearchView" parent="">
+        <!-- Text color -->
+        <item name="android:editTextColor">#0f6ffe</item>
+        <!-- Hint text color -->
+        <item name="android:textColorHint">#0f6ffe</item>
     </style>
 
 
