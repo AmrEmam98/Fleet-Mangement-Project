@@ -3,29 +3,35 @@ package com.example.fleetmanagementsystem.FirebaseServices;
 import android.util.Log;
 
 import com.example.fleetmanagementsystem.Constants.FireStoreCollectionsConstants;
+import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.ReplaySubject;
 
 public class RetrieveDataFromFireStore {
 
-    public static BehaviorSubject<List<FleetModel>> carsSubject = BehaviorSubject.create();
-    public static BehaviorSubject<List<DriverModel>> driverSubject = BehaviorSubject.create();
+    public static ReplaySubject<List<FleetModel>> carsSubject = ReplaySubject.create();
+    public static ReplaySubject<List<DriverModel>> driverSubject = ReplaySubject.create();
+    public static ReplaySubject<String> completeSubject = ReplaySubject.create();
+    public static List<FleetModel> fleetModels=new ArrayList<>();
 
     public static void retrieveAllCars() {
         FirebaseFirestore.getInstance().collection("Cars")
                 .get()
                 .addOnCompleteListener(task -> {
-                    List<FleetModel> fleetModels = task.getResult().toObjects(FleetModel.class);
+                     fleetModels = task.getResult().toObjects(FleetModel.class);
                     carsSubject.onNext(fleetModels);
                 }).addOnFailureListener(e -> {
-                    Log.e("FIRE_STORE_ERROR", "ERROR HAPPENED");
+                   completeSubject.onNext(ObserverStringResponse.FAIL_RESPONSE);
                 }
-        );
+        ).addOnCompleteListener(task -> {
+            completeSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+        });
     }
 
 
@@ -50,8 +56,7 @@ public class RetrieveDataFromFireStore {
                   List<FleetModel> car= (List<FleetModel>) task.getResult().toObject(FleetModel.class);
                         }
                 ).addOnFailureListener(e->{
-            Log.e("FIRE_STORE_ERROR", "ERROR HAPPENED");
-
+            completeSubject.onNext(ObserverStringResponse.FAIL_RESPONSE);
         });
     }
 

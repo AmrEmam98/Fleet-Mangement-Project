@@ -15,7 +15,10 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_below="@id/app_bar_layout"
-            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" />
+            app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior" >
+
+
+        </androidx.viewpager.widget.ViewPager>
 
         <com.google.android.material.appbar.AppBarLayout
             android:id="@+id/app_bar_layout"

@@ -2,7 +2,9 @@ package com.example.fleetmanagementsystem.carsFunctionality.models;
 
 import com.google.firebase.firestore.DocumentId;
 
-public class FleetModel {
+import java.io.Serializable;
+
+public class FleetModel implements Serializable {
 
 
     @DocumentId

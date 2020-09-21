@@ -9,26 +9,25 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".carsFunctionality.activites.EditCarActivity"></activity>
-        <activity android:name=".carsFunctionality.activites.CarHistoryActivity"></activity>
+        <activity android:name=".splashScreens.LoadingActivity"></activity>
+        <activity android:name=".carsFunctionality.activites.EditCarActivity" />
+        <activity android:name=".carsFunctionality.activites.CarHistoryActivity" />
         <activity android:name=".driverFunctionality.activities.DriversDetailsActivity" />
         <activity android:name=".driverFunctionality.DriversActivity" />
         <activity
             android:name=".carsFunctionality.activites.CarDetailsActivity"
-            android:label="Car Details">
-        </activity>
-        <activity android:name=".carsFunctionality.activites.FleetActivity">
+            android:label="Car Details"></activity>
+        <activity android:name=".carsFunctionality.activites.FleetActivity"></activity>
+        <activity android:name=".homeFunctionality.HomeActivity" />
+        <activity android:name=".loginFunctionality.activities.LoginActivity" />
+        <activity android:name=".splashScreens.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".homeFunctionality.HomeActivity"></activity>
-        <activity android:name=".loginFunctionality.activities.LoginActivity" />
-        <activity android:name=".SplashActivity" />
-
-        <activity android:name=".carsFunctionality.activites.AddCarActivity"/>
+        <activity android:name=".carsFunctionality.activites.AddCarActivity" />
 
         <meta-data
             android:name="preloaded_fonts"

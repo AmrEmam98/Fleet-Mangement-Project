@@ -1,4 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="fleeModel"
+            type="com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel" />
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -165,7 +171,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/maker_title"
+                android:id="@+id/amaker_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="10dp"
@@ -180,7 +186,6 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/maker_subTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/details_name1"
@@ -190,12 +195,12 @@
                 android:layout_marginTop="10dp"
                 android:textAlignment="textStart"
                 android:fontFamily="@font/raleway_semibold"
-                android:text="Marcedes"
+                android:text="@={fleeModel.name}"
                 android:textSize="12dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/maker_title" />
+                app:layout_constraintTop_toBottomOf="@+id/amaker_title" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
@@ -214,7 +219,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/maker_title"
+                    android:id="@+id/chassis_num"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -229,22 +234,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/maker_subTitle"
+                    android:id="@+id/actual_chassis_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/details_name1"
                     android:layout_marginBottom="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/raleway_semibold"
-                    android:text="021548245"
+                    android:text="@={fleeModel.chassisNum}"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/maker_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/chassis_num" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -263,7 +267,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/maker_title"
+                    android:id="@+id/plate_num"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -278,71 +282,21 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/maker_subTitle"
+                    android:id="@+id/actual_plate_num"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/details_name1"
                     android:layout_marginBottom="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
                     android:textAlignment="textStart"
                     android:fontFamily="@font/raleway_semibold"
-                    android:text="3DA545"
+                    android:text="@={fleeModel.plateNum}"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/maker_title" />
-
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.cardview.widget.CardView>
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            app:cardElevation="5dp"
-            android:layout_margin="15dp"
-            android:padding="50dp"
-            app:cardCornerRadius="10dp"
-            android:layout_height="wrap_content">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_margin="10dp"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/maker_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:fontFamily="@font/raleway_semibold"
-                    android:text="Vehicle Engine No"
-                    android:textColor="#557490"
-                    android:textSize="16sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/maker_subTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/details_name1"
-                    android:layout_marginBottom="15dp"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:textAlignment="textStart"
-                    android:fontFamily="@font/raleway_semibold"
-                    android:text="45485415"
-                    android:textSize="12dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/maker_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/plate_num" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -361,7 +315,7 @@
                 android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/maker_title"
+                    android:id="@+id/show_driver"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="10dp"
@@ -375,23 +329,21 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <TextView
-                    android:id="@+id/maker_subTitle"
+                <Button
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/details_name1"
                     android:layout_marginBottom="15dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"
-                    android:textAlignment="textStart"
+                    android:textAlignment="center"
                     android:fontFamily="@font/raleway_semibold"
-                    android:text="Bahaa Amr Reda"
+                    android:text="Show Car Driver"
                     android:textSize="12dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/maker_title" />
+                    app:layout_constraintTop_toBottomOf="@+id/show_driver" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.cardview.widget.CardView>
@@ -402,3 +354,4 @@
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

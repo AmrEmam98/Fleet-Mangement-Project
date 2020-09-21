@@ -2,23 +2,22 @@ package com.example.fleetmanagementsystem.carsFunctionality.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.fragment.VehicleFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.CarsFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.SpareFragment;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.example.fleetmanagementsystem.carsFunctionality.fragment.VehicleFragment;
+import com.example.fleetmanagementsystem.dataFilter.FleetFilter;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -26,14 +25,14 @@ import java.util.List;
 
 public class FleetActivity extends AppCompatActivity {
 
+    public FleetFilter fleetFilter;
     private ViewPager viewPager;
     private TabLayout tabLayout;
-
     private CarsFragment carsFragment;
     private SpareFragment spareFragment;
     private VehicleFragment vehicleFragment;
+    ProgressBar bar;
 
-    private FloatingActionButton addFab;
 
     boolean isOpen;
 
@@ -41,17 +40,14 @@ public class FleetActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fleet);
-
-
-        addFab = findViewById(R.id.addFloatingActionBtn);
-
+        fleetFilter=new FleetFilter();
+        //////////////////////////
         viewPager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tab_layout);
-
+        /////////////////////////
         carsFragment = new CarsFragment();
         spareFragment = new SpareFragment();
         vehicleFragment = new VehicleFragment();
-
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
@@ -111,7 +107,5 @@ public class FleetActivity extends AppCompatActivity {
             return fragmentTitle.get(position);
         }
     }
-
-
 
 }
