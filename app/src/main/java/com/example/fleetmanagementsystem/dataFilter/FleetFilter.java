@@ -14,6 +14,7 @@ public class FleetFilter {
     List<FleetModel> cars;
     List<FleetModel> buses;
     List<FleetModel> spare;
+
     public FleetFilter() {
         cars = new ArrayList<>();
         buses = new ArrayList<>();

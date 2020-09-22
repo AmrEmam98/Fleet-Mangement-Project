@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,19 +17,22 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
 import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversDetailsActivity;
 import com.example.fleetmanagementsystem.driverFunctionality.adapter.DriversAdapter;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
+import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversActivity;
 
 import java.util.List;
 
 import io.reactivex.functions.Consumer;
 
-public class DriversFragment extends Fragment implements DriversAdapter.onItemClicked{
+public class DriversFragment extends Fragment {
 
     private List<DriverModel> driverModels;
     private DriversAdapter driverAdapter;
     private RecyclerView recyclerView;
+
 
     public DriversFragment() {
         // Required empty public constructor
@@ -52,12 +56,10 @@ public class DriversFragment extends Fragment implements DriversAdapter.onItemCl
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.drivers_recyclerView);
-        driverAdapter = new DriversAdapter(this);
+        driverAdapter = new DriversAdapter();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         recyclerView.setAdapter(driverAdapter);
-
-         RetrieveDataFromFireStore.retrieveAllDrivers();
     }
 
     @Override
@@ -68,18 +70,9 @@ public class DriversFragment extends Fragment implements DriversAdapter.onItemCl
 
     @SuppressLint("CheckResult")
     public void getDrivers() {
-        RetrieveDataFromFireStore.driverSubject.subscribe(new Consumer<List<DriverModel>>() {
-            @Override
-            public void accept(List<DriverModel> driverModels) throws Exception {
-                DriversFragment.this.driverModels = driverModels;
-                driverAdapter.setList(driverModels);
-            }
-        });
+        DriversActivity  driversActivity = (DriversActivity)getActivity();
+        this.driverModels = driversActivity.driverFilter.getSpare();
+        driverAdapter.setList(driverModels);
     }
 
-    @Override
-    public void onItemClicked(int postion) {
-        Intent intent = new Intent(getContext(), DriversDetailsActivity.class);
-        startActivity(intent);
-    }
 }

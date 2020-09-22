@@ -44,12 +44,15 @@ public class CarsFragment extends Fragment  {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         carRecyclerView = view.findViewById(R.id.car_recycler_view);
         fleetAdapter = new FleetAdapter();
-        imageView = view.findViewById(R.id.car_image);
-        carName = view.findViewById(R.id.car_name);
-        carChasisiNum = view.findViewById(R.id.chassisNum);
-        carPlateNum = view.findViewById(R.id.plateNum);
+//
+//        imageView = view.findViewById(R.id.car_image);
+//        carName = view.findViewById(R.id.driver_number);
+//        carChasisiNum = view.findViewById(R.id.chassisNum);
+//        carPlateNum = view.findViewById(R.id.plateNum);
+
         carRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         carRecyclerView.setAdapter(fleetAdapter);
     }

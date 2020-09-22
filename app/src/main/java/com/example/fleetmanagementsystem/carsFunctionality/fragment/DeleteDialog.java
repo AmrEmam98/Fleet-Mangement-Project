@@ -24,6 +24,7 @@ public class DeleteDialog extends AppCompatDialogFragment {
 
         currentCar=fleetModel;
     }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

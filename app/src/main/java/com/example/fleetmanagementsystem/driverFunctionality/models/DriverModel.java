@@ -2,7 +2,10 @@ package com.example.fleetmanagementsystem.driverFunctionality.models;
 
 import com.google.firebase.firestore.DocumentId;
 
-public class DriverModel {
+import java.io.Serializable;
+
+public class DriverModel implements Serializable {
+
     @DocumentId
     String driverId;
     String assignedCarId;

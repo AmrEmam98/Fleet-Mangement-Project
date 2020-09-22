@@ -57,7 +57,7 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
 
         public FleetViewHolder(@NonNull View itemView) {
             super(itemView);
-            carName = itemView.findViewById(R.id.car_name);
+            carName = itemView.findViewById(R.id.driver_number);
             carImage = itemView.findViewById(R.id.car_image);
             plateNum = itemView.findViewById(R.id.plateNum);
             chasissNum = itemView.findViewById(R.id.chassisNum);
@@ -68,12 +68,15 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
             carName.setText(fleetModel.name);
             chasissNum.setText(fleetModel.chassisNum);
             plateNum.setText(fleetModel.plateNum);
-            cardView.setOnClickListener(view -> {
-                Intent intent=new Intent(context, CarDetailsActivity.class);
-                Bundle bundle= new Bundle();
-                bundle.putSerializable(FLEET_MODEL_KEY,fleetModel);
-                intent.putExtras(bundle);
-                context.startActivity(intent);
+            cardView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(context, CarDetailsActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable(FLEET_MODEL_KEY, fleetModel);
+                    intent.putExtras(bundle);
+                    context.startActivity(intent);
+                }
             });
         }
 

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".driverFunctionality.DriversActivity">
+    tools:context=".driverFunctionality.activities.DriversActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -23,133 +23,70 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
+                android:id="@+id/toolbar_driver"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#fb6905"
+                android:background="#f4f4f4"
                 android:textAlignment="center"
-                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" />
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar" >
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_marginLeft="10dp"
+                    android:src="@drawable/arrow_back" />
+
+                <TextView
+                    android:id="@+id/toolbar_title_driver"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="Driverss Category"
+                    android:textColor="#0f6ffe"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.SearchView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:tooltipText="Search"
+                    app:searchIcon="@drawable/search_icon"
+                    android:theme="@style/ThemeOverlay.SearchView"
+                    app:closeIcon="@drawable/close_icon"
+                    />
+
+            </androidx.appcompat.widget.Toolbar>
 
             <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tab_layout"
+                android:id="@+id/tab_layout_driver"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="#FFFFFF"
                 android:elevation="5dp"
-                app:tabIndicatorColor="#fb6905"
-                app:tabSelectedTextColor="#fb6905"
+                app:tabIndicatorColor="#0f6ffe"
+                app:tabSelectedTextColor="#0f6ffe"
                 app:tabTextColor="@color/cardview_shadow_start_color">
 
             </com.google.android.material.tabs.TabLayout>
 
         </com.google.android.material.appbar.AppBarLayout>
+
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/mainFloatingActionBtn"
+            android:id="@+id/addFloatingActionBtnDriver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignEnd="@id/drivers_view_pager"
-            android:layout_alignBottom="@id/drivers_view_pager"
+            android:layout_alignBottom="@+id/drivers_view_pager"
             android:layout_margin="32dp"
-            android:onClick="onFabClicked"
+            android:onClick="onAddFabDriverClicked"
             android:src="@drawable/ic_baseline_add_24"
-            app:backgroundTint="#2AC1AB"
+            app:backgroundTint="@android:color/white"
             app:tint="@null" />
 
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/deleteFloatingActionBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/mainFloatingActionBtn"
-            android:layout_alignEnd="@id/drivers_view_pager"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="18dp"
-            android:visibility="gone"
-            android:src="@drawable/delete_icon"
-            app:backgroundTint="@android:color/white" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/editFloatingActionBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@id/deleteFloatingActionBtn"
-            android:layout_alignEnd="@id/drivers_view_pager"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="28dp"
-            android:src="@drawable/edit_icon"
-            android:visibility="gone"
-            app:backgroundTint="@android:color/white" />
-
-        <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/addFloatingActionBtn"
-            android:layout_width="wrap_content"
-            android:visibility="gone"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/editFloatingActionBtn"
-            android:layout_alignEnd="@id/drivers_view_pager"
-            android:layout_marginRight="32dp"
-            android:layout_marginBottom="28dp"
-            android:src="@drawable/add_user"
-            app:backgroundTint="@android:color/white" />
-
-        <RelativeLayout
-            android:id="@+id/relative_layout_driver"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_above="@id/mainFloatingActionBtn"
-            android:layout_alignTop="@id/addFloatingActionBtn"
-            android:layout_marginRight="20dp"
-            android:layout_toLeftOf="@id/deleteFloatingActionBtn"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/add_driver_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/fab_text_bg"
-                android:backgroundTint="#b8f7ee"
-                android:fontFamily="@font/raleway_semibold"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:text="Add Driver"
-                android:textColor="#67beae" />
-
-            <TextView
-                android:id="@+id/edit_driver_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/add_driver_txt"
-                android:layout_marginTop="54dp"
-                android:background="@drawable/fab_text_bg"
-                android:backgroundTint="#e7e6ff"
-                android:fontFamily="@font/raleway_semibold"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:text="Edit Driver"
-                android:textColor="#7e7aac" />
-
-            <TextView
-                android:id="@+id/delete_driver_txt"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/edit_driver_txt"
-                android:layout_marginTop="48dp"
-                android:background="@drawable/fab_text_bg"
-                android:backgroundTint="#fdcfd2"
-                android:fontFamily="@font/raleway_semibold"
-                android:paddingStart="16dp"
-                android:paddingTop="8dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="8dp"
-                android:text="Delete Driver"
-                android:textColor="#e1a0a6" />
-
-        </RelativeLayout>
     </RelativeLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

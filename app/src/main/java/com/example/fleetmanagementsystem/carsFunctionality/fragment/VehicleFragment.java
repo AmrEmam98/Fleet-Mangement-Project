@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
 import com.example.fleetmanagementsystem.carsFunctionality.adapter.FleetAdapter;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
@@ -38,6 +39,7 @@ public class VehicleFragment extends Fragment  {
         super.onViewCreated(view, savedInstanceState);
 
         vehicleRecyclerView = view.findViewById(R.id.vehicle_recycler_view);
+        fleetAdapter = new FleetAdapter();
 
         vehicleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         vehicleRecyclerView.setAdapter(fleetAdapter);
@@ -46,5 +48,12 @@ public class VehicleFragment extends Fragment  {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getVehicles();
+    }
+
+    public void getVehicles() {
+        FleetActivity fleetActivity=(FleetActivity)getActivity();
+        this.vehicleModel=fleetActivity.fleetFilter.getSpare();
+        fleetAdapter.setList(vehicleModel);
     }
 }

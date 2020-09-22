@@ -24,7 +24,6 @@ public class CarDetailsActivity extends AppCompatActivity {
         currentCar=(FleetModel) getIntent().getExtras().getSerializable(FLEET_MODEL_KEY);
         ActivityCarDetailsBinding binding= DataBindingUtil.setContentView(this,R.layout.activity_car_details);
         binding.setFleeModel(currentCar);
-
     }
 
     public void openDeleteDialog(View view) {

@@ -16,10 +16,12 @@ import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.driverFunctionality.viewModels.AddDriverViewModel;
 
 public class AddDriverActivity extends AppCompatActivity {
+
     EditText driverNameEt;
     EditText driverPhoneEt;
     AddDriverViewModel driverViewModel;
     Spinner driverTypeSpinner;
+
     @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {

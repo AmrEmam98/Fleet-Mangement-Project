@@ -1,159 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout>
-
     <data>
-
         <variable
             name="driverModel"
             type="com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel" />
     </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".driverFunctionality.activities.DriversDetailsActivity">
+        tools:context=".driverFunctionality.activities.EditDriverAcitivty">
 
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_detalis"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="#f4f4f4"
-            android:gravity="right"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:subtitleTextColor="@android:color/white"
-            app:titleTextColor="@android:color/white">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="start"
-                android:layout_marginLeft="10dp"
-                android:src="@drawable/arrow_back" />
-
-            <TextView
-                android:id="@+id/toolbar_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginRight="20dp"
-                android:text="Details"
-                android:textColor="#0f6ffe"
-                android:textSize="22dp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginRight="15dp"
-                android:onClick="showHistory"
-                android:src="@drawable/history_icon" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginRight="15dp"
-                android:onClick="editDriver"
-                android:src="@drawable/edit_icon" />
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_marginRight="15dp"
-                android:onClick="openDeleteDialog"
-                android:src="@drawable/delete_icon" />
-
-        </androidx.appcompat.widget.Toolbar>
-
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constraintLayout2"
+        <Button
+            android:id="@+id/apply_btn_driver"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:background="@drawable/rectanglebg2"
-            android:padding="10dp"
+            android:layout_margin="20dp"
+            android:backgroundTint="#2AC1AB"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/raleway_semibold"
+            android:textAllCaps="false"
+            android:text="Apply"
+            android:onClick="editDriverOnClick"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_detalis">
-
-            <ImageView
-                android:id="@+id/iv_driver_detials"
-                android:layout_width="90dp"
-                android:layout_height="90dp"
-                android:layout_marginLeft="100dp"
-                android:layout_marginRight="100dp"
-                android:src="@drawable/ic_driver"
-                android:transitionName="carImageTransition"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/raleway_semibold"
-                android:text="Driver Name"
-                android:textAlignment="center"
-                android:textColor="#557490"
-                android:textSize="16sp"
-                android:transitionName="carModelTransition"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/iv_driver_detials" />
-
-            <TextView
-                android:id="@+id/textview3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/raleway_semibold"
-                android:text="01015770994"
-                android:textAlignment="center"
-                android:textSize="12dp"
-                android:transitionName="carDriverTransition"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textView" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/raleway_semibold"
-                android:paddingBottom="10dp"
-                android:text="3SAN123"
-                android:textAlignment="center"
-                android:textSize="12dp"
-                android:transitionName="carLiesnceTransition"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/textview3" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
+            app:layout_constraintStart_toStartOf="parent" />
 
         <ScrollView
             android:layout_width="match_parent"
+            android:layout_margin="20dp"
             android:layout_height="0dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/apply_btn_driver"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/constraintLayout2">
+            app:layout_constraintTop_toTopOf="parent">
 
             <LinearLayout
-                android:id="@+id/linear"
+                android:id="@+id/linear_edit_driver"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
@@ -171,12 +55,12 @@
                         android:layout_margin="10dp">
 
                         <TextView
-                            android:id="@+id/tv_driver_id"
+                            android:id="@+id/driver_id_edit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
                             android:text="Driver ID"
                             android:textColor="#557490"
@@ -185,22 +69,23 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/actual_driver_id"
+                        <EditText
+                            android:id="@+id/et_driver_id"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_below="@+id/details_name1"
                             android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
                             android:text="@={driverModel.driverId}"
                             android:textAlignment="textStart"
-                            android:textSize="12dp"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_driver_id" />
+                            app:layout_constraintTop_toBottomOf="@id/driver_id_edit" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -220,12 +105,12 @@
                         android:layout_margin="10dp">
 
                         <TextView
-                            android:id="@+id/driver_assigned_carID"
+                            android:id="@+id/tv_driver_assigned_carId_edit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
                             android:text="Driver Assigned Car ID"
                             android:textColor="#557490"
@@ -234,22 +119,24 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/actual_driver_assigned_carID"
+                        <EditText
+                            android:id="@+id/et_driver_assigned_carId_edit"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_below="@+id/details_name1"
                             android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
                             android:text="@={driverModel.assignedCarId}"
                             android:textAlignment="textStart"
-                            android:textSize="12dp"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/driver_assigned_carID" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_driver_assigned_carId_edit" />
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
@@ -268,12 +155,12 @@
                         android:layout_margin="10dp">
 
                         <TextView
-                            android:id="@+id/tv_driver_name"
+                            android:id="@+id/tv_driver_name_edit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
                             android:text="Driver Name"
                             android:textColor="#557490"
@@ -282,22 +169,23 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/actual_driver_name"
+                        <EditText
+                            android:id="@+id/et_editCarPlateNum"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
+                            android:layout_below="@+id/details_name1"
                             android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
-                            android:text="@={driverModel.name}"
                             android:textAlignment="textStart"
-                            android:textSize="12dp"
+                            android:text="@={driverModel.name}"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_driver_name" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_driver_name_edit" />
 
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -317,12 +205,12 @@
                         android:layout_margin="10dp">
 
                         <TextView
-                            android:id="@+id/tv_driver_phone"
+                            android:id="@+id/tv_driver_phone_edit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
                             android:text="Driver Phone"
                             android:textColor="#557490"
@@ -331,24 +219,22 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/actual_driver_phone"
+                        <EditText
+                            android:id="@+id/et_driver_phone"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
                             android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
                             android:text="@={driverModel.phone}"
                             android:textAlignment="textStart"
-                            android:textSize="12dp"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_driver_phone" />
-
-
+                            app:layout_constraintTop_toBottomOf="@id/tv_driver_phone_edit" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -366,12 +252,12 @@
                         android:layout_margin="10dp">
 
                         <TextView
-                            android:id="@+id/tv_driver_type"
+                            android:id="@+id/tv_driver_type_edit"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
                             android:text="Driver Type"
                             android:textColor="#557490"
@@ -380,79 +266,27 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <TextView
-                            android:id="@+id/actual_driver_type"
+                        <EditText
+                            android:id="@+id/et_driver_type"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
                             android:layout_marginBottom="15dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
-                            android:text="@={driverModel.type}"
+                            android:text="@={driverModel.phone}"
                             android:textAlignment="textStart"
-                            android:textSize="12dp"
+                            android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/tv_driver_type" />
-
-
+                            app:layout_constraintTop_toBottomOf="@id/tv_driver_type_edit" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="15dp"
-                    android:padding="50dp"
-                    app:cardCornerRadius="10dp"
-                    app:cardElevation="10dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_margin="10dp">
-
-                        <TextView
-                            android:id="@+id/show_car"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:text="Car Name"
-                            android:textColor="#557490"
-                            android:textSize="16sp"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <Button
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_marginBottom="15dp"
-                            android:fontFamily="@font/raleway_semibold"
-                            android:text="Show Car "
-                            android:textColor="@android:color/darker_gray"
-                            android:textAlignment="center"
-                            android:textSize="12dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/show_car" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
-
             </LinearLayout>
 
         </ScrollView>
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

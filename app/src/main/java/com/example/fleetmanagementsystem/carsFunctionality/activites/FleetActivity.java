@@ -48,6 +48,7 @@ public class FleetActivity extends AppCompatActivity {
         carsFragment = new CarsFragment();
         spareFragment = new SpareFragment();
         vehicleFragment = new VehicleFragment();
+
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);

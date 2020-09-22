@@ -30,7 +30,6 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             holder.driver.setText("Driver Name");
             holder.startDate.setText("Start Date: 15/10/2017");
             holder.endDate.setText("End Date: 15/7/2020");
-
     }
 
     @Override

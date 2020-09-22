@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="8"
-                android:hint="Verna"
+                android:hint="Driver Name"
 
                 />
         </TableRow>
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:ems="8"
-                android:hint="2020"
+                android:hint="+2001015770994"
 
                 />
         </TableRow>

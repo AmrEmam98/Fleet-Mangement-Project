@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversActivity;
 import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversDetailsActivity;
 import com.example.fleetmanagementsystem.driverFunctionality.adapter.DriversAdapter;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
@@ -23,7 +24,7 @@ import java.util.List;
 
 import io.reactivex.functions.Consumer;
 
-public class DriversBusFragment extends Fragment implements DriversAdapter.onItemClicked {
+public class DriversBusFragment extends Fragment {
 
     private List<DriverModel> driverModels;
     private DriversAdapter driverAdapter;
@@ -50,12 +51,10 @@ public class DriversBusFragment extends Fragment implements DriversAdapter.onIte
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.drivers_bus_recyclerView);
-        driverAdapter = new DriversAdapter(this);
+        driverAdapter = new DriversAdapter();
+
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-
         recyclerView.setAdapter(driverAdapter);
-
-         RetrieveDataFromFireStore.retrieveAllDrivers();
     }
 
     @Override
@@ -64,20 +63,11 @@ public class DriversBusFragment extends Fragment implements DriversAdapter.onIte
         getDrivers();
     }
 
-            @SuppressLint("CheckResult")
+    @SuppressLint("CheckResult")
     public void getDrivers() {
-        RetrieveDataFromFireStore.driverSubject.subscribe(new Consumer<List<DriverModel>>() {
-            @Override
-            public void accept(List<DriverModel> driverModels) throws Exception {
-                DriversBusFragment.this.driverModels = driverModels;
-                driverAdapter.setList(driverModels);
-            }
-        });
+        DriversActivity driversActivity = (DriversActivity)getActivity();
+        this.driverModels = driversActivity.driverFilter.getSpare();
+        driverAdapter.setList(driverModels);
     }
 
-    @Override
-    public void onItemClicked(int postion) {
-        Intent intent = new Intent(getContext(), DriversDetailsActivity.class);
-        startActivity(intent);
-    }
 }

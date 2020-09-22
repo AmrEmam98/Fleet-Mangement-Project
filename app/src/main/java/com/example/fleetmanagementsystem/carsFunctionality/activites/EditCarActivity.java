@@ -18,6 +18,7 @@ public class EditCarActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_car);
+
        currentCar=(FleetModel) getIntent().getSerializableExtra(BundleKeys.FLEET_MODEL_KEY);
         ActivityEditCarBinding editCarBinding= DataBindingUtil.setContentView(this,R.layout.activity_edit_car);
         editCarBinding.setFleeModel(currentCar);
