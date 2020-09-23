@@ -44,4 +44,11 @@ public class CarDetailsActivity extends AppCompatActivity {
         editIntent.putExtras(bundle);
         startActivity(editIntent);
     }
+
+    public void openAssignPage(View view) {
+
+        Intent assignIntent = new Intent(this , AssignActivity.class);
+        startActivity(assignIntent);
+
+    }
 }

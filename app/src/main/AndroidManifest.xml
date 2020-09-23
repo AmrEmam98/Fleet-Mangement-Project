@@ -12,21 +12,23 @@
         <activity android:name=".carsFunctionality.activites.AssignActivity"></activity>
         <activity android:name=".driverFunctionality.activities.EditDriverAcitivty" />
         <activity android:name=".splashScreens.LoadingDrivers" />
-        <activity android:name=".splashScreens.LoadingActivity" />
+        <activity android:name=".splashScreens.LoadingActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity android:name=".carsFunctionality.activites.EditCarActivity" />
         <activity android:name=".carsFunctionality.activites.CarHistoryActivity" />
         <activity android:name=".driverFunctionality.activities.DriversDetailsActivity" />
         <activity android:name=".driverFunctionality.activities.DriversActivity" />
         <activity android:name=".driverFunctionality.activities.AddDriverActivity" />
         <activity
-            android:name=".carsFunctionality.activites.CarDetailsActivity"
-            android:label="Car Details" />
-        <activity android:name=".carsFunctionality.activites.FleetActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:name=".carsFunctionality.activites.CarDetailsActivity">
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+        </activity>
+        <activity android:name=".carsFunctionality.activites.FleetActivity">
         </activity>
         <activity android:name=".homeFunctionality.HomeActivity"></activity>
         <activity android:name=".loginFunctionality.activities.LoginActivity" />

@@ -2,6 +2,7 @@ package com.example.fleetmanagementsystem.carsFunctionality.fragment;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -24,6 +25,11 @@ public class AssignDialog extends AppCompatDialogFragment {
 
     Button assignBtn, CanelBtn;
 
+    public static AssignDialog newInstance() {
+        AssignDialog frag = new AssignDialog();
+        return frag;
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -41,7 +47,6 @@ public class AssignDialog extends AppCompatDialogFragment {
             @Override
             public void onClick(View view) {
 
-
                 Toast.makeText(getContext() , "Driver added to your car" , Toast.LENGTH_LONG).show();
                 dismiss();
             }
@@ -50,4 +55,9 @@ public class AssignDialog extends AppCompatDialogFragment {
         return builder.create();
     }
 
+    @Override
+    public void onDismiss(@NonNull DialogInterface dialog) {
+        super.onDismiss(dialog);
+
+    }
 }
