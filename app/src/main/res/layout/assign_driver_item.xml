@@ -3,67 +3,68 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="25dp"
     android:id="@+id/card_item_driver"
     android:background="@android:color/white"
-    app:cardCornerRadius="10dp"
+    app:cardCornerRadius="3dp"
     app:cardElevation="5dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/check_icon"
+            android:src="@drawable/add_driver_icon"
+            android:layout_margin="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/driver_image"
+            android:id="@+id/imageView"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="20dp"
             android:src="@drawable/ic_driver"
             android:transitionName="carImageTransition"
-            app:layout_constraintBottom_toTopOf="@+id/assign_driver_name"
-            app:layout_constraintEnd_toEndOf="@+id/assign_driver_name"
-            app:layout_constraintStart_toStartOf="@+id/assign_driver_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/assign_driver_name"
-            android:layout_width="match_parent"
+            android:id="@+id/assign_fleet_name"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginRight="30dp"
-            android:layout_marginLeft="30dp"
+            android:ems="9"
+            android:layout_marginLeft="15dp"
             android:fontFamily="@font/raleway_semibold"
             android:text="Driver Name"
-            android:textAlignment="center"
-            android:ems="8"
-            android:layout_marginBottom="5dp"
+            android:textAlignment="textStart"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/assign_driver_phone"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/assign_driver_phone"
-            android:layout_width="89dp"
-            android:layout_height="18dp"
+            android:id="@+id/assign_driver_lic"
+            android:layout_width="0dp"
+            android:layout_marginLeft="15dp"
+            android:layout_height="wrap_content"
             android:fontFamily="@font/nunito_sans_semibold"
-            android:text="01015770994"
-            android:textAlignment="center"
+            android:text="0121541274"
+            android:ems="9"
+            android:textAlignment="textStart"
             android:textSize="14sp"
-            android:layout_marginBottom="10dp"
             android:transitionName="carDriverTransition"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintTop_toBottomOf="@+id/assign_fleet_name" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
