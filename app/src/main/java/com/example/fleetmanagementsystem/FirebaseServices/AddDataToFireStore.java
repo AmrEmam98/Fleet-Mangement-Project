@@ -5,7 +5,6 @@ import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 import com.google.firebase.firestore.FirebaseFirestore;
-
 import io.reactivex.subjects.BehaviorSubject;
 
 public class AddDataToFireStore {

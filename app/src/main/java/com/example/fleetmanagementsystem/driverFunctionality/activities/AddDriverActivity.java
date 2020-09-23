@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.AddDataToFireStore;
+import com.example.fleetmanagementsystem.InputValidation;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.driverFunctionality.viewModels.AddDriverViewModel;
 
@@ -45,10 +46,16 @@ public class AddDriverActivity extends AppCompatActivity {
     }
 
     public void addDriverClicked(View view) {
-        String name=driverNameEt.getText().toString();
-        String phone=driverPhoneEt.getText().toString();
-        String type=driverTypeSpinner.getSelectedItem().toString();
-        driverViewModel.doAddDriver(name,phone,type);
+
+        if(
+                InputValidation.validateEmptyString(driverNameEt)&&
+                InputValidation.validatePhoneNumber(driverPhoneEt)
+        ) {
+            String name = driverNameEt.getText().toString();
+            String phone = driverPhoneEt.getText().toString();
+            String type = driverTypeSpinner.getSelectedItem().toString();
+            driverViewModel.doAddDriver(name, phone, type);
+        }
 
     }
 }

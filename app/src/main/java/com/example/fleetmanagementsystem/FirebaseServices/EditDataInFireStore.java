@@ -13,7 +13,7 @@ public class EditDataInFireStore {
                 .document(fleetModel.getCarID())
                 .set(fleetModel);
     }
-    public static void editeDriver(DriverModel driverModel)
+    public static void editDriver(DriverModel driverModel)
     {
         FirebaseFirestore.getInstance()
                 .collection(FireStoreCollectionsConstants.DRIVER_PATH)

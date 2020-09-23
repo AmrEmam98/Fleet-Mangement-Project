@@ -1,5 +1,6 @@
 package com.example.fleetmanagementsystem.carsFunctionality.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,11 +28,13 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
     private List<FleetModel> carsList = new ArrayList<>();
 
     Context context;
+    @SuppressLint("CheckResult")
     @NonNull
     @Override
     public FleetViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         FleetViewHolder fleetViewHolder = new FleetViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.rec_item, parent, false));
         context=parent.getContext();
+     
         return fleetViewHolder;
     }
 
@@ -46,6 +49,7 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
     }
 
     public void setList(List<FleetModel> carsList) {
+        this.carsList.clear();
         this.carsList = carsList;
         notifyDataSetChanged();
     }

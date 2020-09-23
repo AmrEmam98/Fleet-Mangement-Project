@@ -23,7 +23,7 @@ public class LoadingActivity extends AppCompatActivity {
 
         progressBar=findViewById(R.id.loadingProgressBar);
         RetrieveDataFromFireStore.retrieveAllCars();
-        RetrieveDataFromFireStore.completeSubject.subscribe(
+        RetrieveDataFromFireStore.carsCompleteSubject.subscribe(
                 result->{
                     if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)){
                         progressBar.setVisibility(View.GONE);

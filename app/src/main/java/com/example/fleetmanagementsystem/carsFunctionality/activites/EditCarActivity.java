@@ -12,19 +12,23 @@ import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.databinding.ActivityEditCarBinding;
 
+import io.reactivex.subjects.BehaviorSubject;
+
 public class EditCarActivity extends AppCompatActivity {
     FleetModel currentCar;
+    public static BehaviorSubject<FleetModel>carEditedSubject=BehaviorSubject.create();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_car);
-
-       currentCar=(FleetModel) getIntent().getSerializableExtra(BundleKeys.FLEET_MODEL_KEY);
-        ActivityEditCarBinding editCarBinding= DataBindingUtil.setContentView(this,R.layout.activity_edit_car);
+        currentCar = (FleetModel) getIntent().getSerializableExtra(BundleKeys.FLEET_MODEL_KEY);
+        ActivityEditCarBinding editCarBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_car);
         editCarBinding.setFleeModel(currentCar);
     }
 
     public void editCarOnClick(View view) {
+
         EditDataInFireStore.editFleet(currentCar);
+        carEditedSubject.onNext(currentCar);
     }
 }

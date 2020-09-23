@@ -14,7 +14,7 @@ import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DeleteDriverFragment;
 
 public class DriversDetailsActivity extends AppCompatActivity {
-    DriverModel driverModel = new DriverModel();
+    DriverModel driverModel;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -1,20 +1,19 @@
 package com.example.fleetmanagementsystem.splashScreens;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ProgressBar;
 
-import com.bumptech.glide.load.resource.gif.GifFrameResourceDecoder;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversActivity;
 
 import pl.droidsonroids.gif.GifImageView;
+
 
 public class LoadingDrivers extends AppCompatActivity {
     //ProgressBar progressBar;
@@ -29,7 +28,7 @@ public class LoadingDrivers extends AppCompatActivity {
 
         gifImageView=findViewById(R.id.loadingProgressBarDrivers);
         RetrieveDataFromFireStore.retrieveAllDrivers();
-        RetrieveDataFromFireStore.completeDriverSubject.subscribe(
+        RetrieveDataFromFireStore.driversCompleteSubject.subscribe(
                 result->{
                     if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)){
                         gifImageView.setVisibility(View.GONE);

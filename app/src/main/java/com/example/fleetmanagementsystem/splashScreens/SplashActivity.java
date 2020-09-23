@@ -11,7 +11,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.homeFunctionality.HomeActivity;
 import com.example.fleetmanagementsystem.loginFunctionality.activities.LoginActivity;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -43,7 +45,15 @@ public class SplashActivity extends AppCompatActivity {
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+                Intent intent;
+
+                if(FirebaseAuth.getInstance().getCurrentUser()!=null) {
+                    intent = new Intent(SplashActivity.this, HomeActivity.class);
+                }
+                else {
+                    intent = new Intent(SplashActivity.this, LoginActivity.class);
+                }
+
                 startActivity(intent);
                 finish();
             }

@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.AddDataToFireStore;
+import com.example.fleetmanagementsystem.InputValidation;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.viewModels.AddCarViewModel;
 
@@ -47,13 +48,21 @@ public class AddCarActivity extends AppCompatActivity  {
     }
 
     public void addCarClick(View view) {
-      String carName=carNameEt.getText().toString();
-      String carModel=carModelEt.getText().toString();
-      String plateNum=carPlateNumEt.getText().toString();
-      String chassisNum=carChassisNum.getText().toString();
-      String carColor= carColorEt.getText().toString();
-      String carType=carTypeSpinner.getSelectedItem().toString();
-      carViewModel.addCar(carName,carModel,plateNum,chassisNum,carColor,carType);
+        if(
+                InputValidation.validateEmptyString(carNameEt)&&
+                InputValidation.validateEmptyString(carModelEt)&&
+                InputValidation.validateEmptyString(carPlateNumEt)&&
+                InputValidation.validateEmptyString(carChassisNum)&&
+                InputValidation.validateEmptyString(carColorEt)
+        ) {
+            String carName = carNameEt.getText().toString();
+            String carModel = carModelEt.getText().toString();
+            String plateNum = carPlateNumEt.getText().toString();
+            String chassisNum = carChassisNum.getText().toString();
+            String carColor = carColorEt.getText().toString();
+            String carType = carTypeSpinner.getSelectedItem().toString();
+            carViewModel.addCar(carName, carModel, plateNum, chassisNum, carColor, carType);
+        }
 
     }
 

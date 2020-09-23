@@ -14,7 +14,7 @@ public class LoginViewModel extends ViewModel {
     public BehaviorSubject<String>loginSubject=BehaviorSubject.create();
     public void doLogin(String email,String password){
 
-        //TODO validate
+
         try {
             FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
             firebaseAuth.signInWithEmailAndPassword(email, password)

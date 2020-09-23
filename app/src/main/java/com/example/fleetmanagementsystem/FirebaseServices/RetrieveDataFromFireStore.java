@@ -1,65 +1,82 @@
 package com.example.fleetmanagementsystem.FirebaseServices;
 
-import android.util.Log;
-
 import com.example.fleetmanagementsystem.Constants.FireStoreCollectionsConstants;
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
-import io.reactivex.subjects.ReplaySubject;
+import io.reactivex.subjects.BehaviorSubject;
 
 public class RetrieveDataFromFireStore {
 
-    public static ReplaySubject<List<FleetModel>> carsSubject = ReplaySubject.create();
-    public static ReplaySubject<List<DriverModel>> driverSubject = ReplaySubject.create();
-    public static ReplaySubject<String> completeSubject = ReplaySubject.create();
-    public static ReplaySubject<String> completeDriverSubject = ReplaySubject.create();
-    public static List<FleetModel> fleetModels = new ArrayList<>();
-    public static List<DriverModel> driverModels = new ArrayList<>();
+    public static BehaviorSubject<List<FleetModel>> carsSubject = BehaviorSubject.create();
+    public static BehaviorSubject<List<DriverModel>> driverSubject = BehaviorSubject.create();
+    public static BehaviorSubject<String> carsCompleteSubject = BehaviorSubject.create();
+    public static BehaviorSubject<String> driversCompleteSubject = BehaviorSubject.create();
+
+    public static BehaviorSubject<FleetModel> singleCarSubject = BehaviorSubject.create();
+    public static BehaviorSubject<DriverModel> singleDriverSubject = BehaviorSubject.create();
+    public static boolean retrieveCarsCalled = false;
+    public static boolean retrieveDriversCalled = false;
 
     public static void retrieveAllCars() {
-        FirebaseFirestore.getInstance().collection(FireStoreCollectionsConstants.FLEET_PATH)
-                .get()
-                .addOnCompleteListener(task -> {
-                    fleetModels = task.getResult().toObjects(FleetModel.class);
-                    carsSubject.onNext(fleetModels);
-                }).addOnFailureListener(e -> {
-                    completeSubject.onNext(ObserverStringResponse.FAIL_RESPONSE);
-                }
-        ).addOnCompleteListener(task -> {
-            completeSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
-        });
+        FirebaseFirestore.getInstance().collection("Cars")
+                .addSnapshotListener((value, error) -> {
+                            List<DocumentSnapshot> documents = value.getDocuments();
+                            List<FleetModel> fleetModels = new ArrayList<>();
+                            for (DocumentSnapshot documentSnapshot : documents) {
+                                fleetModels.add(documentSnapshot.toObject(FleetModel.class));
+                            }
+                            carsSubject.onNext(fleetModels);
+                            carsCompleteSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+                            retrieveCarsCalled = true;
+
+                        }
+                );
     }
+
 
     public static void retrieveAllDrivers() {
-        FirebaseFirestore.getInstance().collection(FireStoreCollectionsConstants.DRIVER_PATH)
-                .get()
-                .addOnCompleteListener(task -> {
-                    driverModels = task.getResult().toObjects(DriverModel.class);
+        FirebaseFirestore.getInstance().collection("Drivers")
+                .addSnapshotListener((value, error) -> {
+                    List<DocumentSnapshot> documents = value.getDocuments();
+                    List<DriverModel> driverModels = new ArrayList<>();
+                    for (DocumentSnapshot documentSnapshot : documents) {
+                        driverModels.add(documentSnapshot.toObject(DriverModel.class));
+                    }
                     driverSubject.onNext(driverModels);
-                    completeDriverSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
-                }).addOnFailureListener(e -> {
-                    Log.e("FIRE_STORE_ERROR", "ERROR HAPPENED");
-                }
-        );
+                    driversCompleteSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+                    retrieveDriversCalled = true;
+                });
 
     }
 
-    public static void retrieveDriverCar(DriverModel driverModel) {
-        FirebaseFirestore.getInstance().collection(FireStoreCollectionsConstants.DRIVER_PATH)
-                .document(driverModel.getAssignedCarId())
+    public static void retrieveFleetByID(FleetModel fleetModel) {
+        FirebaseFirestore.getInstance()
+                .collection(FireStoreCollectionsConstants.FLEET_PATH)
+                .document(fleetModel.carID)
                 .get()
                 .addOnCompleteListener(task -> {
-                            List<FleetModel> car = (List<FleetModel>) task.getResult().toObject(FleetModel.class);
+                            singleCarSubject.onNext(Objects.requireNonNull(task.getResult().toObject(FleetModel.class)));
                         }
-                ).addOnFailureListener(e -> {
-            completeSubject.onNext(ObserverStringResponse.FAIL_RESPONSE);
-        });
+                );
+    }
+
+    public static void retrieveDriverByID(DriverModel driverModel) {
+        FirebaseFirestore.getInstance()
+                .collection(FireStoreCollectionsConstants.FLEET_PATH)
+                .document(driverModel.getDriverId())
+                .get()
+                .addOnCompleteListener(task -> {
+                            singleDriverSubject.onNext(Objects.requireNonNull(task.getResult().toObject(DriverModel.class)));
+                        }
+                );
     }
 
 }

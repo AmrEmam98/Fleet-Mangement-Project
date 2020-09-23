@@ -95,14 +95,15 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
                     android:background="@drawable/ic_car"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/vehicles"
-                    android:textSize="25sp"
-                    android:textColor="@android:color/darker_gray"
                     android:layout_gravity="center"
-                    android:letterSpacing=".1"/>
+                    android:letterSpacing=".1"
+                    android:text="@string/vehicles"
+                    android:textColor="@android:color/darker_gray"
+                    android:textSize="25sp" />
             </LinearLayout>
         </androidx.cardview.widget.CardView>
         <androidx.cardview.widget.CardView

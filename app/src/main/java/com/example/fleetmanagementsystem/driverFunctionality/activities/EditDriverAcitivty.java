@@ -1,16 +1,17 @@
 package com.example.fleetmanagementsystem.driverFunctionality.activities;
 
-import androidx.appcompat.app.AppCompatActivity;
-import com.example.fleetmanagementsystem.R;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
-import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
+
 import com.example.fleetmanagementsystem.Constants.BundleKeys;
 import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
+import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.databinding.ActivityEditDriverAcitivtyBinding;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 public class EditDriverAcitivty extends AppCompatActivity {
     DriverModel driverModel;
@@ -25,7 +26,7 @@ public class EditDriverAcitivty extends AppCompatActivity {
     }
 
     public void editDriverOnClick(View view) {
-        EditDataInFireStore.editeDriver(driverModel);
+        EditDataInFireStore.editDriver(driverModel);
         Toast.makeText(getApplicationContext(), "Driver Updated", Toast.LENGTH_LONG).show();
     }
 }

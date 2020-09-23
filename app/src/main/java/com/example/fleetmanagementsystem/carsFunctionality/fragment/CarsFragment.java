@@ -1,6 +1,7 @@
 package com.example.fleetmanagementsystem.carsFunctionality.fragment;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -55,19 +56,41 @@ public class CarsFragment extends Fragment  {
 
         carRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         carRecyclerView.setAdapter(fleetAdapter);
+
+    }
+
+    @Override
+    public void onResume() {
+
+        Log.d("RESUME","Cars Fragment Resume");
+        super.onResume();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
         getCars();
+        super.onActivityCreated(savedInstanceState);
+
     }
+
 
     public void getCars() {
         FleetActivity fleetActivity=(FleetActivity)getActivity();
         this.carsList=fleetActivity.fleetFilter.getSpare();
         fleetAdapter.setList(carsList);
     }
+    /*
+    * home
+    * vehicles
+    * retrieve all cars
+    * fleet activity
+    * fleetFilter---->car,spare,bus,truck
+    * fleetfilter
+    * 1 cars fragment ->fleetfilter->carList
+    * 2 spare =>fleetfilter=>spareList
+    * 3 bus
+    * 4 truck
+    * */
 
 
 }

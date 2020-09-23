@@ -61,6 +61,6 @@ public class DriverModel implements Serializable {
     }
 
     public void setPhone(String phone) {
-        phone = phone;
+        this.phone = phone;
     }
 }

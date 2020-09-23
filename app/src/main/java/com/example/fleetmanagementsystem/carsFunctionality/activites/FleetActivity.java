@@ -2,6 +2,7 @@ package com.example.fleetmanagementsystem.carsFunctionality.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -39,8 +40,8 @@ public class FleetActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_fleet);
         fleetFilter=new FleetFilter();
+        setContentView(R.layout.activity_fleet);
         //////////////////////////
         viewPager = findViewById(R.id.view_pager);
         tabLayout = findViewById(R.id.tab_layout);
@@ -56,16 +57,6 @@ public class FleetActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(vehicleFragment , "Vehicles");
         viewPagerAdapter.addFragment(spareFragment , "Spare");
         viewPager.setAdapter(viewPagerAdapter);
-
-        /*tabLayout.getTabAt(0).setIcon(R.drawable.car);
-        tabLayout.getTabAt(0).getIcon().setTint(Color.parseColor("#f39b6a"));
-        tabLayout.getTabAt(1).setIcon(R.drawable.vehicle);
-        tabLayout.getTabAt(1).getIcon().setTint(Color.parseColor("#72d2c4"));
-        tabLayout.getTabAt(2).setIcon(R.drawable.spare);
-        tabLayout.getTabAt(2).getIcon().setTint(Color.parseColor("#e9666a"));
-         */
-
-
     }
 
     public void onAddFabClicked(View view) {
@@ -75,6 +66,11 @@ public class FleetActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onResume() {
+        Log.d("RESUME","Fleet Activity Resume");
+        super.onResume();
+    }
 
     private class ViewPagerAdapter extends FragmentPagerAdapter {
 
