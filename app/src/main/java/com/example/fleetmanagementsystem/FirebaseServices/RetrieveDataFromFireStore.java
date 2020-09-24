@@ -13,6 +13,8 @@ import java.util.Objects;
 
 import io.reactivex.subjects.BehaviorSubject;
 
+
+
 public class RetrieveDataFromFireStore {
 
     public static BehaviorSubject<List<FleetModel>> carsSubject = BehaviorSubject.create();

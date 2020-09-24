@@ -5,17 +5,18 @@ import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 import com.google.firebase.firestore.FirebaseFirestore;
-import io.reactivex.subjects.BehaviorSubject;
+
+import io.reactivex.subjects.PublishSubject;
 
 public class AddDataToFireStore {
-    public static BehaviorSubject<String> addCarSubject = BehaviorSubject.create();
-    public static BehaviorSubject<String> addDriverSubject = BehaviorSubject.create();
+    public static PublishSubject<String> addCarSubject = PublishSubject.create();
+    public static PublishSubject<String> addDriverSubject = PublishSubject.create();
 
     public static void addCar(FleetModel fleetModel) {
         FirebaseFirestore.getInstance()
                 .collection(FireStoreCollectionsConstants.FLEET_PATH)
                 .add(fleetModel).
-                addOnSuccessListener(aVoid -> {
+                addOnCompleteListener(aVoid -> {
                     addCarSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
                 }).addOnFailureListener(e -> {
                     addCarSubject.onNext(ObserverStringResponse.FAIL_RESPONSE);

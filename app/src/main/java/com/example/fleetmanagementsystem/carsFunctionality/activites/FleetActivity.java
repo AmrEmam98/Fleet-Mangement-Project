@@ -3,6 +3,7 @@ package com.example.fleetmanagementsystem.carsFunctionality.activites;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 import android.widget.ProgressBar;
 
@@ -27,37 +28,30 @@ import java.util.List;
 public class FleetActivity extends AppCompatActivity {
 
     public FleetFilter fleetFilter;
-    private ViewPager viewPager;
-    private TabLayout tabLayout;
-    private CarsFragment carsFragment;
-    private SpareFragment spareFragment;
-    private TruckFragment vehicleFragment;
     ProgressBar bar;
 
-
-    boolean isOpen;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fleetFilter=new FleetFilter();
         setContentView(R.layout.activity_fleet);
         //////////////////////////
-        viewPager = findViewById(R.id.view_pager);
-        tabLayout = findViewById(R.id.tab_layout);
+        fleetFilter=new FleetFilter();
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        TabLayout tabLayout = findViewById(R.id.tab_layout);
         /////////////////////////
-        carsFragment = new CarsFragment();
-        spareFragment = new SpareFragment();
-        vehicleFragment = new TruckFragment();
+        CarsFragment carsFragment = new CarsFragment();
+        SpareFragment spareFragment = new SpareFragment();
+        TruckFragment vehicleFragment = new TruckFragment();
 
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
-        viewPagerAdapter.addFragment(carsFragment , "Cars");
-        viewPagerAdapter.addFragment(vehicleFragment , "Trucks");
-        viewPagerAdapter.addFragment(spareFragment , "Spare");
+        viewPagerAdapter.addFragment(carsFragment, "Cars");
+        viewPagerAdapter.addFragment(vehicleFragment, "Trucks");
+        viewPagerAdapter.addFragment(spareFragment, "Spare");
         viewPager.setAdapter(viewPagerAdapter);
-    }
+           }
 
     public void onAddFabClicked(View view) {
 
@@ -67,8 +61,15 @@ public class FleetActivity extends AppCompatActivity {
     }
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
     protected void onResume() {
         Log.d("RESUME","Fleet Activity Resume");
+
+
         super.onResume();
     }
 

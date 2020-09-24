@@ -90,6 +90,7 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
             });
         }
 
+
     }
 
 

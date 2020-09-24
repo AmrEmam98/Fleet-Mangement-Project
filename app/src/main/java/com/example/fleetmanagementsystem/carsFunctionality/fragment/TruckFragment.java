@@ -47,13 +47,13 @@ public class TruckFragment extends Fragment  {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
         getVehicles();
+        super.onActivityCreated(savedInstanceState);
     }
 
     public void getVehicles() {
         FleetActivity fleetActivity=(FleetActivity)getActivity();
-        this.vehicleModel=fleetActivity.fleetFilter.getSpare();
+        this.vehicleModel=fleetActivity.fleetFilter.getBuses();
         fleetAdapter.setList(vehicleModel);
     }
 }

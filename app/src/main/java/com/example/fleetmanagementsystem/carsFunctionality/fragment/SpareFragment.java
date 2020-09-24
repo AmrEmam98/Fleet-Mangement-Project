@@ -55,9 +55,16 @@ public class SpareFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         getCars();
+
         super.onActivityCreated(savedInstanceState);
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
     public void getCars() {
         FleetActivity fleetActivity=(FleetActivity)getActivity();
         this.carsList=fleetActivity.fleetFilter.getSpare();

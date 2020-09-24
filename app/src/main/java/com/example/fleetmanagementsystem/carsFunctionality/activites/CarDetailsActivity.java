@@ -2,6 +2,7 @@ package com.example.fleetmanagementsystem.carsFunctionality.activites;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,11 +25,25 @@ public class CarDetailsActivity extends AppCompatActivity {
         currentCar=(FleetModel) getIntent().getExtras().getSerializable(FLEET_MODEL_KEY);
         ActivityCarDetailsBinding binding= DataBindingUtil.setContentView(this,R.layout.activity_car_details);
         binding.setFleeModel(currentCar);
+
+    }
+
+    @Override
+    protected void onResume() {
+        Log.d("Resume","Car Detailes Activity resumed");
+        super.onResume();
+    }
+
+    @Override
+    protected void onPause() {
+        Log.d("PAUSE","Car Detailes Activity paused");
+        super.onPause();
     }
 
     public void openDeleteDialog(View view) {
         DeleteDialog deleteDialog = new DeleteDialog(currentCar , this);
         deleteDialog.show(getSupportFragmentManager() , "Delete Dialog");
+
 
     }
 
@@ -48,6 +63,9 @@ public class CarDetailsActivity extends AppCompatActivity {
     public void openAssignPage(View view) {
 
         Intent assignIntent = new Intent(this , AssignActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(FLEET_MODEL_KEY,currentCar);
+        assignIntent.putExtras(bundle);
         startActivity(assignIntent);
 
     }

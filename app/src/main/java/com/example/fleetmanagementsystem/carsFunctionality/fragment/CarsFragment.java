@@ -5,8 +5,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -70,7 +68,7 @@ public class CarsFragment extends Fragment  {
 
     public void getCars() {
         FleetActivity fleetActivity=(FleetActivity)getActivity();
-        this.carsList=fleetActivity.fleetFilter.getSpare();
+        this.carsList=fleetActivity.fleetFilter.getCars();
         fleetAdapter.setList(carsList);
     }
     /*

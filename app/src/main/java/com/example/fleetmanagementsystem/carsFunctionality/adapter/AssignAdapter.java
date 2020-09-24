@@ -2,36 +2,39 @@ package com.example.fleetmanagementsystem.carsFunctionality.adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.activites.AssignActivity;
-import com.example.fleetmanagementsystem.carsFunctionality.activites.CarDetailsActivity;
-import com.example.fleetmanagementsystem.carsFunctionality.fragment.AssignDialog;
-import com.example.fleetmanagementsystem.carsFunctionality.fragment.DeleteDialog;
-import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
-import com.example.fleetmanagementsystem.driverFunctionality.activities.AddDriverActivity;
-import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
-
-import java.util.ArrayList;
-import java.util.List;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import static com.example.fleetmanagementsystem.Constants.BundleKeys.FLEET_MODEL_KEY;
+import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
+import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.AssignActivity;
+import com.example.fleetmanagementsystem.carsFunctionality.fragment.AssignDialog;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
+
+import java.util.List;
 
 public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignViewHolder> {
 
-    private List<DriverModel> driverAssignList = new ArrayList<>();
-    public AssignAdapter(Activity context) {
+
+    FleetModel currentFleet;
+    List<DriverModel>driverModels;
+    public AssignAdapter(Activity context, FleetModel currentFleet) {
         this.context=context;
+        this.currentFleet=currentFleet;
+        if(RetrieveDataFromFireStore.retrieveDriversCalled)
+        RetrieveDataFromFireStore.driverSubject.subscribe(
+                driverModels1 -> {
+                    this.driverModels=driverModels1;
+                }
+        );
+
 
     }
     public Activity context;
@@ -44,13 +47,12 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
 
     @Override
     public void onBindViewHolder(@NonNull AssignViewHolder holder, int position) {
-        holder.initData(context);
+        holder.initData(context,driverModels.get(position));
     }
 
     @Override
     public int getItemCount() {
-        //TODO handle return list.size
-        return 15;
+        return driverModels.size();
     }
 
     public class AssignViewHolder extends RecyclerView.ViewHolder {
@@ -66,11 +68,13 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
             addDriverIcon = itemView.findViewById(R.id.assign_driver_icon);
         }
 
-        public void initData(Context context){
+        public void initData(Context context,DriverModel driverModel){
+            driverPhone.setText(driverModel.getPhone());
+            driverName.setText(driverModel.getName());
         addDriverIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                   AssignDialog assignDialog = AssignDialog.newInstance();
+                   AssignDialog assignDialog =new AssignDialog(currentFleet,driverModel);
                    assignDialog.show(((AssignActivity)context).getSupportFragmentManager(),"Title");
                 }
             });

@@ -39,7 +39,6 @@ public class LoginActivity extends AppCompatActivity {
                 .subscribe(
                         result -> {
                             if (result.equals(ObserverStringResponse.SUCCESS_RESPONSE)) {
-                                //TODO progress bar visibilty gone
                                 loginPrgressbar.setVisibility(View.GONE);
                                 Toast.makeText(this, "User signed in ", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);

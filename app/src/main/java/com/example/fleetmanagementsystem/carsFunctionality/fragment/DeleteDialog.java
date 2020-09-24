@@ -1,10 +1,8 @@
 package com.example.fleetmanagementsystem.carsFunctionality.fragment;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +16,6 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.example.fleetmanagementsystem.FirebaseServices.DeleteDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
-import com.example.fleetmanagementsystem.splashScreens.LoadingActivity;
 
 public class DeleteDialog extends AppCompatDialogFragment {
 
@@ -43,13 +40,10 @@ public class DeleteDialog extends AppCompatDialogFragment {
 
         deleteBtn = view.findViewById(R.id.delete_btn);
 
-        deleteBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                DeleteDataFromFireStore.deleteFleet(currentCar);
-                Toast.makeText(getContext() , "Done: Car Deleted" , Toast.LENGTH_LONG).show();
-                dismiss();
-            }
+        deleteBtn.setOnClickListener(view1 -> {
+            DeleteDataFromFireStore.deleteFleet(currentCar);
+            Toast.makeText(getContext() , "Done: Car Deleted" , Toast.LENGTH_LONG).show();
+            dismiss();
         });
 
         return builder.create();

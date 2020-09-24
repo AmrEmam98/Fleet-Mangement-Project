@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -25,7 +26,7 @@ public class AddCarActivity extends AppCompatActivity  {
     EditText carColorEt;
     AddCarViewModel carViewModel;
     Spinner carTypeSpinner;
-    @SuppressLint("CheckResult")
+    ProgressBar progressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,10 +38,17 @@ public class AddCarActivity extends AppCompatActivity  {
         carTypeSpinner=findViewById(R.id.vehicleType_spinner);
         carColorEt =findViewById(R.id.et_addCarColor);
         carChassisNum=findViewById(R.id.et_chassisNum);
+    }
+
+    @SuppressLint("CheckResult")
+    private void subscribe() {
         AddDataToFireStore.addCarSubject.subscribe(
                 result->{
-                    if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE))
-                        Toast.makeText(this,"Vehicle Added Successfully",Toast.LENGTH_LONG).show();
+                    if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)) {
+                        Toast.makeText(this, "Vehicle Added Successfully", Toast.LENGTH_LONG).show();
+                      //  progressBar.setVisibility(View.GONE);
+                        finish();
+                    }
                     else
                         Toast.makeText(this,"Error Happened",Toast.LENGTH_LONG).show();
                 }
@@ -62,6 +70,9 @@ public class AddCarActivity extends AppCompatActivity  {
             String carColor = carColorEt.getText().toString();
             String carType = carTypeSpinner.getSelectedItem().toString();
             carViewModel.addCar(carName, carModel, plateNum, chassisNum, carColor, carType);
+            //show progress bar
+            //subscribe();
+
         }
 
     }

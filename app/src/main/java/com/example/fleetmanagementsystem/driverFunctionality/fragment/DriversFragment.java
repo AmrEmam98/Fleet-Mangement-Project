@@ -2,12 +2,10 @@ package com.example.fleetmanagementsystem.driverFunctionality.fragment;
 
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -15,17 +13,12 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
-import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversDetailsActivity;
+import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversActivity;
 import com.example.fleetmanagementsystem.driverFunctionality.adapter.DriversAdapter;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
-import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversActivity;
 
 import java.util.List;
-
-import io.reactivex.functions.Consumer;
 
 public class DriversFragment extends Fragment {
 
@@ -71,7 +64,7 @@ public class DriversFragment extends Fragment {
     @SuppressLint("CheckResult")
     public void getDrivers() {
         DriversActivity  driversActivity = (DriversActivity)getActivity();
-        this.driverModels = driversActivity.driverFilter.getSpare();
+        this.driverModels = driversActivity.driverFilter.getCars();
         driverAdapter.setList(driverModels);
     }
 

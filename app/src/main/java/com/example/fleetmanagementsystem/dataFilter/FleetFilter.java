@@ -15,26 +15,26 @@ public class FleetFilter {
     List<FleetModel> buses;
     List<FleetModel> spare;
     public FleetFilter() {
+       spare = new ArrayList<>();
         cars = new ArrayList<>();
         buses = new ArrayList<>();
-        spare = new ArrayList<>();
         filterFleet();
     }
 
     @SuppressLint("CheckResult")
     public void filterFleet() {
         RetrieveDataFromFireStore.carsSubject.subscribe(fleetModels -> {
-                    if (fleetModels != null)
-                        for (int i = 0; i < fleetModels.size(); i++) {
-                            if (fleetModels.get(i).getAssignedDriverId() == null)
-                                spare.add(fleetModels.get(i));
-                            else {
-                                if (fleetModels.get(i).type.equals("Car"))
-                                    cars.add(fleetModels.get(i));
-                                if (fleetModels.get(i).type.equals("Bus"))
-                                    buses.add(fleetModels.get(i));
+                                                                         if (fleetModels != null)
+                                                for (int i = 0; i < fleetModels.size(); i++) {
+                                                    if (fleetModels.get(i).getAssignedDriverId() == null)
+                                                        spare.add(fleetModels.get(i));
+                                                    else {
+                                                        if (fleetModels.get(i).type.equals("Car"))
+                                                            cars.add(fleetModels.get(i));
+                                                        if (fleetModels.get(i).type.equals("Bus"))
+                                                            buses.add(fleetModels.get(i));
 
-                            }
+                                                    }
 
                         }
 

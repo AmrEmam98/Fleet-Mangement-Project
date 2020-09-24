@@ -27,6 +27,6 @@ public class EditDriverAcitivty extends AppCompatActivity {
 
     public void editDriverOnClick(View view) {
         EditDataInFireStore.editDriver(driverModel);
-        Toast.makeText(getApplicationContext(), "Driver Updated", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Driver Updated", Toast.LENGTH_LONG).show();
     }
 }
