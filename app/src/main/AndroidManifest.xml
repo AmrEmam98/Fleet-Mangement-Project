@@ -18,7 +18,9 @@
         <activity android:name=".carsFunctionality.activites.EditCarActivity" />
         <activity android:name=".carsFunctionality.activites.CarHistoryActivity" />
         <activity android:name=".driverFunctionality.activities.DriversDetailsActivity" />
-        <activity android:name=".driverFunctionality.activities.DriversActivity" />
+        <activity android:name=".driverFunctionality.activities.DriversActivity"
+            android:label=""
+            />
         <activity android:name=".driverFunctionality.activities.AddDriverActivity" />
         <activity
             android:name=".carsFunctionality.activites.CarDetailsActivity">

@@ -20,6 +20,7 @@ import com.example.fleetmanagementsystem.carsFunctionality.fragment.CarsFragment
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.SpareFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.TruckFragment;
 import com.example.fleetmanagementsystem.dataFilter.FleetFilter;
+import com.example.fleetmanagementsystem.homeFunctionality.HomeActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -108,6 +109,8 @@ public class FleetActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-       moveTaskToBack(true);
+        super.onBackPressed();
+        startActivity(new Intent(FleetActivity.this, HomeActivity.class));
+        finishAffinity();
     }
 }

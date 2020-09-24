@@ -14,11 +14,13 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversBusFragment;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversFragment;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversSpareFragment;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversTruckFragment;
 import com.example.fleetmanagementsystem.dataFilter.DriverFilter;
+import com.example.fleetmanagementsystem.homeFunctionality.HomeActivity;
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.ArrayList;
@@ -106,5 +108,11 @@ public class DriversActivity extends AppCompatActivity {
         public CharSequence getPageTitle(int position) {
             return fragmentTitle.get(position);
         }
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(DriversActivity.this, HomeActivity.class));
+        finishAffinity();
     }
 }
