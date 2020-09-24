@@ -3,13 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".carsFunctionality.fragment.VehicleFragment">
+    tools:context=".carsFunctionality.fragment.TruckFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/vehicle_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFFFF"
+        android:background="#f1f2f6"
         tools:listitem="@layout/rec_item" />
 
 

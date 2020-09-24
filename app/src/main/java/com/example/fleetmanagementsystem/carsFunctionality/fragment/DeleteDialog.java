@@ -1,7 +1,10 @@
 package com.example.fleetmanagementsystem.carsFunctionality.fragment;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,14 +18,16 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import com.example.fleetmanagementsystem.FirebaseServices.DeleteDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
+import com.example.fleetmanagementsystem.splashScreens.LoadingActivity;
 
 public class DeleteDialog extends AppCompatDialogFragment {
 
+    Context mContext;
     Button deleteBtn, CanelBtn;
     FleetModel currentCar;
-    public DeleteDialog(FleetModel fleetModel){
-
+    public DeleteDialog(FleetModel fleetModel , Context context){
         currentCar=fleetModel;
+        this.mContext = context;
     }
 
     @NonNull

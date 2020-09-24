@@ -28,8 +28,6 @@ public class CarsFragment extends Fragment  {
     private FleetAdapter fleetAdapter;
     private RecyclerView carRecyclerView;
 
-    ImageView imageView;
-    TextView carName, carPlateNum, carChasisiNum;
 
     public CarsFragment() {
         // Required empty public constructor
@@ -47,12 +45,8 @@ public class CarsFragment extends Fragment  {
         super.onViewCreated(view, savedInstanceState);
 
         carRecyclerView = view.findViewById(R.id.car_recycler_view);
-        fleetAdapter = new FleetAdapter();
-//
-//        imageView = view.findViewById(R.id.car_image);
-//        carName = view.findViewById(R.id.driver_number);
-//        carChasisiNum = view.findViewById(R.id.chassisNum);
-//        carPlateNum = view.findViewById(R.id.plateNum);
+        fleetAdapter = new FleetAdapter(R.drawable.car_icon);
+
 
         carRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         carRecyclerView.setAdapter(fleetAdapter);

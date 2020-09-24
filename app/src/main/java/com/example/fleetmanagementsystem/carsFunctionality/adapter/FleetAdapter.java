@@ -26,6 +26,11 @@ import static com.example.fleetmanagementsystem.Constants.BundleKeys.FLEET_MODEL
 public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHolder> {
 
     private List<FleetModel> carsList = new ArrayList<>();
+    int vehicleImage;
+
+    public FleetAdapter(int vehicleImage) {
+        this.vehicleImage = vehicleImage;
+    }
 
     Context context;
     @SuppressLint("CheckResult")
@@ -56,19 +61,20 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
 
     public class FleetViewHolder extends RecyclerView.ViewHolder  {
         TextView carName, chasissNum, plateNum;
-        ImageView carImage;
+        ImageView vehicleImageView;
         CardView cardView;
 
         public FleetViewHolder(@NonNull View itemView) {
             super(itemView);
             carName = itemView.findViewById(R.id.driver_number);
-            carImage = itemView.findViewById(R.id.car_image);
+            vehicleImageView = itemView.findViewById(R.id.car_image);
             plateNum = itemView.findViewById(R.id.plateNum);
             chasissNum = itemView.findViewById(R.id.chassisNum);
             cardView=itemView.findViewById(R.id.card_item);
 
         }
         public void initData(FleetModel fleetModel, Context context){
+            vehicleImageView.setImageResource(vehicleImage);
             carName.setText(fleetModel.name);
             chasissNum.setText(fleetModel.chassisNum);
             plateNum.setText(fleetModel.plateNum);

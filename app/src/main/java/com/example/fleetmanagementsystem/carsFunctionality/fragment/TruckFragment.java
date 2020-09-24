@@ -18,13 +18,13 @@ import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
 import java.util.List;
 
-public class VehicleFragment extends Fragment  {
+public class TruckFragment extends Fragment  {
 
     private List<FleetModel> vehicleModel;
     private FleetAdapter fleetAdapter;
     private RecyclerView vehicleRecyclerView;
 
-    public VehicleFragment() {
+    public TruckFragment() {
         // Required empty public constructor
     }
 
@@ -32,14 +32,14 @@ public class VehicleFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_vehicle, container, false);
+        return inflater.inflate(R.layout.fragment_trucks, container, false);
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
         vehicleRecyclerView = view.findViewById(R.id.vehicle_recycler_view);
-        fleetAdapter = new FleetAdapter();
+        fleetAdapter = new FleetAdapter(R.drawable.truck_icon);
 
         vehicleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         vehicleRecyclerView.setAdapter(fleetAdapter);

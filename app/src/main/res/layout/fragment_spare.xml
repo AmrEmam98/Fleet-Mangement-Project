@@ -5,11 +5,12 @@
     android:layout_height="match_parent"
     tools:context=".carsFunctionality.fragment.SpareFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/spare_recycler_view"
         android:layout_width="match_parent"
-        android:background="#FFFFFF"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:background="#f1f2f6"
+        tools:listitem="@layout/rec_item" />
 
 </FrameLayout>

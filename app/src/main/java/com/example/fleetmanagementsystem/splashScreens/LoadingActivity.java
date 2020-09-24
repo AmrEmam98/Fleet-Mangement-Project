@@ -29,6 +29,7 @@ public class LoadingActivity extends AppCompatActivity {
                         progressBar.setVisibility(View.GONE);
                         Intent intent=new Intent(this, FleetActivity.class);
                         startActivity(intent);
+                        finishAffinity();
                     }
                 }
         );

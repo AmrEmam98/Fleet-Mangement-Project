@@ -17,7 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.CarsFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.SpareFragment;
-import com.example.fleetmanagementsystem.carsFunctionality.fragment.VehicleFragment;
+import com.example.fleetmanagementsystem.carsFunctionality.fragment.TruckFragment;
 import com.example.fleetmanagementsystem.dataFilter.FleetFilter;
 import com.google.android.material.tabs.TabLayout;
 
@@ -31,7 +31,7 @@ public class FleetActivity extends AppCompatActivity {
     private TabLayout tabLayout;
     private CarsFragment carsFragment;
     private SpareFragment spareFragment;
-    private VehicleFragment vehicleFragment;
+    private TruckFragment vehicleFragment;
     ProgressBar bar;
 
 
@@ -48,13 +48,13 @@ public class FleetActivity extends AppCompatActivity {
         /////////////////////////
         carsFragment = new CarsFragment();
         spareFragment = new SpareFragment();
-        vehicleFragment = new VehicleFragment();
+        vehicleFragment = new TruckFragment();
 
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
         viewPagerAdapter.addFragment(carsFragment , "Cars");
-        viewPagerAdapter.addFragment(vehicleFragment , "Vehicles");
+        viewPagerAdapter.addFragment(vehicleFragment , "Trucks");
         viewPagerAdapter.addFragment(spareFragment , "Spare");
         viewPager.setAdapter(viewPagerAdapter);
     }
@@ -105,4 +105,8 @@ public class FleetActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+       moveTaskToBack(true);
+    }
 }

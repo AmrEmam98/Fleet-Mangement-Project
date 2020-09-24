@@ -27,7 +27,7 @@ public class CarDetailsActivity extends AppCompatActivity {
     }
 
     public void openDeleteDialog(View view) {
-        DeleteDialog deleteDialog = new DeleteDialog(currentCar);
+        DeleteDialog deleteDialog = new DeleteDialog(currentCar , this);
         deleteDialog.show(getSupportFragmentManager() , "Delete Dialog");
 
     }
