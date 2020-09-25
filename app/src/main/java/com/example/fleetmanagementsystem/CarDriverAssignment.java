@@ -12,4 +12,19 @@ public class CarDriverAssignment {
         EditDataInFireStore.editDriver(driverModel);
         EditDataInFireStore.editFleet(fleetModel);
     }
+    public static void  unAssignDriver(DriverModel driverModel){
+
+      driverModel.setAssignedCarId(null);
+      EditDataInFireStore.editDriver(driverModel);
+    }
+    public static void  unAssignCar(FleetModel fleetModel){
+
+        fleetModel.setAssignedDriverId(null);
+        EditDataInFireStore.editFleet(fleetModel);
+    }
+    public static void  changeCarDriver(FleetModel fleetModel,DriverModel driverModel){
+        fleetModel.setAssignedDriverId(null);
+        EditDataInFireStore.editFleet(fleetModel);
+    }
+
 }

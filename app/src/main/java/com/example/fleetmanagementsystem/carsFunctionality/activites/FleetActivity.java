@@ -49,7 +49,7 @@ public class FleetActivity extends AppCompatActivity {
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
         viewPagerAdapter.addFragment(carsFragment, "Cars");
-        viewPagerAdapter.addFragment(vehicleFragment, "Trucks");
+        viewPagerAdapter.addFragment(vehicleFragment, "Buses");
         viewPagerAdapter.addFragment(spareFragment, "Spare");
         viewPager.setAdapter(viewPagerAdapter);
            }
@@ -69,8 +69,6 @@ public class FleetActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         Log.d("RESUME","Fleet Activity Resume");
-
-
         super.onResume();
     }
 

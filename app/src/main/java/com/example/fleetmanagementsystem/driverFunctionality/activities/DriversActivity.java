@@ -14,12 +14,11 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
+import com.example.fleetmanagementsystem.dataFilter.DriverFilter;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversBusFragment;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversFragment;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversSpareFragment;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversTruckFragment;
-import com.example.fleetmanagementsystem.dataFilter.DriverFilter;
 import com.example.fleetmanagementsystem.homeFunctionality.HomeActivity;
 import com.google.android.material.tabs.TabLayout;
 
@@ -72,7 +71,7 @@ public class DriversActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(driversFragment , "Cars");
         viewPagerAdapter.addFragment(driversBusFragment , "Bus");
         viewPagerAdapter.addFragment(driversTruckFragment , "Truck");
-        viewPagerAdapter.addFragment(driversSpareFragment , "Spare");
+        viewPagerAdapter.addFragment(driversSpareFragment , "Idle");
         viewPager.setAdapter(viewPagerAdapter);
 
     }

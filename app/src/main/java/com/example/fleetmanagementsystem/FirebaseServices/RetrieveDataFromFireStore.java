@@ -70,13 +70,13 @@ public class RetrieveDataFromFireStore {
                 );
     }
 
-    public static void retrieveDriverByID(DriverModel driverModel) {
+    public static void retrieveDriverByID(String driverID) {
         FirebaseFirestore.getInstance()
-                .collection(FireStoreCollectionsConstants.FLEET_PATH)
-                .document(driverModel.getDriverId())
+                .collection(FireStoreCollectionsConstants.DRIVER_PATH)
+                .document(driverID)
                 .get()
                 .addOnCompleteListener(task -> {
-                            singleDriverSubject.onNext(Objects.requireNonNull(task.getResult().toObject(DriverModel.class)));
+                            singleDriverSubject.onNext((task.getResult().toObject(DriverModel.class)));
                         }
                 );
     }

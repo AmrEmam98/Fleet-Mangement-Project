@@ -20,6 +20,8 @@ public class DeleteDataFromFireStore {
                 .delete().addOnCompleteListener(task->{
                  fleetDeletedSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
         });
+
+
     }
     public static void deleteDriver(DriverModel driverModel)
     {
