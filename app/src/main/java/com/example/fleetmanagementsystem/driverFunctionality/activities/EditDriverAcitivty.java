@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.fleetmanagementsystem.Constants.BundleKeys;
+import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.databinding.ActivityEditDriverAcitivtyBinding;
@@ -27,6 +28,7 @@ public class EditDriverAcitivty extends AppCompatActivity {
 
     public void editDriverOnClick(View view) {
         EditDataInFireStore.editDriver(driverModel);
+        DriversActivity.driverActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
         Toast.makeText(this, "Driver Updated", Toast.LENGTH_LONG).show();
     }
 }

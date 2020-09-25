@@ -11,11 +11,12 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.AddDataToFireStore;
 import com.example.fleetmanagementsystem.InputValidation;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.viewModels.AddCarViewModel;
+
+import static com.example.fleetmanagementsystem.Constants.ObserverStringResponse.SUCCESS_RESPONSE;
 
 public class AddCarActivity extends AppCompatActivity  {
 
@@ -38,15 +39,16 @@ public class AddCarActivity extends AppCompatActivity  {
         carTypeSpinner=findViewById(R.id.vehicleType_spinner);
         carColorEt =findViewById(R.id.et_addCarColor);
         carChassisNum=findViewById(R.id.et_chassisNum);
+        subscribe();
     }
 
     @SuppressLint("CheckResult")
     private void subscribe() {
         AddDataToFireStore.addCarSubject.subscribe(
                 result->{
-                    if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)) {
+                    if(result.equals(SUCCESS_RESPONSE)) {
                         Toast.makeText(this, "Vehicle Added Successfully", Toast.LENGTH_LONG).show();
-                      //  progressBar.setVisibility(View.GONE);
+                        FleetActivity.fleetActivityRefresher.onNext(SUCCESS_RESPONSE);
                         finish();
                     }
                     else

@@ -14,7 +14,9 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.fleetmanagementsystem.CarDriverAssignment;
+import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
@@ -48,13 +50,11 @@ public class AssignDialog extends AppCompatDialogFragment {
 
         assignBtn = view.findViewById(R.id.assign_btn);
 
-        assignBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                CarDriverAssignment.assign(currentFleet,currentDriver);
-                Toast.makeText(getContext() , "Driver added to your car" , Toast.LENGTH_LONG).show();
-                dismiss();
-            }
+        assignBtn.setOnClickListener(view1 -> {
+            CarDriverAssignment.assign(currentFleet,currentDriver);
+            Toast.makeText(getContext() , "Driver added to your car" , Toast.LENGTH_LONG).show();
+            FleetActivity.fleetActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+            dismiss();
         });
 
         return builder.create();

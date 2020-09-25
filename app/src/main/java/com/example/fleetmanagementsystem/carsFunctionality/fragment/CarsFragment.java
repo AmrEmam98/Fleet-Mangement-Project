@@ -55,12 +55,12 @@ public class CarsFragment extends Fragment  {
     public void onResume() {
 
         Log.d("RESUME","Cars Fragment Resume");
+        getCars();
         super.onResume();
     }
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        getCars();
         super.onActivityCreated(savedInstanceState);
 
     }

@@ -25,9 +25,11 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.reactivex.subjects.PublishSubject;
+
 
 public class DriversActivity extends AppCompatActivity {
-
+    public static PublishSubject<String>driverActivityRefresher=PublishSubject.create();
     public DriverFilter driverFilter;
     private Toolbar toolbar;
     private ViewPager viewPager;

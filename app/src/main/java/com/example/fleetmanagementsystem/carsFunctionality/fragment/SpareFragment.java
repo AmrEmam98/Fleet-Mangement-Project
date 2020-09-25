@@ -54,7 +54,6 @@ public class SpareFragment extends Fragment {
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        getCars();
 
         super.onActivityCreated(savedInstanceState);
 
@@ -62,6 +61,7 @@ public class SpareFragment extends Fragment {
 
     @Override
     public void onResume() {
+        getCars();
         super.onResume();
     }
 

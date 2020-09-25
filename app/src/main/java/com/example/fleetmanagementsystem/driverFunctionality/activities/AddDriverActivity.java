@@ -37,6 +37,9 @@ public class AddDriverActivity extends AppCompatActivity {
                 result->{
                     if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)){
                         Toast.makeText(this, "Driver Added Successfully", Toast.LENGTH_LONG).show();
+                        DriversActivity.driverActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+                        finish();
+
                     }
                     else{
                         Toast.makeText(this, "Error Adding Driver", Toast.LENGTH_LONG).show();

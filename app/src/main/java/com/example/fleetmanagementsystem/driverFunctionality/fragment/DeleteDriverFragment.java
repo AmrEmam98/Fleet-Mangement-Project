@@ -3,21 +3,20 @@ package com.example.fleetmanagementsystem.driverFunctionality.fragment;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
-import androidx.cardview.widget.CardView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.Toast;
-
+import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.DeleteDataFromFireStore;
-import com.example.fleetmanagementsystem.driverFunctionality.models.*;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversActivity;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 
 public class DeleteDriverFragment extends AppCompatDialogFragment {
@@ -53,6 +52,7 @@ public class DeleteDriverFragment extends AppCompatDialogFragment {
 
                 DeleteDataFromFireStore.deleteDriver(driverModel);
                 Toast.makeText(getContext() , "Done: Driver Deleted" , Toast.LENGTH_LONG).show();
+                DriversActivity.driverActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
                 dismiss();
             }
         });

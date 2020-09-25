@@ -26,8 +26,10 @@ import com.google.android.material.tabs.TabLayout;
 import java.util.ArrayList;
 import java.util.List;
 
-public class FleetActivity extends AppCompatActivity {
+import io.reactivex.subjects.PublishSubject;
 
+public class FleetActivity extends AppCompatActivity {
+    public static PublishSubject<String> fleetActivityRefresher=PublishSubject.create();
     public FleetFilter fleetFilter;
     ProgressBar bar;
 
@@ -37,7 +39,6 @@ public class FleetActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fleet);
         //////////////////////////
-        fleetFilter=new FleetFilter();
         ViewPager viewPager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
         /////////////////////////
@@ -68,6 +69,7 @@ public class FleetActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
+        fleetFilter=new FleetFilter();
         Log.d("RESUME","Fleet Activity Resume");
         super.onResume();
     }

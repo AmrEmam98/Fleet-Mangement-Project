@@ -9,11 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.fleetmanagementsystem.Constants.BundleKeys;
-import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.databinding.ActivityEditCarBinding;
+
+import static com.example.fleetmanagementsystem.Constants.ObserverStringResponse.SUCCESS_RESPONSE;
 
 public class EditCarActivity extends AppCompatActivity {
     FleetModel currentCar;
@@ -27,8 +28,9 @@ public class EditCarActivity extends AppCompatActivity {
         editCarBinding.setFleeModel(currentCar);
         EditDataInFireStore.fleetEditedSubject.subscribe(
                 result->{
-                    if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)){
+                    if(result.equals(SUCCESS_RESPONSE)){
                         Toast.makeText(this,"Fleet Edited",Toast.LENGTH_LONG).show();
+                        FleetActivity.fleetActivityRefresher.onNext(SUCCESS_RESPONSE);
                     }
                 }
         );

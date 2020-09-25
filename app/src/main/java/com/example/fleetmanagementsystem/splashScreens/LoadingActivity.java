@@ -3,7 +3,6 @@ package com.example.fleetmanagementsystem.splashScreens;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -23,43 +22,57 @@ public class LoadingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loading);
         String type = getIntent().getStringExtra(BundleKeys.ACTIVITY_TYPE);
+        carsSubscribe();
+        driverSubscribe();
         progressBar=findViewById(R.id.loadingProgressBar);
         if(!RetrieveDataFromFireStore.retrieveDriversCalled)
             RetrieveDataFromFireStore.retrieveAllDrivers();
         if(!RetrieveDataFromFireStore.retrieveCarsCalled)
         RetrieveDataFromFireStore.retrieveAllCars();
-        if(type.equals(BundleKeys.CAR_ACTIVITY_TYPE))
-        carsSubscribe();
-        if(type.equals(BundleKeys.DRIVER_ACTIVITY_TYPE))
-         driverSubscribe();
+        if(type.equals(BundleKeys.CAR_ACTIVITY_TYPE)) {
+
+                openFleetActivity();
+        }
+        if(type.equals(BundleKeys.DRIVER_ACTIVITY_TYPE)) {
+                openDriverActivity();
+        }
 
     }
 
     @SuppressLint("CheckResult")
     private void carsSubscribe() {
-        RetrieveDataFromFireStore.carsCompleteSubject.subscribe(
+        FleetActivity.fleetActivityRefresher.subscribe(
                 result->{
                     if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)){
-                        progressBar.setVisibility(View.GONE);
-                        Intent intent=new Intent(this, FleetActivity.class);
-                        startActivity(intent);
-                        finishAffinity();
+                        openFleetActivity();
                     }
                 }
         );
     }
 
+
     @SuppressLint("CheckResult")
     private void driverSubscribe() {
-        RetrieveDataFromFireStore.driversCompleteSubject.subscribe(
+        DriversActivity.driverActivityRefresher.subscribe(
                 result->{
                     if(result.equals(ObserverStringResponse.SUCCESS_RESPONSE)){
-                        progressBar.setVisibility(View.GONE);
-                        Intent intent=new Intent(this, DriversActivity.class);
-                        startActivity(intent);
-                        finishAffinity();
+                        openDriverActivity();
                     }
                 }
         );
+
+    }
+
+    private void openFleetActivity() {
+        Intent intent=new Intent(this, FleetActivity.class);
+        startActivity(intent);
+        finishAffinity();
+    }
+
+
+    private void openDriverActivity() {
+        Intent intent=new Intent(this, DriversActivity.class);
+        startActivity(intent);
+        finishAffinity();
     }
 }

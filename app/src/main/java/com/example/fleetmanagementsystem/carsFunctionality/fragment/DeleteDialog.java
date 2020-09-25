@@ -13,8 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.DeleteDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
 public class DeleteDialog extends AppCompatDialogFragment {
@@ -43,6 +45,7 @@ public class DeleteDialog extends AppCompatDialogFragment {
         deleteBtn.setOnClickListener(view1 -> {
             DeleteDataFromFireStore.deleteFleet(currentCar);
             Toast.makeText(getContext() , "Done: Car Deleted" , Toast.LENGTH_LONG).show();
+            FleetActivity.fleetActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
             dismiss();
         });
 
