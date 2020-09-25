@@ -3,6 +3,8 @@ package com.example.fleetmanagementsystem.carsFunctionality.models;
 import com.google.firebase.firestore.DocumentId;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class FleetModel implements Serializable {
 
@@ -10,6 +12,7 @@ public class FleetModel implements Serializable {
     @DocumentId
     public String carID;
     public String name,model,assignedDriverId,plateNum,chassisNum,carColor,type;
+    public List<CarHistoryModel>carHistoryList=new ArrayList<>();
 
 
     public FleetModel() {
@@ -75,6 +78,14 @@ public class FleetModel implements Serializable {
 
     public String getCarColor() {
         return carColor;
+    }
+
+    public List<CarHistoryModel> getCarHistoryList() {
+        return carHistoryList;
+    }
+
+    public void setCarHistoryList(List<CarHistoryModel> carHistoryList) {
+        this.carHistoryList = carHistoryList;
     }
 
     public void setCarColor(String carColor) {

@@ -33,8 +33,6 @@ public class RetrieveDataFromFireStore {
                                 fleetModels.add(documentSnapshot.toObject(FleetModel.class));
                             }
                             carsSubject.onNext(fleetModels);
-
-
                             retrieveCarsCalled = true;
 
                         }
@@ -51,7 +49,6 @@ public class RetrieveDataFromFireStore {
                         driverModels.add(documentSnapshot.toObject(DriverModel.class));
                     }
                     driverSubject.onNext(driverModels);
-
                     retrieveDriversCalled = true;
                 });
 

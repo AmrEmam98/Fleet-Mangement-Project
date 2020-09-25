@@ -80,6 +80,9 @@ public class CarDetailsActivity extends AppCompatActivity {
 
     public void showHistory(View view) {
         Intent historyIntent = new Intent(this , CarHistoryActivity.class);
+        Bundle bundle=new Bundle();
+        bundle.putSerializable(FLEET_MODEL_KEY,currentCar);
+        historyIntent.putExtras(bundle);
         startActivity(historyIntent);
     }
 

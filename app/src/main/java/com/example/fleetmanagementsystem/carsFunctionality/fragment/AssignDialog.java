@@ -17,6 +17,7 @@ import com.example.fleetmanagementsystem.CarDriverAssignment;
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
+import com.example.fleetmanagementsystem.carsFunctionality.models.CarHistoryModel;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
@@ -51,6 +52,8 @@ public class AssignDialog extends AppCompatDialogFragment {
         assignBtn = view.findViewById(R.id.assign_btn);
 
         assignBtn.setOnClickListener(view1 -> {
+            CarHistoryModel carHistoryModel=new CarHistoryModel(currentDriver.getDriverId(),currentDriver.getName());
+            currentFleet.carHistoryList.add(carHistoryModel);
             CarDriverAssignment.assign(currentFleet,currentDriver);
             Toast.makeText(getContext() , "Driver added to your car" , Toast.LENGTH_LONG).show();
             FleetActivity.fleetActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
