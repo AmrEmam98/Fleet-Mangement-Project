@@ -52,7 +52,7 @@
                     android:textSize="22dp"
                     android:textStyle="bold" />
 
-                <androidx.appcompat.widget.SearchView
+                <SearchView
                     android:id="@+id/carsSearch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

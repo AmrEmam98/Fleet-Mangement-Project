@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ProgressBar;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -16,6 +18,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.adapter.FleetAdapter;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.CarsFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.SpareFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.TruckFragment;
@@ -30,7 +33,13 @@ public class FleetActivity extends AppCompatActivity {
 
     public FleetFilter fleetFilter;
     ProgressBar bar;
+    private ListenFromActivity activityListener;
+    private SearchView searchView;
+    String searchText;
 
+    public void setActivityListener(ListenFromActivity activityListener) {
+        this.activityListener = activityListener;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,8 +47,10 @@ public class FleetActivity extends AppCompatActivity {
         setContentView(R.layout.activity_fleet);
         //////////////////////////
         fleetFilter=new FleetFilter();
+
         ViewPager viewPager = findViewById(R.id.view_pager);
         TabLayout tabLayout = findViewById(R.id.tab_layout);
+        searchView = findViewById(R.id.carsSearch);
         /////////////////////////
         CarsFragment carsFragment = new CarsFragment();
         SpareFragment spareFragment = new SpareFragment();
@@ -52,7 +63,22 @@ public class FleetActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(vehicleFragment, "Buses");
         viewPagerAdapter.addFragment(spareFragment, "Spare");
         viewPager.setAdapter(viewPagerAdapter);
-           }
+
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String s) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s) {
+                searchText = s;
+                return false;
+            }
+        });
+
+        }
 
     public void onAddFabClicked(View view) {
 
@@ -110,5 +136,13 @@ public class FleetActivity extends AppCompatActivity {
         super.onBackPressed();
         startActivity(new Intent(FleetActivity.this, HomeActivity.class));
         finishAffinity();
+    }
+
+    @Override
+    public void onUserInteraction() {
+        super.onUserInteraction();
+        if (null != activityListener) {
+            activityListener.doSearchInFragment(searchText);
+        }
     }
 }

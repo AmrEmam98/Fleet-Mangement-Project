@@ -13,13 +13,14 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.ListenFromActivity;
 import com.example.fleetmanagementsystem.carsFunctionality.adapter.FleetAdapter;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
 import java.util.List;
 
 
-public class SpareFragment extends Fragment {
+public class SpareFragment extends Fragment implements ListenFromActivity {
 
     private List<FleetModel> carsList;
     private FleetAdapter fleetAdapter;
@@ -29,6 +30,11 @@ public class SpareFragment extends Fragment {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ((FleetActivity)getActivity()).setActivityListener(SpareFragment.this);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -60,14 +66,14 @@ public class SpareFragment extends Fragment {
 
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     public void getCars() {
         FleetActivity fleetActivity=(FleetActivity)getActivity();
         this.carsList=fleetActivity.fleetFilter.getSpare();
         fleetAdapter.setList(carsList);
+    }
+
+    @Override
+    public void doSearchInFragment(String searchKey) {
+        fleetAdapter.getFilter().filter(searchKey);
     }
 }

@@ -7,7 +7,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -23,10 +26,12 @@ import java.util.List;
 
 import static com.example.fleetmanagementsystem.Constants.BundleKeys.FLEET_MODEL_KEY;
 
-public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHolder> {
+public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHolder> implements Filterable {
 
     private List<FleetModel> carsList = new ArrayList<>();
+    private List<FleetModel> carsListFull;
     int vehicleImage;
+
 
     public FleetAdapter(int vehicleImage) {
         this.vehicleImage = vehicleImage;
@@ -56,8 +61,11 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
     public void setList(List<FleetModel> carsList) {
         this.carsList.clear();
         this.carsList = carsList;
+        carsListFull = new ArrayList<>(carsList);
         notifyDataSetChanged();
     }
+
+
 
     public class FleetViewHolder extends RecyclerView.ViewHolder  {
         TextView carName, chasissNum, plateNum;
@@ -90,8 +98,39 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
             });
         }
 
-
     }
+
+    @Override
+    public Filter getFilter() {
+        return vehicleFilter;
+    }
+
+    private Filter vehicleFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<FleetModel> filteredList = new ArrayList<>();
+            if (charSequence==null || charSequence.length() == 0){
+                filteredList.addAll(carsListFull);
+            }else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for (FleetModel item: carsListFull){
+                    if (item.getPlateNum().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            carsList.clear();
+            carsList.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
 
 
 }
