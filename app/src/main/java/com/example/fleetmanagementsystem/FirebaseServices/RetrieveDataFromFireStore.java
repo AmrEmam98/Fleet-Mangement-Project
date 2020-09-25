@@ -59,10 +59,10 @@ public class RetrieveDataFromFireStore {
 
     }
 
-    public static void retrieveFleetByID(FleetModel fleetModel) {
+    public static void retrieveFleetByID(String fleetId) {
         FirebaseFirestore.getInstance()
                 .collection(FireStoreCollectionsConstants.FLEET_PATH)
-                .document(fleetModel.carID)
+                .document(fleetId)
                 .get()
                 .addOnCompleteListener(task -> {
                             singleCarSubject.onNext(Objects.requireNonNull(task.getResult().toObject(FleetModel.class)));

@@ -1,6 +1,9 @@
 package com.example.fleetmanagementsystem;
 
+import android.annotation.SuppressLint;
+
 import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
+import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
@@ -12,19 +15,31 @@ public class CarDriverAssignment {
         EditDataInFireStore.editDriver(driverModel);
         EditDataInFireStore.editFleet(fleetModel);
     }
-    public static void  unAssignDriver(DriverModel driverModel){
+    @SuppressLint("CheckResult")
+    public static void  unAssignDriver(String driverID){
+        if(driverID==null)
+            return;
+        RetrieveDataFromFireStore.retrieveDriverByID(driverID);
+        RetrieveDataFromFireStore.singleDriverSubject.subscribe(
+                driverModel -> {
+                    driverModel.setAssignedCarId(null);
+                    EditDataInFireStore.editDriver(driverModel);
+                }
+        );
+    }
+    @SuppressLint("CheckResult")
+    public static void  unAssignCar(String carID){
+        if(carID==null)
+            return;
+        RetrieveDataFromFireStore.retrieveFleetByID(carID);
+        RetrieveDataFromFireStore.singleCarSubject.subscribe(
+                fleetModel -> {
+                    fleetModel.setAssignedDriverId(null);
+                    EditDataInFireStore.editFleet(fleetModel);
+                }
+        );
 
-      driverModel.setAssignedCarId(null);
-      EditDataInFireStore.editDriver(driverModel);
     }
-    public static void  unAssignCar(FleetModel fleetModel){
 
-        fleetModel.setAssignedDriverId(null);
-        EditDataInFireStore.editFleet(fleetModel);
-    }
-    public static void  changeCarDriver(FleetModel fleetModel,DriverModel driverModel){
-        fleetModel.setAssignedDriverId(null);
-        EditDataInFireStore.editFleet(fleetModel);
-    }
 
 }

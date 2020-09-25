@@ -16,24 +16,23 @@ import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.activites.AssignActivity;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.AssignDialog;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
+import com.example.fleetmanagementsystem.dataFilter.DriverFilter;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 import java.util.List;
 
 public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignViewHolder> {
 
-
+    DriverFilter driverFilter;
     FleetModel currentFleet;
     List<DriverModel>driverModels;
     public AssignAdapter(Activity context, FleetModel currentFleet) {
         this.context=context;
         this.currentFleet=currentFleet;
-        if(RetrieveDataFromFireStore.retrieveDriversCalled)
-        RetrieveDataFromFireStore.driverSubject.subscribe(
-                driverModels1 -> {
-                    this.driverModels=driverModels1;
-                }
-        );
+        if(RetrieveDataFromFireStore.retrieveDriversCalled) {
+            driverFilter=new DriverFilter();
+            this.driverModels=driverFilter.getSpare();
+        }
 
 
     }
