@@ -24,7 +24,7 @@ import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignViewHolder> {
+public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignViewHolder> implements Filterable {
     // implements Filterable
 
     DriverFilter driverFilter;
@@ -38,6 +38,8 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
         if(RetrieveDataFromFireStore.retrieveDriversCalled) {
             driverFilter=new DriverFilter();
             this.driverModels=driverFilter.getSpare();
+            driverModelsFull = new ArrayList<>(driverModels);
+
         }
 
 
@@ -85,7 +87,7 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
             });
         }
     }
-/*
+
     @Override
     public Filter getFilter() {
         return searchdriverFilter;
@@ -118,6 +120,6 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
         }
     };
 
- */
+
 
 }

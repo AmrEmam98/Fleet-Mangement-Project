@@ -41,7 +41,7 @@ public class AssignActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-               // assignAdapter.getFilter().filter(newText);
+               assignAdapter.getFilter().filter(newText);
                 return false;
             }
         });

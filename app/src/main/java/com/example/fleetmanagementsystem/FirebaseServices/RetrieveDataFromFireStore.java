@@ -11,18 +11,18 @@ import java.util.List;
 import java.util.Objects;
 
 import io.reactivex.subjects.BehaviorSubject;
+import io.reactivex.subjects.PublishSubject;
 
 
 public class RetrieveDataFromFireStore {
 
     public static BehaviorSubject<List<FleetModel>> carsSubject = BehaviorSubject.create();
     public static BehaviorSubject<List<DriverModel>> driverSubject = BehaviorSubject.create();
-
-
-    public static BehaviorSubject<FleetModel> singleCarSubject = BehaviorSubject.create();
-    public static BehaviorSubject<DriverModel> singleDriverSubject = BehaviorSubject.create();
+    public static PublishSubject<FleetModel> singleCarSubject = PublishSubject.create();
+    public static PublishSubject<DriverModel> singleDriverSubject = PublishSubject.create();
     public static boolean retrieveCarsCalled = false;
     public static boolean retrieveDriversCalled = false;
+
 
     public static void retrieveAllCars() {
         FirebaseFirestore.getInstance().collection("Cars")

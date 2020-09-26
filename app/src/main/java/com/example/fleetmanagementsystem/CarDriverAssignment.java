@@ -34,10 +34,11 @@ public class CarDriverAssignment {
         RetrieveDataFromFireStore.retrieveFleetByID(carID);
         RetrieveDataFromFireStore.singleCarSubject.subscribe(
                 fleetModel -> {
-                    fleetModel.setAssignedDriverId(null);
-                    fleetModel.carHistoryList.get(fleetModel.carHistoryList.size()-1).setEndDate();
-                    EditDataInFireStore.editFleet(fleetModel);
-                }
+            fleetModel.setAssignedDriverId(null);
+            int lastIndex=fleetModel.carHistoryList.size()-1;
+            fleetModel.carHistoryList.get(lastIndex).setEndDate();
+            EditDataInFireStore.editFleet(fleetModel);
+        }
         );
 
     }

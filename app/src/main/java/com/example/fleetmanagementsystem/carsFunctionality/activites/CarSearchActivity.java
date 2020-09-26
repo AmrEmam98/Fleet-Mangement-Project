@@ -1,20 +1,18 @@
 package com.example.fleetmanagementsystem.carsFunctionality.activites;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.adapter.FleetAdapter;
-import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
-
-import java.util.List;
 
 public class CarSearchActivity extends AppCompatActivity {
 
@@ -22,6 +20,7 @@ public class CarSearchActivity extends AppCompatActivity {
     private RecyclerView searchRecyclerView;
     private EditText searchEt;
 
+    @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
