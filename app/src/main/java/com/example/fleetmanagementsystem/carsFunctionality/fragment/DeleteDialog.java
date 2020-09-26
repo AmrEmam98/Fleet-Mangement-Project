@@ -22,7 +22,7 @@ import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 public class DeleteDialog extends AppCompatDialogFragment {
 
     Context mContext;
-    Button deleteBtn, CanelBtn;
+    Button deleteBtn, canelBtn;
     FleetModel currentCar;
     public DeleteDialog(FleetModel fleetModel , Context context){
         currentCar=fleetModel;
@@ -36,16 +36,22 @@ public class DeleteDialog extends AppCompatDialogFragment {
 
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_delete, null);
+
         builder.setView(view);
 
         setCancelable(false);
 
         deleteBtn = view.findViewById(R.id.delete_btn);
+        canelBtn = view.findViewById(R.id.cancel_btn_delete);
 
         deleteBtn.setOnClickListener(view1 -> {
             DeleteDataFromFireStore.deleteFleet(currentCar);
             Toast.makeText(getContext() , "Done: Car Deleted" , Toast.LENGTH_LONG).show();
             FleetActivity.fleetActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+            dismiss();
+        });
+
+        canelBtn.setOnClickListener(cancel -> {
             dismiss();
         });
 

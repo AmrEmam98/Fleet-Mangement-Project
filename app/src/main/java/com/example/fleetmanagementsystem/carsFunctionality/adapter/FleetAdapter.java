@@ -66,7 +66,6 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
     }
 
 
-
     public class FleetViewHolder extends RecyclerView.ViewHolder  {
         TextView carName, chasissNum, plateNum;
         ImageView vehicleImageView;
@@ -92,6 +91,7 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
                     Intent intent = new Intent(context, CarDetailsActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable(FLEET_MODEL_KEY, fleetModel);
+                    bundle.putInt("CAR_IMAGE" , vehicleImage);
                     intent.putExtras(bundle);
                     context.startActivity(intent);
                 }

@@ -24,6 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginLeft="10dp"
+            android:onClick="finishAssignActivity"
             android:src="@drawable/arrow_back" />
 
         <TextView
@@ -37,6 +38,7 @@
             android:textStyle="bold" />
 
         <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_icon_assign"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"

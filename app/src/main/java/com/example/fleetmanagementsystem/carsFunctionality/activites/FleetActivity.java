@@ -74,6 +74,7 @@ public class FleetActivity extends AppCompatActivity {
         super.onResume();
     }
 
+
     private class ViewPagerAdapter extends FragmentPagerAdapter {
 
         private List<Fragment> fragments = new ArrayList<>();
@@ -113,4 +114,15 @@ public class FleetActivity extends AppCompatActivity {
         startActivity(new Intent(FleetActivity.this, HomeActivity.class));
         finishAffinity();
     }
+
+    public void openSearchActivity(View view) {
+        startActivity(new Intent(FleetActivity.this, CarSearchActivity.class));
+    }
+
+    public void finishFleetActivity(View view) {
+        startActivity(new Intent(FleetActivity.this, HomeActivity.class));
+        finishAffinity();
+    }
+
+
 }

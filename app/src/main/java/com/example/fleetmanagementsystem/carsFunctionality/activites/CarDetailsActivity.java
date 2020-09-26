@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -26,15 +27,19 @@ public class CarDetailsActivity extends AppCompatActivity {
     FleetModel currentCar=new FleetModel();
     TextView driverNameTextView;
     CardView cardView;
+    ImageView vehicleImage;
     @SuppressLint("CheckResult")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
        // setContentView(R.layout.activity_car_details);
         currentCar=(FleetModel) getIntent().getExtras().getSerializable(FLEET_MODEL_KEY);
+
         ActivityCarDetailsBinding binding= DataBindingUtil.setContentView(this,R.layout.activity_car_details);
         driverNameTextView=findViewById(R.id.driver_name_details);
         cardView=findViewById(R.id.driver_cardView);
+        vehicleImage = findViewById(R.id.details_image);
+        vehicleImage.setImageResource(getIntent().getExtras().getInt("CAR_IMAGE"));
         binding.setFleeModel(currentCar);
        if(currentCar.getAssignedDriverId()!=null){
        RetrieveDataFromFireStore.retrieveDriverByID(currentCar.assignedDriverId);
@@ -99,5 +104,9 @@ public class CarDetailsActivity extends AppCompatActivity {
         assignIntent.putExtras(bundle);
         startActivity(assignIntent);
 
+    }
+
+    public void finishDetailsActivity(View view) {
+        finish();
     }
 }

@@ -5,6 +5,8 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,13 +21,17 @@ import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.dataFilter.DriverFilter;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignViewHolder> {
+    // implements Filterable
 
     DriverFilter driverFilter;
     FleetModel currentFleet;
     List<DriverModel>driverModels;
+    List<DriverModel> driverModelsFull;
+
     public AssignAdapter(Activity context, FleetModel currentFleet) {
         this.context=context;
         this.currentFleet=currentFleet;
@@ -79,5 +85,39 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
             });
         }
     }
+/*
+    @Override
+    public Filter getFilter() {
+        return searchdriverFilter;
+    }
+
+    private Filter searchdriverFilter = new Filter() {
+        @Override
+        protected FilterResults performFiltering(CharSequence charSequence) {
+            List<DriverModel> filteredList = new ArrayList<>();
+            if (charSequence==null || charSequence.length() == 0){
+                filteredList.addAll(driverModelsFull);
+            }else {
+                String filterPattern = charSequence.toString().toLowerCase().trim();
+                for (DriverModel item: driverModelsFull){
+                    if (item.getName().toLowerCase().contains(filterPattern)){
+                        filteredList.add(item);
+                    }
+                }
+            }
+            FilterResults results = new FilterResults();
+            results.values = filteredList;
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+            driverModels.clear();
+                driverModels.addAll((List) filterResults.values);
+            notifyDataSetChanged();
+        }
+    };
+
+ */
 
 }
