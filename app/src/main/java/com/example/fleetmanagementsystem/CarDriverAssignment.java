@@ -42,6 +42,16 @@ public class CarDriverAssignment {
         );
 
     }
+    public static void unAssign(FleetModel fleetModel,DriverModel driverModel){
+
+        fleetModel.setAssignedDriverId(null);
+        driverModel.setAssignedCarId(null);
+        int lastIndex=fleetModel.carHistoryList.size()-1;
+        fleetModel.carHistoryList.get(lastIndex).setEndDate();
+        EditDataInFireStore.editFleet(fleetModel);
+        EditDataInFireStore.editDriver(driverModel);
+
+    }
 
 
 }

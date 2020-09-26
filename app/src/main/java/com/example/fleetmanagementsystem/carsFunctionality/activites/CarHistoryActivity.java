@@ -1,6 +1,7 @@
 package com.example.fleetmanagementsystem.carsFunctionality.activites;
 
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -27,5 +28,9 @@ public class CarHistoryActivity extends AppCompatActivity {
         historyAdapter.setList(fleetModel.carHistoryList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(historyAdapter);
+    }
+
+    public void finishHistoryActivity(View view) {
+        finish();
     }
 }

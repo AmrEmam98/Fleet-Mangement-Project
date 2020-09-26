@@ -45,4 +45,7 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra(BundleKeys.ACTIVITY_TYPE,BundleKeys.CAR_ACTIVITY_TYPE);
         startActivity(intent);
     }
+    //TODO
+//     FirebaseAuth.getInstance().signOut();
+    //open login screen
 }
