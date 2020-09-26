@@ -5,19 +5,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
+
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
-import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
+import com.example.fleetmanagementsystem.carsFunctionality.models.CarHistoryModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.RecyclerView;
-
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
 
-    private List<DriverModel> driverList = new ArrayList<>();
+    private List<CarHistoryModel> carHistoryModelList = new ArrayList<>();
 
     @NonNull
     @Override
@@ -27,18 +26,16 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
 
     @Override
     public void onBindViewHolder(@NonNull HistoryViewHolder holder, int position) {
-            holder.driver.setText("Driver Name");
-            holder.startDate.setText("Start Date: 15/10/2017");
-            holder.endDate.setText("End Date: 15/7/2020");
+          holder.initData(carHistoryModelList.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return 15;
+        return carHistoryModelList.size();
     }
 
-    public void setList(List<DriverModel> driverList) {
-        this.driverList = driverList;
+    public void setList(List<CarHistoryModel> carHistoryModels) {
+        this.carHistoryModelList = carHistoryModels;
         notifyDataSetChanged();
     }
 
@@ -51,6 +48,11 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
             startDate = itemView.findViewById(R.id.history_start);
             endDate = itemView.findViewById(R.id.history_end);
 
+        }
+        public void initData(CarHistoryModel carHistoryModel){
+            driver.setText(carHistoryModel.getDriverName());
+            startDate.setText(carHistoryModel.getStartDate());
+            endDate.setText(carHistoryModel.getEndDate());
         }
     }
 }

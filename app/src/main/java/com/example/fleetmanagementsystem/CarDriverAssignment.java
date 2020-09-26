@@ -35,6 +35,7 @@ public class CarDriverAssignment {
         RetrieveDataFromFireStore.singleCarSubject.subscribe(
                 fleetModel -> {
                     fleetModel.setAssignedDriverId(null);
+                    fleetModel.carHistoryList.get(fleetModel.carHistoryList.size()-1).setEndDate();
                     EditDataInFireStore.editFleet(fleetModel);
                 }
         );
