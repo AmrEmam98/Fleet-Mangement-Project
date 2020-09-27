@@ -23,6 +23,8 @@ import com.example.fleetmanagementsystem.databinding.ActivityCarDetailsBinding;
 import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversDetailsActivity;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
+import io.reactivex.functions.Consumer;
+
 import static com.example.fleetmanagementsystem.Constants.BundleKeys.FLEET_MODEL_KEY;
 import static com.example.fleetmanagementsystem.Constants.ObserverStringResponse.SUCCESS_RESPONSE;
 
@@ -30,10 +32,12 @@ public class CarDetailsActivity extends AppCompatActivity {
 
     FleetModel currentCar=new FleetModel();
     DriverModel currentDriver=new DriverModel();
+
     TextView driverNameTextView;
     CardView cardView;
     ImageView vehicleImage;
     Button assignBtn;
+
     boolean isAssigned=false;
     @SuppressLint("CheckResult")
     @Override
@@ -43,30 +47,37 @@ public class CarDetailsActivity extends AppCompatActivity {
         currentCar=(FleetModel) getIntent().getExtras().getSerializable(FLEET_MODEL_KEY);
 
         ActivityCarDetailsBinding binding= DataBindingUtil.setContentView(this,R.layout.activity_car_details);
+
         driverNameTextView=findViewById(R.id.driver_name_details);
         cardView=findViewById(R.id.driver_cardView);
         vehicleImage = findViewById(R.id.details_image);
+        assignBtn=findViewById(R.id.assignDriver_btn);
+
         isAssigned=!(currentCar.assignedDriverId==null);
         String buttonText=isAssigned?"un Assign Driver":"Assign New Driver";
-        assignBtn=findViewById(R.id.assignDriver_btn);
         assignBtn.setText(buttonText);
         vehicleImage.setImageResource(getIntent().getExtras().getInt("CAR_IMAGE"));
+
         binding.setFleeModel(currentCar);
+
        if(currentCar.getAssignedDriverId()!=null){
        RetrieveDataFromFireStore.retrieveDriverByID(currentCar.assignedDriverId);
        RetrieveDataFromFireStore.singleDriverSubject.subscribe(
-               driverModel->{
-                   currentDriver=driverModel;
-                   driverNameTextView.setText(driverModel.getName());
-                   cardView.setOnClickListener(
-                           view -> {
-                               Intent intent=new Intent(this, DriversDetailsActivity.class);
-                               Bundle bundle=new Bundle();
-                               bundle.putSerializable(BundleKeys.DRIVER_MODEL_KEY,driverModel);
-                               intent.putExtras(bundle);
-                               startActivity(intent);
-                           }
-                   );
+               new Consumer<DriverModel>() {
+                   @Override
+                   public void accept(DriverModel driverModel) throws Exception {
+                       currentDriver = driverModel;
+                       driverNameTextView.setText(driverModel.getName());
+                       cardView.setOnClickListener(
+                               view -> {
+                                   Intent intent = new Intent(CarDetailsActivity.this, DriversDetailsActivity.class);
+                                   Bundle bundle = new Bundle();
+                                   bundle.putSerializable(BundleKeys.DRIVER_MODEL_KEY, driverModel);
+                                   intent.putExtras(bundle);
+                                   CarDetailsActivity.this.startActivity(intent);
+                               }
+                       );
+                   }
                }
        );
        }
@@ -115,7 +126,7 @@ public class CarDetailsActivity extends AppCompatActivity {
         if(!isAssigned)
         openAssignActivity();
         else{
-            CarDriverAssignment.unAssign(currentCar,currentDriver);
+            CarDriverAssignment.unAssign(currentCar,currentDriver,"Car");
             FleetActivity.fleetActivityRefresher.onNext(SUCCESS_RESPONSE);
 
         }

@@ -32,10 +32,10 @@ public class AssignDialog extends AppCompatDialogFragment {
 //        AssignDialog frag = new AssignDialog();
 //        return frag;
 //    }
+
     public  AssignDialog(FleetModel currentCar, DriverModel currentDriver){
         this.currentFleet=currentCar;
         this.currentDriver=currentDriver;
-
     }
 
     @NonNull

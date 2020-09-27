@@ -33,6 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginLeft="10dp"
+                android:onClick="finishDetailsActivity"
                 android:src="@drawable/arrow_back" />
 
             <TextView
@@ -296,6 +297,7 @@
                 </androidx.cardview.widget.CardView>
 
                 <androidx.cardview.widget.CardView
+                    android:id="@+id/car_card_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="15dp"
@@ -309,7 +311,7 @@
                         android:layout_margin="10dp">
 
                         <TextView
-                            android:id="@+id/show_car"
+                            android:id="@+id/tv_car_name_driver"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
@@ -323,26 +325,39 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <Button
-                            android:layout_width="match_parent"
+                        <TextView
+                            android:id="@+id/tv_actual_car_name_driver"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="10dp"
                             android:layout_marginTop="10dp"
                             android:layout_marginRight="10dp"
-                            android:layout_marginBottom="15dp"
                             android:fontFamily="@font/raleway_semibold"
-                            android:text="Show Car "
-                            android:textColor="@android:color/darker_gray"
-                            android:textAlignment="center"
-                            android:textSize="12dp"
+                            android:textColor="#557490"
+                            android:textSize="16sp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/show_car" />
+                            app:layout_constraintTop_toBottomOf="@id/tv_car_name_driver" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
                 </androidx.cardview.widget.CardView>
-
+                <Button
+                    android:id="@+id/assignCar_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:backgroundTint="#2AC1AB"
+                    android:fontFamily="@font/raleway_semibold"
+                    android:text="@string/assign_new_car"
+                    android:textAlignment="center"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:onClick="openAssignPage"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    />
             </LinearLayout>
 
         </ScrollView>

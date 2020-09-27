@@ -3,6 +3,8 @@ package com.example.fleetmanagementsystem.driverFunctionality.models;
 import com.google.firebase.firestore.DocumentId;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DriverModel implements Serializable {
 
@@ -13,20 +15,21 @@ public class DriverModel implements Serializable {
     String phone;
     String type;
 
+    List <DriverHistoryModel> driverHistoryModelList = new ArrayList<>();
+
     public DriverModel() {
 
     }
-
 
     public DriverModel(String name, String phone, String type) {
         this.name = name;
         this.phone = phone;
         this.type=type;
     }
+
     public String getType() {
         return type;
     }
-
     public void setType(String type) {
         this.type = type;
     }
@@ -62,5 +65,13 @@ public class DriverModel implements Serializable {
 
     public void setPhone(String phone) {
         this.phone = phone;
+    }
+
+    public List<DriverHistoryModel> getDriverHistoryModelList() {
+        return driverHistoryModelList;
+    }
+
+    public void setDriverHistoryModelList(List<DriverHistoryModel> driverHistoryModelList) {
+        this.driverHistoryModelList = driverHistoryModelList;
     }
 }

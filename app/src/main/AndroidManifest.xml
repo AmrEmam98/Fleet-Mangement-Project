@@ -9,11 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".carsFunctionality.activites.CarSearchActivity"></activity>
+        <activity android:name=".driverFunctionality.activities.DriverSearchActivity"></activity>
+        <activity android:name=".driverFunctionality.activities.DriverAssignActivity" />
+        <activity android:name=".driverFunctionality.activities.DriverHistoryActivity" />
+        <activity android:name=".carsFunctionality.activites.CarSearchActivity" />
         <activity android:name=".carsFunctionality.activites.AssignActivity" />
         <activity android:name=".driverFunctionality.activities.EditDriverAcitivty" />
         <activity android:name=".splashScreens.LoadingDrivers" />
-        <activity android:name=".splashScreens.LoadingActivity"></activity>
+        <activity android:name=".splashScreens.LoadingActivity" />
         <activity android:name=".carsFunctionality.activites.EditCarActivity" />
         <activity android:name=".carsFunctionality.activites.CarHistoryActivity" />
         <activity android:name=".driverFunctionality.activities.DriversDetailsActivity" />
@@ -21,8 +24,8 @@
             android:name=".driverFunctionality.activities.DriversActivity"
             android:label="" />
         <activity android:name=".driverFunctionality.activities.AddDriverActivity" />
-        <activity android:name=".carsFunctionality.activites.CarDetailsActivity"></activity>
-        <activity android:name=".carsFunctionality.activites.FleetActivity"></activity>
+        <activity android:name=".carsFunctionality.activites.CarDetailsActivity" />
+        <activity android:name=".carsFunctionality.activites.FleetActivity" />
         <activity android:name=".homeFunctionality.HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -31,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".loginFunctionality.activities.LoginActivity" />
-        <activity android:name=".splashScreens.SplashActivity"></activity>
+        <activity android:name=".splashScreens.SplashActivity" />
         <activity android:name=".carsFunctionality.activites.AddCarActivity" />
 
         <meta-data

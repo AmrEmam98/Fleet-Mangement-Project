@@ -9,4 +9,8 @@
     <string name="vehicles">Vehicles</string>
     <string name="welcome">Welcome</string>
     <string name="admin">Admin</string>
+    <string name="assign_new_car">Assign New Car</string>
+    <string name="select_car">Select Car</string>
+    <string name="are_you_sure_you_want_to_assign_car">Are you sure you want to assign car</string>
+    <string name="search_for_drivers">Search for Drivers</string>
 </resources>

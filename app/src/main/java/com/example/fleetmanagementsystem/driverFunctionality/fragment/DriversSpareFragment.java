@@ -1,8 +1,10 @@
 package com.example.fleetmanagementsystem.driverFunctionality.fragment;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,7 +28,7 @@ import io.reactivex.functions.Consumer;
 
 
 public class DriversSpareFragment extends Fragment {
-
+    String TAG = "DriversSpareFragment";
     private List<DriverModel> driverModels;
     private DriversAdapter driverAdapter;
     private RecyclerView recyclerView;
@@ -50,7 +52,7 @@ public class DriversSpareFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
+        Log.d(TAG, "LOG DriversSpareFragment onViewCreated: ");
         recyclerView = view.findViewById(R.id.drivers_spare_recyclerView);
         driverAdapter = new DriversAdapter();
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -61,6 +63,7 @@ public class DriversSpareFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.d(TAG, "LOG DriversSpareFragment onActivityCreated: ");
         getDrivers();
     }
 
@@ -69,6 +72,46 @@ public class DriversSpareFragment extends Fragment {
         DriversActivity driversActivity = (DriversActivity)getActivity();
         this.driverModels = driversActivity.driverFilter.getSpare();
         driverAdapter.setList(driverModels);
+    }
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        Log.d(TAG, "LOG DriversSpareFragment onAttach: ");
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d(TAG, "LOG DriversSpareFragment onStart: ");
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.d(TAG, "LOG DriversSpareFragment onResume: ");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.d(TAG, "LOG DriversSpareFragment onPause: ");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        Log.d(TAG, "LOG DriversSpareFragment onResume: ");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.d(TAG, "LOG DriversSpareFragment onResume: ");
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        Log.d(TAG, "LOG DriversSpareFragment onResume: ");
     }
 
 }

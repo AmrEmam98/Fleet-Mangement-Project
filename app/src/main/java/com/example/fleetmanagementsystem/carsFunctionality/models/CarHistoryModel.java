@@ -17,7 +17,8 @@ public class CarHistoryModel implements Serializable {
         this.startDate = getCurrentDateAndTime();
         endDate="Currently Assigned";
     }
-    private String getCurrentDateAndTime(){
+
+    public static String getCurrentDateAndTime(){
 
         Date c = Calendar.getInstance().getTime();
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy/MM/dd");

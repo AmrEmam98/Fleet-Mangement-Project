@@ -31,20 +31,19 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
     FleetModel currentFleet;
     List<DriverModel>driverModels;
     List<DriverModel> driverModelsFull;
+    public Activity context;
 
     public AssignAdapter(Activity context, FleetModel currentFleet) {
         this.context=context;
         this.currentFleet=currentFleet;
+
         if(RetrieveDataFromFireStore.retrieveDriversCalled) {
             driverFilter=new DriverFilter();
             this.driverModels=driverFilter.getSpare();
             driverModelsFull = new ArrayList<>(driverModels);
-
         }
-
-
     }
-    public Activity context;
+
     @NonNull
     @Override
     public AssignViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

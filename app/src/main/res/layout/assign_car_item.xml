@@ -16,6 +16,7 @@
         android:layout_height="wrap_content">
 
         <ImageView
+            android:id="@+id/assign_car_icon"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/check_icon_blue"
@@ -23,19 +24,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/driver_image"
+            android:id="@+id/assign_car_image"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_margin="20dp"
             android:src="@drawable/ic_car"
             android:transitionName="carImageTransition"
-            app:layout_constraintBottom_toTopOf="@+id/assign_driver_name"
-            app:layout_constraintEnd_toEndOf="@+id/assign_driver_name"
-            app:layout_constraintStart_toStartOf="@+id/assign_driver_name"
+            app:layout_constraintBottom_toTopOf="@id/assign_car_name"
+            app:layout_constraintEnd_toEndOf="@id/assign_car_name"
+            app:layout_constraintStart_toStartOf="@id/assign_car_name"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/assign_driver_name"
+            android:id="@+id/assign_car_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginRight="30dp"
@@ -47,12 +48,12 @@
             android:layout_marginBottom="5dp"
             android:textColor="@android:color/black"
             android:textSize="18sp"
-            app:layout_constraintBottom_toTopOf="@+id/assign_driver_phone"
+            app:layout_constraintBottom_toTopOf="@id/assign_car_number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
-            android:id="@+id/assign_driver_phone"
+            android:id="@+id/assign_car_number"
             android:layout_width="89dp"
             android:layout_height="18dp"
             android:fontFamily="@font/nunito_sans_semibold"
