@@ -28,14 +28,16 @@
         <activity android:name=".carsFunctionality.activites.FleetActivity" />
         <activity android:name=".homeFunctionality.HomeActivity">
 
-        </activity>
-        <activity android:name=".loginFunctionality.activities.LoginActivity" />
-        <activity android:name=".splashScreens.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
+        </activity>
+        <activity android:name=".loginFunctionality.activities.LoginActivity" />
+        <activity android:name=".splashScreens.SplashActivity" >
+
         </activity>
         <activity android:name=".carsFunctionality.activites.AddCarActivity" />
 

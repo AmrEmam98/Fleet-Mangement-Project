@@ -77,6 +77,8 @@ public class DriversDetailsActivity extends AppCompatActivity {
         driverImage = findViewById(R.id.iv_driver_detials);
         assignBtn = findViewById(R.id.assignCar_btn);
 
+        driverImage.setImageResource(getIntent().getExtras().getInt("DRIVER_IMAGE"));
+
         isAssigned = !(currentDriver.getAssignedCarId()==null);
 
         assignBtn.setText(isAssigned?"Un Assign Car":"Assign New Car");

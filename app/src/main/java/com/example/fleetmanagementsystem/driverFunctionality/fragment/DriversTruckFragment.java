@@ -47,7 +47,7 @@ public class DriversTruckFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.drivers_truck_recyclerView);
-        driverAdapter = new DriversAdapter();
+        driverAdapter = new DriversAdapter(R.drawable.driver_truck_icon);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(driverAdapter);
 

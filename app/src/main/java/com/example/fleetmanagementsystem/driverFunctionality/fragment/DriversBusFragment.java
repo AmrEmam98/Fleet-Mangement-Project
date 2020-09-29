@@ -46,7 +46,7 @@ public class DriversBusFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.drivers_bus_recyclerView);
-        driverAdapter = new DriversAdapter();
+        driverAdapter = new DriversAdapter(R.drawable.driver_bus_icon);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(driverAdapter);

@@ -9,22 +9,19 @@
     android:id="@+id/card_item_driver"
     android:background="@android:color/white"
     app:cardCornerRadius="10dp"
-    app:cardElevation="5dp">
+    app:cardElevation="10dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="373dp"
-        android:layout_height="83dp">
+        android:layout_width="match_parent"
+        android:padding="5dp"
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/driver_image"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="15dp"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginLeft="10dp"
             android:src="@drawable/ic_driver"
-            android:transitionName="carImageTransition"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,8 +30,8 @@
             android:id="@+id/driver_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginTop="7dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="10dp"
             android:layout_toRightOf="@id/driver_image"
             android:fontFamily="@font/nunito_sans_semibold"
             android:text="Driver: Driver Name"
@@ -49,21 +46,24 @@
             android:id="@+id/driver_type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
             android:layout_toRightOf="@id/driver_name"
             android:fontFamily="@font/nunito_sans_semibold"
             android:text="Car"
             android:textSize="13sp"
             android:transitionName="driverLiesnceTransition"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/driver_number_item"
+            />
 
         <TextView
             android:id="@+id/driver_number_item"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
             android:layout_marginTop="5dp"
+            android:layout_marginLeft="15dp"
             android:fontFamily="@font/nunito_sans_semibold"
             android:text="01015770994"
             android:textAlignment="center"

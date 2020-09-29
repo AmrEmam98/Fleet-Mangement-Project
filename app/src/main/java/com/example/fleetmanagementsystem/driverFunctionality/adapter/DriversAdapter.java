@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,7 +27,12 @@ public class DriversAdapter extends RecyclerView.Adapter<DriversAdapter.DriverVi
 
     private List<DriverModel> driverModels  = new ArrayList<>();
     private List<DriverModel> driverModelsFull  = new ArrayList<>();
+    int driverImage;
     Context context;
+
+    public DriversAdapter(int driverImage){
+        this.driverImage = driverImage;
+    }
 
     @NonNull
     @Override
@@ -55,17 +61,19 @@ public class DriversAdapter extends RecyclerView.Adapter<DriversAdapter.DriverVi
 
         TextView driverName, driverType, driverNumber;
         CardView driverCard;
+        ImageView driverImageView;
 
         public DriverViewHolder(@NonNull View itemView) {
             super(itemView);
 
+            driverImageView = itemView.findViewById(R.id.driver_image);
             driverName = itemView.findViewById(R.id.driver_name);
             driverNumber = itemView.findViewById(R.id.driver_number_item);
             driverType = itemView.findViewById(R.id.driver_type);
             driverCard = itemView.findViewById(R.id.card_item_driver);
         }
         public void initDate(DriverModel driverModel , Context context){
-
+            driverImageView.setImageResource(driverImage);
             driverName.setText(driverModel.getName());
             driverNumber.setText(driverModel.getPhone());
             driverType.setText(driverModel.getType());
@@ -73,6 +81,7 @@ public class DriversAdapter extends RecyclerView.Adapter<DriversAdapter.DriverVi
                 Intent intent = new Intent(context,DriversDetailsActivity.class);
                 Bundle bundle = new Bundle();
                 bundle.putSerializable(BundleKeys.DRIVER_MODEL_KEY,driverModel);
+                bundle.putInt("DRIVER_IMAGE" , driverImage);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             });

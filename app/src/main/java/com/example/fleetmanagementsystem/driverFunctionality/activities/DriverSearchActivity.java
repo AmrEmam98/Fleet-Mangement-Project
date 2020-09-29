@@ -28,7 +28,7 @@ public class DriverSearchActivity extends AppCompatActivity {
         searchEt = findViewById(R.id.et_search_driver);
 
         searchRecyclerView = findViewById(R.id.search_recycler_driver);
-        driversAdapter = new DriversAdapter();
+        driversAdapter = new DriversAdapter(R.drawable.ic_driver);
         RetrieveDataFromFireStore.driverSubject.subscribe(
                 driverModels -> {
                     driversAdapter.setList(driverModels);

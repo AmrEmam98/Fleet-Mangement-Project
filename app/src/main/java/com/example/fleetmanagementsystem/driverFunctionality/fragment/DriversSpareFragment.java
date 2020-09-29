@@ -54,7 +54,7 @@ public class DriversSpareFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Log.d(TAG, "LOG DriversSpareFragment onViewCreated: ");
         recyclerView = view.findViewById(R.id.drivers_spare_recyclerView);
-        driverAdapter = new DriversAdapter();
+        driverAdapter = new DriversAdapter(R.drawable.ic_driver);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
         recyclerView.setAdapter(driverAdapter);

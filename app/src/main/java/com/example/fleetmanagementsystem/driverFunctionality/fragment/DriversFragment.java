@@ -49,7 +49,7 @@ public class DriversFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         recyclerView = view.findViewById(R.id.drivers_recyclerView);
-        driverAdapter = new DriversAdapter();
+        driverAdapter = new DriversAdapter(R.drawable.driver_car_icon);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setAdapter(driverAdapter);
