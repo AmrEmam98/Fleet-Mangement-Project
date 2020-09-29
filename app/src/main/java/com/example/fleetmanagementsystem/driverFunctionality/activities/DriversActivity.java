@@ -44,7 +44,6 @@ public class DriversActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_drivers);
-        driverFilter = new DriverFilter();
         setUI();
     }
 
@@ -75,6 +74,12 @@ public class DriversActivity extends AppCompatActivity {
         viewPagerAdapter.addFragment(driversTruckFragment , "Truck");
         viewPagerAdapter.addFragment(driversSpareFragment , "Idle");
         viewPager.setAdapter(viewPagerAdapter);
+
+    }
+
+    public void openDriverSearchActivity(View view) {
+        Intent intent=new Intent(this,DriverSearchActivity.class);
+        startActivity(intent);
 
     }
 
@@ -115,5 +120,11 @@ public class DriversActivity extends AppCompatActivity {
         super.onBackPressed();
         startActivity(new Intent(DriversActivity.this, HomeActivity.class));
         finishAffinity();
+    }
+
+    @Override
+    protected void onResume() {
+        driverFilter = new DriverFilter();
+        super.onResume();
     }
 }

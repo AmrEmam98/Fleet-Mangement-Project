@@ -7,10 +7,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.ImageView;
-import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -26,10 +23,9 @@ import java.util.List;
 
 import static com.example.fleetmanagementsystem.Constants.BundleKeys.FLEET_MODEL_KEY;
 
-public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHolder> implements Filterable {
+public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHolder>  {
 
     private List<FleetModel> carsList = new ArrayList<>();
-    private List<FleetModel> carsListFull;
     int vehicleImage;
 
 
@@ -59,31 +55,29 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
     }
 
     public void setList(List<FleetModel> carsList) {
-        this.carsList.clear();
         this.carsList = carsList;
-        carsListFull = new ArrayList<>(carsList);
         notifyDataSetChanged();
     }
 
 
     public class FleetViewHolder extends RecyclerView.ViewHolder  {
-        TextView carName, chasissNum, plateNum;
+        TextView carName, fleetType, plateNum;
         ImageView vehicleImageView;
         CardView cardView;
 
         public FleetViewHolder(@NonNull View itemView) {
             super(itemView);
-            carName = itemView.findViewById(R.id.driver_number);
+            carName = itemView.findViewById(R.id.car_name);
             vehicleImageView = itemView.findViewById(R.id.car_image);
             plateNum = itemView.findViewById(R.id.plateNum);
-            chasissNum = itemView.findViewById(R.id.chassisNum);
+            fleetType = itemView.findViewById(R.id.fleetType);
             cardView=itemView.findViewById(R.id.card_item);
 
         }
         public void initData(FleetModel fleetModel, Context context){
             vehicleImageView.setImageResource(vehicleImage);
             carName.setText(fleetModel.name);
-            chasissNum.setText(fleetModel.chassisNum);
+            fleetType.setText(fleetModel.type);
             plateNum.setText(fleetModel.plateNum);
             cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -100,37 +94,6 @@ public class FleetAdapter extends RecyclerView.Adapter<FleetAdapter.FleetViewHol
 
     }
 
-    @Override
-    public Filter getFilter() {
-        return vehicleFilter;
-    }
-
-    private Filter vehicleFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<FleetModel> filteredList = new ArrayList<>();
-            if (charSequence==null || charSequence.length() == 0){
-                filteredList.addAll(carsListFull);
-            }else {
-                String filterPattern = charSequence.toString().toLowerCase().trim();
-                for (FleetModel item: carsListFull){
-                    if (item.getPlateNum().toLowerCase().contains(filterPattern)){
-                        filteredList.add(item);
-                    }
-                }
-            }
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-            return results;
-        }
-
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            carsList.clear();
-            carsList.addAll((List) filterResults.values);
-            notifyDataSetChanged();
-        }
-    };
 
 
 }

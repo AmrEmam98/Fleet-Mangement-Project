@@ -13,16 +13,15 @@ import androidx.cardview.widget.CardView;
 import androidx.databinding.DataBindingUtil;
 
 import com.example.fleetmanagementsystem.CarDriverAssignment;
-import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
-import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
-import com.example.fleetmanagementsystem.carsFunctionality.activites.CarDetailsActivity;
-import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
-import com.example.fleetmanagementsystem.databinding.ActivityDriversDetailsBinding;
 import com.example.fleetmanagementsystem.Constants.BundleKeys;
+import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
+import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.CarDetailsActivity;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
+import com.example.fleetmanagementsystem.databinding.ActivityDriversDetailsBinding;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DeleteDriverFragment;
-
-import io.reactivex.functions.Consumer;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 import static com.example.fleetmanagementsystem.Constants.BundleKeys.DRIVER_MODEL_KEY;
 import static com.example.fleetmanagementsystem.Constants.ObserverStringResponse.SUCCESS_RESPONSE;
@@ -104,12 +103,19 @@ public class DriversDetailsActivity extends AppCompatActivity {
         deleteDriver.show(getSupportFragmentManager(),"Dialogue Driver");
     }
 
+    @SuppressLint("CheckResult")
     public void openAssignPage(View view) {
         if(!isAssigned)
             openAssignActivity();
         else{
             CarDriverAssignment.unAssign(currentCar,currentDriver,"Driver");
-            DriversActivity.driverActivityRefresher.onNext(SUCCESS_RESPONSE);
+
+            EditDataInFireStore.driverEditedSubject.subscribe(
+                    result->{
+                        DriversActivity.driverActivityRefresher.onNext(SUCCESS_RESPONSE);
+
+                    }
+            );
         }
     }
 

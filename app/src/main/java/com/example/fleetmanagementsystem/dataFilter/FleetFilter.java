@@ -14,10 +14,12 @@ public class FleetFilter {
     List<FleetModel> cars;
     List<FleetModel> buses;
     List<FleetModel> spare;
+    List<FleetModel> trucks;
     public FleetFilter() {
        spare = new ArrayList<>();
         cars = new ArrayList<>();
         buses = new ArrayList<>();
+        trucks = new ArrayList<>();
         filterFleet();
     }
 
@@ -33,6 +35,8 @@ public class FleetFilter {
                                                             cars.add(fleetModels.get(i));
                                                         if (fleetModels.get(i).type.equals("Bus"))
                                                             buses.add(fleetModels.get(i));
+                                                        if (fleetModels.get(i).type.equals("Truck"))
+                                                            trucks.add(fleetModels.get(i));
 
                                                     }
 
@@ -52,5 +56,8 @@ public class FleetFilter {
 
     public List<FleetModel> getSpare() {
         return spare;
+    }
+    public List<FleetModel> getTrucks() {
+        return trucks;
     }
 }

@@ -66,6 +66,19 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/assign_driver_image"
             app:layout_constraintTop_toBottomOf="@+id/driver_name_assign" />
+        <TextView
+            android:id="@+id/assign_driver_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/nunito_sans_semibold"
+            android:text="Car"
+            android:textSize="13sp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:transitionName="carLiesnceTransition"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/driver_assign_phone" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

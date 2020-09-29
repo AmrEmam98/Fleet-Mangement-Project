@@ -5,24 +5,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.ProgressBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.fleetmanagementsystem.Constants.BundleKeys;
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
-import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
+import com.example.fleetmanagementsystem.loginFunctionality.activities.LoginActivity;
 import com.example.fleetmanagementsystem.splashScreens.LoadingActivity;
-
-import java.util.List;
+import com.google.firebase.auth.FirebaseAuth;
 
 
 public class HomeActivity extends AppCompatActivity {
 
-    List<FleetModel> fleetModels;
-    private List<DriverModel> driverModels;
-    ProgressBar progressBar;
 
 
     @SuppressLint("CheckResult")
@@ -45,7 +39,10 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra(BundleKeys.ACTIVITY_TYPE,BundleKeys.CAR_ACTIVITY_TYPE);
         startActivity(intent);
     }
-    //TODO
-//     FirebaseAuth.getInstance().signOut();
-    //open login screen
+
+    public void signOutClick(View view) {
+        FirebaseAuth.getInstance().signOut();
+        Intent intent=new Intent(this, LoginActivity.class);
+        startActivity(intent);
+    }
 }

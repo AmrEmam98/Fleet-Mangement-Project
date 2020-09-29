@@ -55,7 +55,13 @@ public class DriversBusFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
+    }
+
+    @Override
+    public void onResume() {
         getDrivers();
+        super.onResume();
     }
 
     @SuppressLint("CheckResult")

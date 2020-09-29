@@ -18,13 +18,13 @@ import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 
 import java.util.List;
 
-public class TruckFragment extends Fragment  {
+public class BusFragment extends Fragment  {
 
-    private List<FleetModel> vehicleModel;
+    private List<FleetModel> busVehicles;
     private FleetAdapter fleetAdapter;
     private RecyclerView vehicleRecyclerView;
 
-    public TruckFragment() {
+    public BusFragment() {
         // Required empty public constructor
     }
 
@@ -32,28 +32,28 @@ public class TruckFragment extends Fragment  {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_trucks, container, false);
+        return inflater.inflate(R.layout.fragment_bus, container, false);
     }
 
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        vehicleRecyclerView = view.findViewById(R.id.vehicle_recycler_view);
-        fleetAdapter = new FleetAdapter(R.drawable.truck_icon);
+        vehicleRecyclerView = view.findViewById(R.id.buses_recycler_view);
+        fleetAdapter = new FleetAdapter(R.drawable.bus_icon);
 
         vehicleRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         vehicleRecyclerView.setAdapter(fleetAdapter);
-    }
+}
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        getVehicles();
+        getBuses();
         super.onActivityCreated(savedInstanceState);
     }
 
-    public void getVehicles() {
+    public void getBuses() {
         FleetActivity fleetActivity=(FleetActivity)getActivity();
-        this.vehicleModel=fleetActivity.fleetFilter.getTrucks();
-        fleetAdapter.setList(vehicleModel);
+        this.busVehicles =fleetActivity.fleetFilter.getBuses();
+        fleetAdapter.setList(busVehicles);
     }
 }

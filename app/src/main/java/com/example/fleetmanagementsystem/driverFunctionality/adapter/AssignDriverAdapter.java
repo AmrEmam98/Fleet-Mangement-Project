@@ -14,15 +14,15 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
-import com.example.fleetmanagementsystem.driverFunctionality.fragment.AssignDriverDialog;
-import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
+import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.dataFilter.FleetFilter;
 import com.example.fleetmanagementsystem.driverFunctionality.activities.DriverAssignActivity;
-import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
+import com.example.fleetmanagementsystem.driverFunctionality.fragment.AssignDriverDialog;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.example.fleetmanagementsystem.R;
 
 public class AssignDriverAdapter extends RecyclerView.Adapter<AssignDriverAdapter.AssignDriverViewHolder> implements Filterable {
 
@@ -63,13 +63,14 @@ public class AssignDriverAdapter extends RecyclerView.Adapter<AssignDriverAdapte
 
     public class AssignDriverViewHolder extends RecyclerView.ViewHolder {
 
-        TextView carName , carNumber;
+        TextView carName , carNumber,carType;
         ImageView carImage , addCarIcon;
 
         public AssignDriverViewHolder(@NonNull View itemView) {
             super(itemView);
             carName = itemView.findViewById(R.id.assign_car_name);
             carNumber = itemView.findViewById(R.id.assign_car_number);
+            carType = itemView.findViewById(R.id.assign_car_type);
             carImage = itemView.findViewById(R.id.assign_car_image);
             addCarIcon = itemView.findViewById(R.id.assign_car_icon);
         }
@@ -77,12 +78,10 @@ public class AssignDriverAdapter extends RecyclerView.Adapter<AssignDriverAdapte
         public void initData(Context context, FleetModel carModel){
             carName.setText(carModel.getName());
             carNumber.setText(carModel.getPlateNum());
-            addCarIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    AssignDriverDialog assignDriverDialog = new AssignDriverDialog(carModel,currentDriver);
-                    assignDriverDialog.show(((DriverAssignActivity)context).getSupportFragmentManager(),"Title Driver");
-                }
+            carType.setText(carModel.type);
+            addCarIcon.setOnClickListener(view -> {
+                AssignDriverDialog assignDriverDialog = new AssignDriverDialog(carModel,currentDriver);
+                assignDriverDialog.show(((DriverAssignActivity)context).getSupportFragmentManager(),"Title Driver");
             });
         }
     }

@@ -16,6 +16,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.fragment.BusFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.CarsFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.SpareFragment;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.TruckFragment;
@@ -44,13 +45,15 @@ public class FleetActivity extends AppCompatActivity {
         /////////////////////////
         CarsFragment carsFragment = new CarsFragment();
         SpareFragment spareFragment = new SpareFragment();
-        TruckFragment vehicleFragment = new TruckFragment();
+        TruckFragment truckFragment = new TruckFragment();
+        BusFragment busFragment = new BusFragment();
 
         tabLayout.setupWithViewPager(viewPager);
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager(), 0);
         viewPagerAdapter.addFragment(carsFragment, "Cars");
-        viewPagerAdapter.addFragment(vehicleFragment, "Buses");
+        viewPagerAdapter.addFragment(busFragment, "Buses");
+        viewPagerAdapter.addFragment(truckFragment, "Truck");
         viewPagerAdapter.addFragment(spareFragment, "Spare");
         viewPager.setAdapter(viewPagerAdapter);
            }

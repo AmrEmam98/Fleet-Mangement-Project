@@ -38,8 +38,8 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel.loginSubject
                 .subscribe(
                         result -> {
+                            loginPrgressbar.setVisibility(View.GONE);
                             if (result.equals(ObserverStringResponse.SUCCESS_RESPONSE)) {
-                                loginPrgressbar.setVisibility(View.GONE);
                                 Toast.makeText(this, "User signed in ", Toast.LENGTH_LONG).show();
                                 Intent intent = new Intent(LoginActivity.this, HomeActivity.class);
                                 startActivity(intent);

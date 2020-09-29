@@ -63,7 +63,7 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
 
     public class AssignViewHolder extends RecyclerView.ViewHolder {
 
-        TextView driverName , driverPhone;
+        TextView driverName , driverPhone,driverType;
         ImageView driverImage , addDriverIcon;
 
         public AssignViewHolder(@NonNull View itemView) {
@@ -71,12 +71,14 @@ public class AssignAdapter extends RecyclerView.Adapter<AssignAdapter.AssignView
             driverName = itemView.findViewById(R.id.driver_name_assign);
             driverPhone = itemView.findViewById(R.id.driver_assign_phone);
             driverImage = itemView.findViewById(R.id.assign_driver_image);
+            driverType = itemView.findViewById(R.id.assign_driver_type);
             addDriverIcon = itemView.findViewById(R.id.assign_driver_icon);
         }
 
         public void initData(Context context,DriverModel driverModel){
             driverPhone.setText(driverModel.getPhone());
             driverName.setText(driverModel.getName());
+            driverType.setText(driverModel.getType());
         addDriverIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

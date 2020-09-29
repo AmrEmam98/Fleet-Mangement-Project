@@ -10,13 +10,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.adapter.FleetAdapter;
+import com.example.fleetmanagementsystem.carsFunctionality.adapter.SearchAdapter;
 
 public class CarSearchActivity extends AppCompatActivity {
 
-    private FleetAdapter fleetAdapter;
+    private SearchAdapter searchAdapter;
     private RecyclerView searchRecyclerView;
     private EditText searchEt;
 
@@ -29,16 +28,12 @@ public class CarSearchActivity extends AppCompatActivity {
         searchEt = findViewById(R.id.search_editText);
 
         searchRecyclerView = findViewById(R.id.search_recycler);
-        fleetAdapter = new FleetAdapter(R.drawable.car_icon);
+        searchAdapter = new SearchAdapter(R.drawable.car_icon);
 
         searchRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        searchRecyclerView.setAdapter(fleetAdapter);
+        searchRecyclerView.setAdapter(searchAdapter);
 
-        RetrieveDataFromFireStore.carsSubject.subscribe(fleetModels -> {
-                    fleetAdapter.setList(fleetModels);
 
-                }
-        );
 
         searchEt.addTextChangedListener(new TextWatcher() {
             @Override
@@ -48,7 +43,7 @@ public class CarSearchActivity extends AppCompatActivity {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    fleetAdapter.getFilter().filter(charSequence);
+                    searchAdapter.getFilter().filter(charSequence);
             }
 
             @Override
@@ -56,5 +51,10 @@ public class CarSearchActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
     }
 }
