@@ -1,23 +1,23 @@
 package com.example.fleetmanagementsystem.driverFunctionality.fragment;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
 import com.example.fleetmanagementsystem.CarDriverAssignment;
 import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
+import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
 import com.example.fleetmanagementsystem.R;
-import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
-import com.example.fleetmanagementsystem.driverFunctionality.models.*;
 import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversActivity;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 public class AssignDriverDialog extends AppCompatDialogFragment {
 
@@ -27,9 +27,18 @@ public class AssignDriverDialog extends AppCompatDialogFragment {
 
     View view;
 
+    @SuppressLint("CheckResult")
     public  AssignDriverDialog(FleetModel currentCar, DriverModel currentDriver){
         this.currentCar =currentCar;
         this.currentDriver=currentDriver;
+        EditDataInFireStore.driverEditedSubject.subscribe(
+                result->{
+                    if(result.equals(ObserverStringResponse.DRIVER_ASSIGNMENT)){
+                        DriversActivity.driverActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+                        dismiss();
+                    }
+                }
+        );
     }
 
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -51,12 +60,8 @@ public class AssignDriverDialog extends AppCompatDialogFragment {
         assignBtn = view.findViewById(R.id.assign_car_btn);
 
         assignBtn.setOnClickListener(view1 -> {
-            DriverHistoryModel driverHistoryModel = new DriverHistoryModel(currentCar.getCarID(),currentCar.getName());
-            currentDriver.getDriverHistoryModelList().add(driverHistoryModel);
-            CarDriverAssignment.assign(currentCar,currentDriver);
-            Toast.makeText(getContext() , "Car added to your Driver" , Toast.LENGTH_LONG).show();
-            DriversActivity.driverActivityRefresher.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
-            dismiss();
+            CarDriverAssignment.assign(currentCar,currentDriver,"Driver");
+
         });
     }
     private void cancelBtn(View view){

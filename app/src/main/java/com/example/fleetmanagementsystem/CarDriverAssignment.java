@@ -4,16 +4,21 @@ import android.annotation.SuppressLint;
 
 import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
+import com.example.fleetmanagementsystem.carsFunctionality.models.CarHistoryModel;
 import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
+import com.example.fleetmanagementsystem.driverFunctionality.models.DriverHistoryModel;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
 
 public class CarDriverAssignment {
-
-    public static void  assign(FleetModel fleetModel, DriverModel driverModel){
+    @SuppressLint("CheckResult")
+    public static void  assign(FleetModel fleetModel, DriverModel driverModel, String dir){
         driverModel.setAssignedCarId(fleetModel.carID);
         fleetModel.setAssignedDriverId(driverModel.getDriverId());
-        EditDataInFireStore.editDriver(driverModel);
-        EditDataInFireStore.editFleet(fleetModel);
+        driverModel.getDriverHistoryModelList().add(new DriverHistoryModel(fleetModel.getCarID(),fleetModel.getName()));
+        fleetModel.carHistoryList.add(new CarHistoryModel(driverModel.getDriverId(),driverModel.getName()));
+        EditDataInFireStore.editDriver(driverModel,dir.equals("Driver"));
+        EditDataInFireStore.editFleet(fleetModel,dir.equals("Car"));
+
     }
     @SuppressLint("CheckResult")
     public static void  unAssignDriver(String driverID){
@@ -23,9 +28,10 @@ public class CarDriverAssignment {
         RetrieveDataFromFireStore.singleDriverSubject.subscribe(
                 driverModel -> {
                     driverModel.setAssignedCarId(null);
-                    EditDataInFireStore.editDriver(driverModel);
+                    EditDataInFireStore.editDriver(driverModel,true);
                 }
         );
+
     }
     @SuppressLint("CheckResult")
     public static void  unAssignCar(String carID){
@@ -37,28 +43,25 @@ public class CarDriverAssignment {
             fleetModel.setAssignedDriverId(null);
             int lastIndex=fleetModel.carHistoryList.size()-1;
             fleetModel.carHistoryList.get(lastIndex).setEndDate();
-            EditDataInFireStore.editFleet(fleetModel);
+            EditDataInFireStore.editFleet(fleetModel,false);
         }
         );
 
     }
 
-    public static void unAssign(FleetModel fleetModel,DriverModel driverModel,String dir){
+    @SuppressLint("CheckResult")
+    public static void unAssign(FleetModel fleetModel, DriverModel driverModel, String dir){
 
         fleetModel.setAssignedDriverId(null);
         driverModel.setAssignedCarId(null);
+        int driverHistoryLastIndex=driverModel.getDriverHistoryModelList().size()-1;
+        driverModel.getDriverHistoryModelList().get(driverHistoryLastIndex).setEndDate();
+        int carHistoryLastIndex=fleetModel.carHistoryList.size()-1;
+        fleetModel.carHistoryList.get(carHistoryLastIndex).setEndDate();
+        EditDataInFireStore.editFleet(fleetModel,dir.equals("Car"));
+        EditDataInFireStore.editDriver(driverModel,dir.equals("Driver"));
 
-        if(dir.equals("Driver")){
-            int lastIndex=driverModel.getDriverHistoryModelList().size()-1;
-            driverModel.getDriverHistoryModelList().get(lastIndex).setEndDate();
-        }
-        if(dir.equals("Car")){
-            int lastIndex=fleetModel.carHistoryList.size()-1;
-            fleetModel.carHistoryList.get(lastIndex).setEndDate();
-        }
 
-        EditDataInFireStore.editFleet(fleetModel);
-        EditDataInFireStore.editDriver(driverModel);
     }
 
 

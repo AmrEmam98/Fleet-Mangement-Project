@@ -29,12 +29,15 @@ public class LoadingActivity extends AppCompatActivity {
             RetrieveDataFromFireStore.retrieveAllDrivers();
         if(!RetrieveDataFromFireStore.retrieveCarsCalled)
             RetrieveDataFromFireStore.retrieveAllCars();
-        if(type.equals(BundleKeys.CAR_ACTIVITY_TYPE)) {
 
-                openFleetActivity();
+
+
+
+        if(type.equals(BundleKeys.CAR_ACTIVITY_TYPE)) {
+             openFleetActivity();
         }
         if(type.equals(BundleKeys.DRIVER_ACTIVITY_TYPE)) {
-                openDriverActivity();
+                        openDriverActivity();
         }
 
     }

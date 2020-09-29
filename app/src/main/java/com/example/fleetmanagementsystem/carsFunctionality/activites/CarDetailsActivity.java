@@ -15,6 +15,8 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.fleetmanagementsystem.CarDriverAssignment;
 import com.example.fleetmanagementsystem.Constants.BundleKeys;
+import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
+import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
 import com.example.fleetmanagementsystem.carsFunctionality.fragment.DeleteDialog;
@@ -22,8 +24,6 @@ import com.example.fleetmanagementsystem.carsFunctionality.models.FleetModel;
 import com.example.fleetmanagementsystem.databinding.ActivityCarDetailsBinding;
 import com.example.fleetmanagementsystem.driverFunctionality.activities.DriversDetailsActivity;
 import com.example.fleetmanagementsystem.driverFunctionality.models.DriverModel;
-
-import io.reactivex.functions.Consumer;
 
 import static com.example.fleetmanagementsystem.Constants.BundleKeys.FLEET_MODEL_KEY;
 import static com.example.fleetmanagementsystem.Constants.ObserverStringResponse.SUCCESS_RESPONSE;
@@ -60,30 +60,34 @@ public class CarDetailsActivity extends AppCompatActivity {
 
         binding.setFleeModel(currentCar);
 
+
        if(currentCar.getAssignedDriverId()!=null){
        RetrieveDataFromFireStore.retrieveDriverByID(currentCar.assignedDriverId);
        RetrieveDataFromFireStore.singleDriverSubject.subscribe(
-               new Consumer<DriverModel>() {
-                   @Override
-                   public void accept(DriverModel driverModel) throws Exception {
-                       currentDriver = driverModel;
-                       driverNameTextView.setText(driverModel.getName());
-                       cardView.setOnClickListener(
-                               view -> {
-                                   Intent intent = new Intent(CarDetailsActivity.this, DriversDetailsActivity.class);
-                                   Bundle bundle = new Bundle();
-                                   bundle.putSerializable(BundleKeys.DRIVER_MODEL_KEY, driverModel);
-                                   intent.putExtras(bundle);
-                                   CarDetailsActivity.this.startActivity(intent);
-                               }
-                       );
-                   }
+               driverModel -> {
+                   currentDriver = driverModel;
+                   driverNameTextView.setText(driverModel.getName());
+                   cardView.setOnClickListener(
+                           view -> {
+                               Intent intent = new Intent(CarDetailsActivity.this, DriversDetailsActivity.class);
+                               Bundle bundle = new Bundle();
+                               bundle.putSerializable(BundleKeys.DRIVER_MODEL_KEY, driverModel);
+                               intent.putExtras(bundle);
+                               CarDetailsActivity.this.startActivity(intent);
+                           }
+                   );
                }
        );
+           EditDataInFireStore.fleetEditedSubject.subscribe(
+                   result-> {
+                       if(result.equals(ObserverStringResponse.CAR_UNASSIGNMENT))
+                       FleetActivity.fleetActivityRefresher.onNext(SUCCESS_RESPONSE);
+                   });
        }
        else{
            driverNameTextView.setText("No Driver for this car yet");
        }
+
 
     }
 
@@ -122,12 +126,12 @@ public class CarDetailsActivity extends AppCompatActivity {
         startActivity(editIntent);
     }
 
+    @SuppressLint("CheckResult")
     public void openAssignPage(View view) {
         if(!isAssigned)
         openAssignActivity();
         else{
             CarDriverAssignment.unAssign(currentCar,currentDriver,"Car");
-            FleetActivity.fleetActivityRefresher.onNext(SUCCESS_RESPONSE);
 
         }
 

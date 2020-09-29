@@ -52,6 +52,7 @@ public class RetrieveDataFromFireStore {
                     retrieveDriversCalled = true;
                 });
 
+
     }
 
     public static void retrieveFleetByID(String fleetId) {

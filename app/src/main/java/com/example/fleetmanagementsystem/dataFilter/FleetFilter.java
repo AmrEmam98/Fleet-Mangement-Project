@@ -26,6 +26,10 @@ public class FleetFilter {
     @SuppressLint("CheckResult")
     public void filterFleet() {
         RetrieveDataFromFireStore.carsSubject.subscribe(fleetModels -> {
+            cars.clear();
+            trucks.clear();
+            buses.clear();
+            spare.clear();
                                                                          if (fleetModels != null)
                                                 for (int i = 0; i < fleetModels.size(); i++) {
                                                     if (fleetModels.get(i).getAssignedDriverId() == null)

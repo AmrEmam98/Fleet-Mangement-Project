@@ -14,6 +14,7 @@ import androidx.databinding.DataBindingUtil;
 
 import com.example.fleetmanagementsystem.CarDriverAssignment;
 import com.example.fleetmanagementsystem.Constants.BundleKeys;
+import com.example.fleetmanagementsystem.Constants.ObserverStringResponse;
 import com.example.fleetmanagementsystem.FirebaseServices.EditDataInFireStore;
 import com.example.fleetmanagementsystem.FirebaseServices.RetrieveDataFromFireStore;
 import com.example.fleetmanagementsystem.R;
@@ -47,7 +48,12 @@ public class DriversDetailsActivity extends AppCompatActivity {
         ActivityDriversDetailsBinding binding= DataBindingUtil.setContentView(this,R.layout.activity_drivers_details);
         initUI();
         binding.setDriverModel(currentDriver);
-
+        EditDataInFireStore.driverEditedSubject.subscribe(
+                result->{
+                    if(result.equals(ObserverStringResponse.DRIVER_UNASSIGNMENT))
+                    DriversActivity.driverActivityRefresher.onNext(SUCCESS_RESPONSE);
+                }
+        );
         if(currentDriver.getAssignedCarId()!=null){
             RetrieveDataFromFireStore.retrieveFleetByID(currentDriver.getAssignedCarId());
             RetrieveDataFromFireStore.singleCarSubject.subscribe(
@@ -111,13 +117,6 @@ public class DriversDetailsActivity extends AppCompatActivity {
             openAssignActivity();
         else{
             CarDriverAssignment.unAssign(currentCar,currentDriver,"Driver");
-
-            EditDataInFireStore.driverEditedSubject.subscribe(
-                    result->{
-                        DriversActivity.driverActivityRefresher.onNext(SUCCESS_RESPONSE);
-
-                    }
-            );
         }
     }
 

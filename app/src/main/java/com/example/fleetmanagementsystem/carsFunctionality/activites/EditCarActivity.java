@@ -38,6 +38,6 @@ public class EditCarActivity extends AppCompatActivity {
 
     public void editCarOnClick(View view) {
 
-        EditDataInFireStore.editFleet(currentCar);
+        EditDataInFireStore.editFleet(currentCar,false);
     }
 }
