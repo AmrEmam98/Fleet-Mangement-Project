@@ -14,6 +14,7 @@ import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.viewpager.widget.ViewPager;
 
 import com.example.fleetmanagementsystem.R;
+import com.example.fleetmanagementsystem.carsFunctionality.activites.FleetActivity;
 import com.example.fleetmanagementsystem.dataFilter.DriverFilter;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversBusFragment;
 import com.example.fleetmanagementsystem.driverFunctionality.fragment.DriversFragment;
@@ -81,6 +82,11 @@ public class DriversActivity extends AppCompatActivity {
         Intent intent=new Intent(this,DriverSearchActivity.class);
         startActivity(intent);
 
+    }
+
+    public void backToHomeScreen(View view) {
+        startActivity(new Intent(this, HomeActivity.class));
+        finishAffinity();
     }
 
     public static class ViewPagerAdapter extends FragmentPagerAdapter {

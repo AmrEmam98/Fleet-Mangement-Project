@@ -93,12 +93,10 @@
 
             <EditText
                 android:id="@+id/et_addCarPlateNumber"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:ems="8"
-                android:hint="AT3M54"
-
-                />
+                android:ems="6"
+                android:hint="AT3M54"/>
 
         </TableRow>
 

@@ -35,6 +35,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
                     android:layout_marginLeft="10dp"
+                    android:onClick="backToHomeScreen"
                     android:src="@drawable/arrow_back" />
 
                 <TextView

@@ -178,7 +178,7 @@
                             android:layout_marginRight="10dp"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/raleway_semibold"
-                            android:text="@={driverModel.phone}"
+                            android:text="@={driverModel.type}"
                             android:textAlignment="textStart"
                             android:textSize="14sp"
                             app:layout_constraintBottom_toBottomOf="parent"
