@@ -16,38 +16,43 @@ public class EditDataInFireStore {
         FirebaseFirestore.getInstance()
                 .collection(FireStoreCollectionsConstants.FLEET_PATH)
                 .document(fleetModel.getCarID())
-                .set(fleetModel);
-        if(inAssign){
-            if(fleetModel.assignedDriverId==null)
-            fleetEditedSubject.onNext(ObserverStringResponse.CAR_UNASSIGNMENT);
-            else
-                fleetEditedSubject.onNext(ObserverStringResponse.CAR_ASSIGNMENT);
+                .set(fleetModel).addOnCompleteListener(runnable -> {
+            if(inAssign){
+                if(fleetModel.assignedDriverId==null)
+                    fleetEditedSubject.onNext(ObserverStringResponse.CAR_UNASSIGNMENT);
+                else
+                    fleetEditedSubject.onNext(ObserverStringResponse.CAR_ASSIGNMENT);
 
 
-        }
-        else {
+            }
+            else {
 
-        fleetEditedSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
-        }
+                fleetEditedSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+            }
+
+        });
+
     }
     public static void editDriver(DriverModel driverModel,boolean inAssign)
     {
         FirebaseFirestore.getInstance()
                 .collection(FireStoreCollectionsConstants.DRIVER_PATH)
                 .document(driverModel.getDriverId())
-                .set(driverModel);
-        if(inAssign){
-            if(driverModel.getAssignedCarId()==null)
-            driverEditedSubject.onNext(ObserverStringResponse.DRIVER_UNASSIGNMENT);
-            else {
-                driverEditedSubject.onNext(ObserverStringResponse.DRIVER_ASSIGNMENT);
+                .set(driverModel).addOnCompleteListener(runnable -> {
+            if(inAssign){
+                if(driverModel.getAssignedCarId()==null)
+                    driverEditedSubject.onNext(ObserverStringResponse.DRIVER_UNASSIGNMENT);
+                else {
+                    driverEditedSubject.onNext(ObserverStringResponse.DRIVER_ASSIGNMENT);
+                }
+
             }
+            else {
+                driverEditedSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
 
-        }
-        else {
-            driverEditedSubject.onNext(ObserverStringResponse.SUCCESS_RESPONSE);
+            }
+        });
 
-        }
 
     }
 }
